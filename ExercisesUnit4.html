@@ -2202,7 +2202,7 @@ Click for Answer
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1  32.8  35.9</code></pre>
+1  32.4  38.8</code></pre>
 </div>
 </details>
 <h1 id="exercise-3">Exercise 3</h1>
@@ -2226,8 +2226,8 @@ Click for Answer
 <pre><code># A tibble: 2 × 2
   gender  mean
   &lt;chr&gt;  &lt;dbl&gt;
-1 Female  78.0
-2 Male    75.5</code></pre>
+1 Female  79.2
+2 Male    85.6</code></pre>
 </div>
 </details>
 <h1 id="exercise-4">Exercise 4</h1>
@@ -2262,8 +2262,8 @@ Click for Answer
 <pre><code># A tibble: 2 × 2
   hasFangs  mean
   &lt;chr&gt;    &lt;dbl&gt;
-1 No         8.8
-2 Yes        8  </code></pre>
+1 No        8.32
+2 Yes       7.56</code></pre>
 </div>
 </details>
 <h1 id="exercise-5">Exercise 5</h1>
@@ -2327,16 +2327,16 @@ Click for Answer
 <pre><code># A tibble: 300 × 4
    ID    Time  weeklyExposure logWeeklyExposure
    &lt;fct&gt; &lt;fct&gt;          &lt;dbl&gt;             &lt;dbl&gt;
- 1 1     1              13.4               2.60
- 2 1     2               4.7               1.55
- 3 1     3              62.7               4.14
- 4 1     4              71.6               4.27
- 5 1     5              19.2               2.96
- 6 1     6              30.7               3.43
- 7 1     7               3.77              1.33
- 8 1     8              26.3               3.27
- 9 1     9              19.4               2.97
-10 1     10             59.1               4.08
+ 1 1     1              15.6              2.74 
+ 2 1     2               0.13            -2.04 
+ 3 1     3              38.5              3.65 
+ 4 1     4              46.9              3.85 
+ 5 1     5              17.1              2.84 
+ 6 1     6               5.28             1.66 
+ 7 1     7               1.88             0.631
+ 8 1     8               0.75            -0.288
+ 9 1     9               3.72             1.31 
+10 1     10             19.3              2.96 
 # … with 290 more rows</code></pre>
 </div>
 </details>
@@ -2362,16 +2362,16 @@ Click for Answer
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1          15
- 2 1          18
- 3 1          21
- 4 1          15
- 5 1          17
- 6 1           9
- 7 1          19
- 8 1          20
- 9 1          16
-10 1          21
+ 1 1          19
+ 2 1          15
+ 3 1          18
+ 4 1           3
+ 5 1          18
+ 6 1          15
+ 7 1          18
+ 8 1          18
+ 9 1          14
+10 1          16
 # … with 50 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>CTest_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
@@ -2383,9 +2383,9 @@ Click for Answer
 <pre><code># A tibble: 3 × 5
   Version   max   min  mean    sd
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 1          21     9  17    2.97
-2 2          23    13  18.3  2.98
-3 3          28    12  20.2  4.45</code></pre>
+1 1          19     3  15    4.18
+2 2          26    11  18.3  3.60
+3 3          29    14  20.7  3.54</code></pre>
 </div>
 <p>So, now we have a data frame with the version of the C Test (<code>Version</code>) and each participant’s score on the C Tests (<code>CTest</code>).</p>
 <p>Adjust the variable <code>CTest</code> by subtracting or adding the difference of each C Test version’s mean score from the overall mean score of the C Tests from or to each individual score.</p>
@@ -2422,16 +2422,16 @@ Click for Answer
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1        16.5
- 2 1        19.5
- 3 1        22.5
- 4 1        16.5
- 5 1        18.5
- 6 1        10.5
- 7 1        20.5
- 8 1        21.5
- 9 1        17.5
-10 1        22.5
+ 1 1          22
+ 2 1          18
+ 3 1          21
+ 4 1           6
+ 5 1          21
+ 6 1          18
+ 7 1          21
+ 8 1          21
+ 9 1          17
+10 1          19
 # … with 50 more rows</code></pre>
 </div>
 </details>
