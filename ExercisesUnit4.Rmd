@@ -1,0 +1,301 @@
+---
+title: "4. The tidier the better: Basics of coding with the Tidyverse"
+description: |
+  Unit 4
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+output:
+  distill::distill_article:
+    toc: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+Vampires = read_csv("./Data/Vampires.csv")
+
+```
+
+
+# Exercise 1
+
+Load in the data `Vampires` (preferably as a tibble using the `read_csv()` function). 
+
+We are only interested in the columns `idVampire`, `gender`, `ageOfVampire` and `numberOfChildren`. Create a new data frame called `Vamps` including only these columns. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+Since our goal here is to simply subset the data frame and select on certain columns, we can use the function `select()` from the `dplyr` package included in the `tidyverse`. This will allow us to pick and choose which columns we want to subset. We can then assign these subsetted variables to a new object, which the directions ask us to call `Vamps`. Let's go ahead and do this: 
+
+```{r}
+
+Vamps = Vampires %>% 
+  select(idVampire, gender, ageOfVampire, numberOfChildren)
+
+```
+
+Since the first three columns we want to subset are in a row (i.e. the first three columns), we can also easily specify 1:3 (i.e. columns 1 through 3), plus the variable `numberOfChildren`, like so: 
+
+```{r}
+
+Vamps = Vampires %>% 
+  select(1:3, numberOfChildren)
+
+```
+
+</details> 
+
+# Exercise 2
+
+Calculate the mean amount of cities the vampires have visited (variable: `visitedCities`), as well as the standard deviation thereof, using the `summarize()` function. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+As always, our first step is to reach into the data frame we are interested in, namely `Vampires`, and then simply use the summarize function, like so: 
+
+```{r}
+
+Vampires %>% 
+  summarize(mean = mean(visitedCities), 
+            sd = sd(visitedCities))
+
+```
+
+</details> 
+
+# Exercise 3
+
+Calculate the mean age of male and female vampires. 
+
+**HINT** You will need the pipe ( %>% ) to group/stack functions, the `group_by` function and the `summarize` function (in that order).
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+Alright, so our first step, as always, is to specify which data frame we are interested in. Then we want to group our data frame into two groups, namely male and female, which can be done by using the `group_by()` function on the variable `gender`. After that, we need the `summarize()` function to calculate the mean age (variable: `ageOfVampire`), like so: 
+
+```{r}
+
+Vampires %>% 
+# Group the data frame by the gender variable, which is binary, i.e. only male or female. 
+  group_by(gender) %>% 
+# Summarize the grouped data 
+  summarize(mean = mean(ageOfVampire))
+
+```
+
+</details> 
+
+
+
+
+# Exercise 4
+
+Alright, now we can get to the fun stuff: Manipulating data. 
+
+To start off, let's clean up our environment a bit. We won't really be needing the Vamps data frame we made earlier, so remove it from your environment using the `rm(Vamps)` function. 
+
+Let's say we are interested in whether **alive vampires** have changed more people into vampires depending on whether they have fangs or not. The variables here that will interest us are `deadOrAlive`, `hasFangs` and `numberChangedToVamp`. There is no need to subset the respective variables, but if you want to for the sake of practice, go ahead. 
+
+What is the mean number of people the **alive** vampires **WITH** and **WITHOUT** fangs have turned into vampires? 
+
+**HINT** You will need the pipe ( %>% ) to group/stack functions, the `filter` function, the `group_by` function and the `summarize` function (in that order). 
+
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+This is pretty tricky, there are three steps we need to go through to get to the answer. Let's go through this together. 
+
+- To start with, we know that we are only interested in **ALIVE** vampires, so this means that we need to subset the data frame to home in on only the vampires that are alive. Our variable `deadOrAlive` tells us whether the vampires are dead or alive, so this is the variable we first need to subset. We do this by using the `filter()` function (remember, filter is for ROWS and select is for COLUMNS). And we specify we only want ALIVE vampires by using the == operator (**REMEMBER**, the operator = is for assigning values to an object, == means "is equal to"). 
+
+- Now, since we are interested in whether vampires with and without fangs have changed more people to vampires, we need to group our data frame into two groups: vampires WITH fangs and vampires WITHOUT fangs. We can do this by using the `group_by()` function. 
+
+- Lastly, we then need the `summarize` function and specify it to give us the mean of the people the vampires WITH and WITHOUT fangs have changed into vampires. 
+
+We have an interesting outcome, vampires without fangs have changed more people into vampires on average than vampires with fangs...interesting. Maybe vampires without fangs have a Minderwertigkeitskomplex...?
+
+```{r}
+
+Vampires %>% 
+# Filter the data frame so that it ONLY includes vampires that are ALIVE
+  filter(deadOrAlive == "Alive") %>% 
+# Group the data frame by the hasFangs variable, which is binary, i.e. only yes or no. 
+  group_by(hasFangs) %>% 
+# Summarize the grouped data 
+  summarize(mean = mean(numberChangedToVamp))
+
+```
+
+</details> 
+
+
+
+
+
+# Exercise 5
+
+Remember how we started generating data in the previous set of exercises? Let's go back to that. To remind you, we generated the ID variable using the `gl()` function (generate levels) and `Time` variable (data collection points, ranging from point 1 to point 20), using the `rep()` function. 
+
+In case you didn't get to that exercise, run the following code to catch up: 
+
+```{r}
+
+ID = gl(n = 15, k = 20) # Create ID variables for 20 data collection times
+Time = rep(x = as.factor(1:20), times = 15) # Repeat 1 through 20 as factors 15 times
+
+```
+
+We will continue building a data frame---I have generated a new variable for you, namely `weeklyExposure`, which should be understood as the total number of hours per week participants spend engaging with native speakers. Run the following code to generate this variable. If you have not already installed the `reshape2` package, you can do so by using the function `install.packages("reshape2")`. 
+
+```{r}
+
+# install.packages("reshape2") # delete the # and run if you have not yet installed the reshape2 package
+library(reshape2)
+weeklyExposure = replicate(20, rexp(n = 15, rate = .05)) # create expo. increasing values
+weeklyExposure = weeklyExposure %>% 
+  melt() %>% 
+  mutate(weeklyExposure = ifelse(weeklyExposure %in% "value" > 80, 80, weeklyExposure),
+         weeklyExposure = ifelse(weeklyExposure %in% "value" < 0, 0, weeklyExposure),
+         weeklyExposure = round(weeklyExposure, digits = 2)) %>% 
+  select(weeklyExposure)
+
+```
+
+## Exercise 5.1 
+
+Now, let's combine these three variables into a single data frame. Use the function `tibble()`. Please save this tibble under the object name `df`. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+```{r}
+
+df = tibble(ID, Time, weeklyExposure)
+
+```
+
+</details> 
+
+## Exercise 5.2
+
+We would like to have a new variable in this data frame that we make using the contents of the other variables.
+
+Our new variable should be the `weeklyExposure` variable log transformed. This variable should be added to the data frame `df`. Call this new variable `logWeeklyExposure`. 
+
+**HINT** To add a new variable to a data frame within the tidyverse framework, we need the `mutate()` function. To log transform a variable, we need the `log()` function. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+To create a new variable, we need the `mutate()` function. We can then specify how we would like to mutate the contents of a variable in the data frame. Since we simply want to log transform the `weeklyExposure` variable, we just need to apply the `log()` function to the `weeklyExposure` variable. 
+
+```{r}
+
+df = df %>% 
+  mutate(logWeeklyExposure = log(weeklyExposure))
+
+# Check df to make sure we got this new variable 
+df
+
+```
+
+</details> 
+
+# Exercise 6 (for experts)
+
+Alright, you've done well until now? Great! Let's take on a harder task. Before you start, look up the arguments for the function `ungroup()`. 
+
+Let's say we had participants complete several versions of a C Test (a language assessment test in which participants have to complete words---this has been shown to strongly correlate with participants' general language proficiency, cf. Raatz & Klein–Braley [2002]). Since no two tests are typically exactly the same, even after pilot testing (that is, without conducting large-scale psycho-metric validity screenings), we tend to correct for the possible differences in the tasks statistically. We can correct for differences (to help ensure better comparability) between the versions of the C Test by subtracting or adding the deviation of each version’s mean count from the overall mean count for each individual score.
+
+Let me generate some data for you that replicates this situation: 
+
+```{r}
+
+CTest_df = 
+  tibble(Version = gl(n = 3, k = 20),
+       CTest = c(round(abs(rnorm(n = 20, mean = 17, sd = 4))), 
+                 round(abs(rnorm(n = 20, mean = 19, sd = 4))), 
+                 round(abs(rnorm(n = 20, mean = 20, sd = 4))))
+) %>% 
+  mutate(CTest = ifelse(CTest > 30, 30, CTest), # just in case there are any wild deviations
+         CTest = ifelse(CTest < 0, 0, CTest)) # just in case there are any wild deviations
+
+# Let's have a look
+CTest_df
+CTest_df %>% 
+  group_by(Version) %>% 
+  summarize_at(.vars = "CTest", 
+               .funs = c("max", "min", "mean", "sd"))
+
+```
+
+So, now we have a data frame with the version of the C Test (`Version`) and each participant's score on the C Tests (`CTest`). 
+
+Adjust the variable `CTest` by subtracting or adding the difference of each C Test version’s mean score from the overall mean score of the C Tests from or to each individual score.
+
+**HINT** You will need to (or can, there are other ways to solve this) use the following functions in the given order: `group_by()`, `mutate()`, `ungroup()` and `mutate()` 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+See the commented code below for the solution
+
+```{r}
+
+CTest_df %>% 
+# First we need to group by version, since we need the mean of each VERSION of the CTest
+  group_by(Version) %>% 
+# Now we create a NEW variable called CTestMean, which gives us the mean of each version
+  mutate(CTestMean = mean(CTest)) %>% 
+# We haven't seen this function yet, but what it does is the exact opposite of the group_by() function, 
+# but instead of grouping the different levels of a factor, it ungroups them to give us back
+# the actual data frame, just now with the new variable (i.e. CTestMean) we just created
+  ungroup() %>% 
+# Now we need to create a few different variables: 
+  # We need the OVERALL mean, i.e. the mean of ALL the C Test scores; 
+  # We need the difference between the OVERALL mean score and the mean scores of each version of the C test
+  # We then change the original CTest variable by adding the difference (positive or negative)
+    # to each individual CTest score
+  mutate(CTestMean_overall = mean(CTestMean), 
+         CTestMean_difference = CTestMean_overall - CTestMean, 
+         CTest = CTest + CTestMean_difference) %>% 
+# Now we just get rid of the extra noise variables that we needed to calculate the adjusted C Test scores
+  select(-c(CTestMean, CTestMean_overall, CTestMean_difference))
+
+```
+
+
+</details> 
+
+
+
+
+
+
+
+
+
+
+
+

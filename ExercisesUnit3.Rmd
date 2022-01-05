@@ -1,0 +1,317 @@
+---
+title: "3. Baby steps: Basics of coding in RStudio, part 2"
+description: |
+  Unit 3
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+output:
+  distill::distill_article:
+    toc: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+Vampires = read_csv("./Data/Vampires.csv")
+
+```
+
+
+# Exercise 1 
+
+So we've gotten to know a few different functions. But what do we do if we don't know the particular arguments a function takes? 
+
+Let's image we want to generate some random data coming from a Poisson distribution. The function provided to us is `rpois()`, which basically means "random numbers from a Poisson distribution". 
+
+In the help pane, type in rpois (or type ?rpois in the console). What arguments does the function `rpois()` take? 
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION** 
+
+```{r}
+
+?rpois
+
+```
+
+The `rpois()` function takes the arguments n (i.e. number of values that should be generated) and the argument lambda (i.e. the mean and the variance, in other words the expected number of events in a given (time) interval). 
+
+</details> 
+
+
+
+
+
+
+
+
+
+
+
+# Exercise 2
+
+Let's get to using the actual functions. You looked up the arguments the `rpois()` function takes. 
+
+**HINT** lambda specifies the mean and variance of a count process---basically, it's the expected number of events/successes in a given interval. 
+
+Generate 10000 random values from the Poisson distribution with a lambda of 3 and save it under the object `Poisson`. 
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+Alright, so in the previous exercise, we had a look at the arguments that the function `rpois` takes. We know that it takes the argument n (i.e. the number of values that should be generated). The exercise asks us to generate 10000 random values, so this must be our n value. The function also takes the argument lambda, which the exercise tells us should be 3. We then want to save this as an object named `Poisson`.
+
+Let's see how we can do this:
+
+```{r}
+
+Poisson = rpois(n = 10000, lambda = 3)
+
+```
+
+</details> 
+
+
+
+
+
+
+
+
+
+# Exercise 3
+
+So, you've generated (maybe your first?) Poisson distribution, yay! 
+
+(Fun side note: The Poisson distribution is being used more and more in linguistics, since it is the canonical distribution for characterizing count data. If you want to e.g. compute a model where your DP is the number of errors produced, number of dialect realizations in an interaction, number of case markers etc., the Poisson distribution should become your new best friend. Bodo Winter's book Statistics for Linguists has an entire chapter dedicated to the Poisson distribution, would definately recommend a read.) 
+
+Alright, back to the exercise. Let's say we now want to plot the random data we just generated. Go to the help pane and look up the arguments for the function `hist()`. BUT, instead of plotting the FREQUENCY of each value, we want the PROBABILITY. How would we do this? What argument do we need to adjust? 
+
+**HINT** The plot that you generate should look similar to this one (but don't fret if the values are a bit different, we are all generating RANDOM values, after all, so they will differ a bit): 
+
+```{r}
+
+Poisson = tibble(Poisson = rpois(n = 10000, lambda = 3))
+
+Poisson %>% 
+  ggplot(aes(x = Poisson, 
+             y = stat(count / sum(count)))) + 
+  geom_histogram(binwidth = 1, 
+                 color = "black") + 
+  geom_vline(xintercept = 3, 
+             color = "red", 
+             alpha = .5,
+             linetype = "dashed") + 
+  labs(x = "Count/Number of successes",
+       y = "Probability",
+       title = "10000 samples of Pois(lambda = 3)") + 
+  theme_bw()
+
+```
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+So, we want to plot our generated data, not as frequencies, but as probabilities, using the function `hist()`. Our first step here should be to go ahead and look at the arguments that the function takes. Theoretically, we can change the arguments freq and probability in order to get the probability density of the values. If we change the probability argument, we can change it to true (we can write this as TRUE or T, for short). We can also change the freq argument to FALSE, which throws back the probability density as well, so we should end up with the same plot either way. 
+
+```{r}
+
+Poisson = rpois(n = 10000, lambda = 3) # generate the data again
+
+hist(Poisson, probability = T)
+hist(Poisson, freq = F)
+
+```
+
+</details> 
+
+
+
+
+
+
+
+
+
+# Exercise 4
+
+Calculate the mean and standard deviation of the number of people the vampires have changed into vampires. Take a look at the data frame and the names of the data frame---which variable do we need?  
+
+**HINT** You will need the $ operator. 
+
+```{r, eval = FALSE}
+
+mean()
+sd()
+
+```
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+Since I didn't specify which variable we are interested in, we would need to search the data frame to find out which variable we need. If we just need to remind ourselves which variable we are interested in, we can do this using the `colnames()` function, which returns the names of the columns, but no information on what is actually in the columns. If we want to see what is actually in the columns without having to print the entire data frame, we can go ahead and use the `head()` function. 
+
+```{r}
+
+colnames(Vampires)
+head(Vampires)
+
+```
+
+After exploring the data frame, we should find that the variable `numberChangedToVamp` is the one we are looking for. 
+
+Now that we know which variable we need, the exercise asks us to calculate the mean and standard deviation. We need the $ operator in order to go into the data frame and select exactly this variable. We will then wrap this in the two functions `mean()` and `sd()`, like so: 
+
+```{r}
+
+mean(Vampires$numberChangedToVamp)
+sd(Vampires$numberChangedToVamp)
+
+```
+
+
+</details> 
+
+
+
+
+
+
+
+
+
+
+
+
+# Exercise 5
+
+This exercise is best done in small groups.
+
+In the help pane, look up the functions `rep()`, `as.factor()` and `gl()`. Which arguments do these functions take?
+
+In the next few steps, we will go through how to create a data frame (this exercise begins here, and we will continue it in the next set of exercises---here, we are just focusing on generating two variables, namely `ID` and `Time`, see below for more details). 
+
+Why, you might ask, are we focusing so much on generating data? For one, it get's you in the rhythm of looking up the arguments in functions---that's something you will always have to do. Second, it's great to know and understand how to generate data. Let's say, for example, we want to run an a priori power analysis for a mixed effects model to find out how likely we are to find an effect OR to judge how large of a sample we might need. Since a priori power analyses for mixed effects models basically can only be done via computer simulations, we need to be able to generate data and data frames. The following steps are a good exercise in developing this ability. Another plus in being able to generate data is you will be able to write your R scripts before you are finished collecting data in an experiment, i.e. you can just generate similar data to which you are collecting, write your analyses code in advance and once you have your data, you have a whole lot less work. Before you are able to generate data, you won't really see what you're missing out on---once you can do it, you won't know how you ever lived without being able to do this.
+
+So, let's start: 
+
+Research context: We are interested in whether weekly exposure to the L2 during intensive L2 learning in mid-age (between 25--45) has an effect on reaction times in a Stroop task (i.e. how long it takes a participant to click when the color of the word and the word itself are the same). The participants partake in an intensive language learning course over a 20-week period in the target language community, and we test them once a week. There are 15 participants. 
+
+Let's generate some data for this! 
+
+## Exercise 5.1
+
+To start, we need to generate an ID variable for the participants (remember, these ID numbers need to be some sort of factors!). That means: We want to generate IDs as factors for **15 participants**, where each participant is tested 20 times (i.e. each participant ID has to show up 20 times). 
+
+Which function can we use to do this (**HINT** you looked it up in the first part of this task!)?
+
+Save this as an object under the name `ID`. 
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+Alright, we want to generate the ID variable for all participants. Since we have 15 participants, we know we will need the numbers (as factors) 1--15. That part is easy enough. The tricky part is repeating the 1--15 20 times (for each data collection point). 
+
+If you looked at the required functions in the first part of this exercise, a bell hopefully went off in your mind saying that you can use the `gl()` function, which stands for "generate levels". This function generates factor levels, and we need the arguments n (number of levels, so this needs to be 15, since we have 15 participants), and k (which is the number of replications, which needs to be 20, since we have 20 data collection points and need to generate each participant's ID 20 times). So, we need the following code:
+
+```{r}
+
+ID = gl(n = 15, k = 20) # Create ID variables for 20 data collection times
+
+```
+
+</details> 
+
+
+
+
+
+
+
+
+
+
+
+## Exercise 5.2
+
+Alright, so we have our participant ID variable. Now we need a variable called `Time`, i.e. 20 data collection points per participant. You will need the function `rep(x = ..., times = ...)` for this. 
+
+```{r, eval = FALSE}
+
+Time = rep(x = ???, times = ???)
+
+```
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+So, now things get a bit tricky. We need to generate the sequence 1--20 a total of 15 times (the sequence once for each participant). We were given in the exercise the function `rep()`, which can take the arguments x (the sequence, so 1--20), and times (i.e. how many times should she sequence be repeated?). Thus, we need to enter the following code: 
+
+```{r}
+
+Time = rep(x = 1:20, times = 15)
+
+```
+
+**BUT**, this generates a numeric vector. Time points are not numeric, so we need a factor. We can do this a few different ways. For one, we can use the `as.factor()` function to transform the entire vector into factors, like so: 
+
+```{r}
+
+as.factor(Time)
+
+```
+
+If we want to do everything in one step, we can just wrap one function within another, transforming the numeric vector 1:20 into a factor in the first step, like so: 
+
+```{r}
+
+Time = rep(x = as.factor(1:20), times = 15) # Repeat 1 through 20 as factors 15 times
+Time
+
+```
+
+</details> 
+
+
+
+
+
+
+
+
+# Exercise 6
+
+Install and load the package `reshape2`.
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+If you haven't installed this package before, we need to first install the package before we can actually load it, using the `install.packages()` function. After that, we need to load in the package using the `library()` function, like so: 
+
+```{r, eval = FALSE}
+
+install.packages("reshape2")
+library(reshape2)
+
+```
+
+</details> 
+
