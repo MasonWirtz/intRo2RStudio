@@ -2,7 +2,7 @@ name: "R you ready? IntRo to RStudio and R Markdown"
 title: "IntRo to RStudio and R Markdown"
 description: |
   IntRo to RStudio and R Markdown
-exclude: ["data/*.csv", "Makefile"]
+exclude: ["Data/*.csv", "Makefile"]
 output_dir: "."
 navbar:
   right:
