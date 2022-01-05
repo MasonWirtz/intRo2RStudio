@@ -87,29 +87,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>IntRo to RStudio and R Markdown: Exercises</title>
-
-  <meta property="description" itemprop="description" content="Mason A. Wirtz"/>
+  <title>IntRo to RStudio and R Markdown: Data generation script</title>
 
 
+
+  <meta name="article:author" content="Mason A. Wirtz"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="IntRo to RStudio and R Markdown: Exercises"/>
+  <meta property="og:title" content="IntRo to RStudio and R Markdown: Data generation script"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Mason A. Wirtz"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="IntRo to RStudio and R Markdown"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="IntRo to RStudio and R Markdown: Exercises"/>
-  <meta property="twitter:description" content="Mason A. Wirtz"/>
+  <meta property="twitter:title" content="IntRo to RStudio and R Markdown: Data generation script"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Exercises"]},{"type":"character","attributes":{},"value":["Mason A. Wirtz\n"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","site"]}},"value":[{"type":"character","attributes":{},"value":["Data generation script"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Mason A. Wirtz"]},{"type":"character","attributes":{},"value":["https://masonwirtz.github.io"]},{"type":"character","attributes":{},"value":["0000-0002-9408-1993"]}]}]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2057,7 +2055,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Exercises","description":"Mason A. Wirtz","authors":[]}
+{"title":"Data generation script","authors":[{"author":"Mason A. Wirtz","authorURL":"https://masonwirtz.github.io","affiliation":"&nbsp;","affiliationURL":"#","orcidID":"0000-0002-9408-1993"}]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2066,13 +2064,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
 <a href="index.html" class="title">IntRo to RStudio and R Markdown</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
 <a href="index.html">
 <i class="fas fa-home" aria-hidden="true"></i>
 </a>
-<a href="about.html">Get started</a>
+<a href="about.html">Getting started</a>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Slides
@@ -2103,6 +2100,26 @@ Exercises
 <span class="nav-dropdown-header">Day 2: Give me an R for reproducibility</span>
 </div>
 </div>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Extras
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="DataGeneration.html">Data generation script</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Data
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="Data/Vampires.csv">Vampires</a>
+</div>
+</div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2112,14 +2129,51 @@ Exercises
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Exercises</h1>
+<h1>Data generation script</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Mason A. Wirtz</p></p>
+
 </div>
 
+<div class="d-byline">
+  Mason A. Wirtz <a href="https://masonwirtz.github.io" class="uri">https://masonwirtz.github.io</a> 
+  
+
+</div>
 
 <div class="d-article">
+<p>This script shows the code for generating the <code>Vampires</code> data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+
+<span class='va'>Vampires</span> <span class='op'>=</span>
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  idVampire <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>,
+  gender <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,
+  ageOfVampire <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>80</span>, sd <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  deadOrAlive <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,
+  hasFangs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,
+  bornIn <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>5</span>, sd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>,
+  visitedCities <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>3</span>, sd <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  numberOfChildren <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>3</span>, sd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  numberChangedToVamp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span>, mean <span class='op'>=</span> <span class='fl'>2</span>, sd <span class='op'>=</span> <span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>idVampire <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>idVampire</span><span class='op'>)</span>,
+         gender <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>gender</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='st'>"Male"</span>, <span class='st'>"Female"</span><span class='op'>)</span>,
+         deadOrAlive <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>deadOrAlive</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='st'>"Dead"</span>, <span class='st'>"Alive"</span><span class='op'>)</span>,
+         hasFangs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>hasFangs</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span><span class='op'>)</span>,
+         bornIn <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>bornIn</span> <span class='op'>&lt;</span> <span class='fl'>1</span>, <span class='st'>"Asia"</span>,
+                         <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>bornIn</span> <span class='op'>&gt;=</span> <span class='fl'>1</span> <span class='op'>&amp;</span> <span class='va'>bornIn</span> <span class='op'>&lt;</span> <span class='fl'>2</span>, <span class='st'>"Africa"</span>,
+                                <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>bornIn</span> <span class='op'>&gt;=</span> <span class='fl'>2</span> <span class='op'>&amp;</span> <span class='va'>bornIn</span> <span class='op'>&lt;</span> <span class='fl'>3</span>, <span class='st'>"Europa"</span>,
+                                       <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>bornIn</span> <span class='op'>&gt;=</span> <span class='fl'>3</span> <span class='op'>&amp;</span> <span class='va'>bornIn</span> <span class='op'>&lt;</span> <span class='fl'>4</span>, <span class='st'>"North America"</span>,
+                                              <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>bornIn</span> <span class='op'>&gt;=</span> <span class='fl'>4</span> <span class='op'>&amp;</span> <span class='va'>bornIn</span> <span class='op'>&lt;</span> <span class='fl'>5</span>, <span class='st'>"South America"</span>,
+                                                     <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>bornIn</span> <span class='op'>&gt;=</span> <span class='fl'>5</span> <span class='op'>&amp;</span> <span class='va'>bornIn</span> <span class='op'>&lt;</span> <span class='fl'>6</span>, <span class='st'>"Australia"</span>, <span class='st'>"Antarctica"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>Vampires</span>, file <span class='op'>=</span> <span class='st'>"./Data/Vampires.csv"</span>, row.names <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span> <span class='co'># write the file</span>
+</code></pre>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

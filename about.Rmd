@@ -1,5 +1,5 @@
 ---
-title: "Get started"
+title: "Getting started"
 description: |
   Starting information about the workshop
 author:

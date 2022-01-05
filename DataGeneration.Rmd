@@ -1,0 +1,42 @@
+---
+title: "Data generation script"
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+site: distill::distill_website
+---
+
+This script shows the code for generating the `Vampires` data frame. 
+
+```{r}
+
+library(tidyverse)
+
+Vampires =
+  tibble(
+  idVampire = 1:100,
+  gender = rnorm(n = 100, mean = 0, sd = 1),
+  ageOfVampire = abs(round(rnorm(n = 100, mean = 80, sd = 30))),
+  deadOrAlive = rnorm(n = 100, mean = 0, sd = 1),
+  hasFangs = rnorm(n = 100, mean = 0, sd = 1),
+  bornIn = rnorm(n = 100, mean = 5, sd = 2),
+  visitedCities = round(abs(exp(rnorm(n = 100, mean = 3, sd = 1)))),
+  numberOfChildren = round(abs(rnorm(n = 100, mean = 3, sd = 2))),
+  numberChangedToVamp = round(abs(exp(rnorm(n = 100, mean = 2, sd = .5))))
+) %>%
+  mutate(idVampire = as.factor(idVampire),
+         gender = ifelse(gender < 0, "Male", "Female"),
+         deadOrAlive = ifelse(deadOrAlive < 0, "Dead", "Alive"),
+         hasFangs = ifelse(hasFangs < 0, "Yes", "No"),
+         bornIn = ifelse(bornIn < 1, "Asia",
+                         ifelse(bornIn >= 1 & bornIn < 2, "Africa",
+                                ifelse(bornIn >= 2 & bornIn < 3, "Europa",
+                                       ifelse(bornIn >= 3 & bornIn < 4, "North America",
+                                              ifelse(bornIn >= 4 & bornIn < 5, "South America",
+                                                     ifelse(bornIn >= 5 & bornIn < 6, "Australia", "Antarctica")))))))
+
+write.csv(Vampires, file = "./Data/Vampires.csv", row.names = F) # write the file
+
+```
+

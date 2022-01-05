@@ -7,7 +7,7 @@ navbar:
   right:
     - icon: fas fa-home
       href: index.html
-    - text: "Get started"
+    - text: "Getting started"
       href: about.html
     - text: "Slides"
       menu:
@@ -33,4 +33,12 @@ navbar:
         - text: "4. The tidier the better: Basics of coding with the Tidyverse"
           href: ExercisesUnit4.html
         - text: "Day 2: Give me an R for reproducibility"
+    - text: "Extras"
+      menu:
+        - text: "Data generation script"
+          href: DataGeneration.html
+    - text: "Data"
+      menu:
+        - text: "Vampires"
+          href: Data/Vampires.csv
 output: distill::distill_article

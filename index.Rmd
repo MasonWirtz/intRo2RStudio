@@ -1,7 +1,5 @@
 ---
 title: "IntRo to RStudio and R Markdown"
-description: |
-  Mason A. Wirtz
 author:
   - name: "Mason A. Wirtz"
     url: https://masonwirtz.github.io
@@ -37,7 +35,7 @@ Here is a summary of all the prepping steps.
 
 -   [x] Download RStudio (essential)
 -   [x] Create an OSF account [here](https://help.osf.io/hc/en-us/articles/360019929673-Create-an-OSF-Account) (optional)
--   [x] Browse the **Get started** page
+-   [x] Browse the **Getting started** page
 
 
 

@@ -1,7 +1,5 @@
 ---
 title: "2. Baby steps: Basics of coding in RStudio, part 1"
-description: |
-  Unit 2
 author:
   - name: "Mason A. Wirtz"
     url: https://masonwirtz.github.io

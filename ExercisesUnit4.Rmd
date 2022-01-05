@@ -1,7 +1,5 @@
 ---
 title: "4. The tidier the better: Basics of coding with the Tidyverse"
-description: |
-  Unit 4
 author:
   - name: "Mason A. Wirtz"
     url: https://masonwirtz.github.io
