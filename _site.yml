@@ -1,0 +1,20 @@
+name: "R you ready? IntRo to RStudio and R Markdown"
+title: "IntRo to RStudio and R Markdown"
+description: |
+  IntRo to RStudio and R Markdown
+output_dir: "."
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Slides"
+      menu:
+        - text: "1. Introduction to RStudio"
+          href: "PPTs/Unit 1- Introduction to RStudio.pdf"
+    - text: "Exercises"
+      menu:
+        - text: "Unit 2"
+          href: exercisesUnit2.html
+output: distill::distill_article

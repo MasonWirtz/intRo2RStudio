@@ -1,0 +1,92 @@
+---
+title: "IntRo to RStudio and R Markdown"
+description: |
+  Mason A. Wirtz
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+# Learn more about publishing to GitHub Pages at:
+# https://rstudio.github.io/distill/publish_website.html#github-pages
+
+```
+
+# Getting started
+
+In this workshop, we will learn the basics of (a) using the free programming language R; (b) how to work in RStudio; (c) how to write and format reports using R Markdown and (d) how to structure R projects in a manner that eases the workflow when working quantitatively, but also facilitates easy reproducibility of the analyses. The workshop is geared towards PhD students interested in working quantitatively and is freely open to any interested faculty as well as MA students. All parts of the workshop will include hands-on exercises. 
+
+## Download RStudio
+
+If you have not done so already, please download RStudio. You can find the links and the directions on how to do this via [this link](https://www.rstudio.com/products/rstudio/download/). 
+
+## Create an OSF account (voluntary)
+
+The second part of this workshop is going to deal with open data and reproducibility. One of the most used open data repositories is the Open Science Framework (OSF). Accounts are, of course, free and easy to set up. Under [this link](https://help.osf.io/hc/en-us/articles/360019929673-Create-an-OSF-Account) you can find a guide on how to create an account. Feel free to browse the website---take a look at other peoples' repositories: How do they structure their open data? What trends do you see? Do some structures seem to make more or less sense to you? Of course, you don't have to do this in preperation for the workshop, but it can certainly never hurt!
+
+You won't explicitely need an OSF account for this workshop, so this step is really entirely up to you. I would, however, highly recommend it---especially because you can store data here. If you create a repository, it is not automatically open to the public. You can store 5GB of data (of whatever type) in a repository, and it is one of the most secure networks for the sciences. You can then create a share-only like or edit link for collaboration. As far as I am aware, there is no limit to the amount of repositories you can create, so you can use this to collaborate---it is absolutely great! 
+
+As soon as a repository is open to the public, you then have 50GB of storage on the respective project/repository (since the goal here is, after all, open data/open science). We will go through a few walk-throughs of the website and how you can also store more than 5GBs on a private repository, if you should ever need that.
+
+## Previous knowledge
+
+In general, there is no previous knowledge required to partake in this workshop, but very basic experience with R or RStudio is definitely helpful, as we will be covering the basics relatively quickly. 
+
+I highly reccomend, before coming to this workshop, that you read the first chapter of Bodo Winter's [Statistics for Linguists: An Introduction using R](https://1lib.at/book/5553579/42251a) if you have not worked with R until this workshop. Even if you don't work along with the exercises in the book, simply reading the first chapter will give you a feel of what R is as a programming language. And if you are also in need of an introduction to the regression framework, this book is one for you!
+
+Alternatively, I can highly recommend Michael Franke's [An Introduction to Data Analysis](https://michael-franke.github.io/intro-data-analysis/Chap-01-01-R.html), chapters 2.1--2.3, for a beginning look at R. 
+
+## Topics
+
+Participants should leave this workshop with surer footing in the following areas: 
+- Basic coding in RStudio (we will largely use the Tidyverse) 
+- Types of variables (vectors, factors, data frames)
+- Importing data
+- Setting up an R Markdown document
+- Ensuring reproducible and understandable code
+- Structuring an R project (folders, files, project management etc.)
+- Using OSF (Open Science Framework) to store data
+
+## Language
+
+The workshop material will be in English, but questions/discussions can be in German. 
+
+Since most of the literature I have read hitherto (and most of the existing literature) on the topics we will be covering in this workshop are in English, I personally feel more comfortable speaking and creating the necessary material in English, as I'm not entirely sure I could explain the concepts with the correct vocabulary in German. This is my own personal shortcoming, and I apologize if this is an inconvenience for anyone. If there are, at any points, outstanding questions on the subject matter, questions can, of course, be asked in German. I am also completely open to holding discussions in German, but, like I said, the exercises and slides are, for clarity's sake, in English. 
+
+## Working with this Bookdown document
+
+This bookdown document (which is a variation of markdown documents, for more information on how to create bookdown documents, see [this link](https://bookdown.org/yihui/bookdown/)) is an accompanying work to the workshop. All information from the presentations (plus a little extra) is in this book, for each chapter under the subtitle **Presentation**. The slides are moreover available from the OSF page dedicated to this workshop. 
+
+The hands-on exercises are all available as R scripts on this workshop's OSF page---the exact same exercises **AND THEIR SOLUTIONS** (hidden, unless you click the *Click for answer* button under each exercise) are available in each chapter in this book, under the subtitle **Exercises**. All solutions have thorough explanations so you can reference them again and again in the future if need be. 
+
+When doing the exercises, you can feel free to create new R scripts, or feel free to make your own R scripts and simply copy/paste the exercises from the bookdown document. This is entirely up to you (I personally find the exercises in the bookdown document far more readable, but, like I said, however you feel most comfortable completing the exercises). The solutions are only available in the bookdown document.
+
+## Schedule 
+
+| Getting wet in the coding waters:<br>Basics of RStudio                                                                                                                                  |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Introduction to RStudio<br>- Which panes exist?<br>- How can I read in data?                                                                                                            |
+| Baby steps: Basics of coding in RStudio, part 1<br>- Vectors<br>- Factors<br>- Data frames                                                                                              |
+| Baby steps: Basics of coding in RStudio, part 2<br>- Objects<br>- Functions<br>- Packages                                                                                               |
+| The tidier the better: Basics of coding with the Tidyverse<br>- Tibbles<br>- Data wrangling with dplyr<br>- Piping with magritter                                                       |
+
+
+| Give me an R for reproducibility:<br>Basics of R Markdown                                                                                                                                  |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Setting up a project<br>- How do I create a .Rproj file?<br>- How can/should I structure my folders/files?<br>- Relative/absolute file paths |
+| Code chunks in R Markdown<br>- What is a code chunk in R Markdown?<br>- Structuring code chunks                                                                                         |
+| Putting it all together<br>- Data wrangling <br>- Sourcing scripts                                                                                                                      |
+| Let's get plotting, part 1<br>- Plotting with ggplot2                                                                                                                                   |
+| Let's get plotting, part 2<br>- Saving plots                                                                                                                                            |
+| Reporting and reproducibility<br>- R Markdown syntax<br>- Inline formatting<br>- Block-level elements                                                                                   |
+| You don’t just knit with needles: Knitting in R Markdown<br>- Knitting an HTML document<br>- Knitting a Word document<br>- Uploading/downloading from OSF                               |
+
+## Material sharing policy
+
+I kindly ask that you do not share any of the workshop materials **until after the workshop has passed**. Once the workshop is complete, the OSF workshop repository will be made publicly available, after which time all materials in the spirit of open data and reproducibility can be freely distributed. 
+
+distill::create_post("Unit 1")

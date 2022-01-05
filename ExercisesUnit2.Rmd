@@ -1,0 +1,270 @@
+---
+title: "Exercises"
+description: |
+  Unit 2
+output: distill::distill_article
+---
+
+## Exercises
+
+Let's get started with some exercises
+
+### Exercise 1
+
+Create an object (i.e. variable, container) called `testObject` and store five numbers in it. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+Creating and storing different types of vectors is one of the most essential skills you will need for using R. These first few exercises may seem really trivial, but I promise, you will use these trivial skills so often that you will quickly realize how not trivial they are. 
+
+**SOLUTION** 
+
+Okay, so we need an object called `testObject`. This part is easy enough. All I have to do is type `testObject`. The tricky part is storing something in the object. In this example, we just need to store five numbers in this object. Let's go ahead and make our lives easy by just using the numbers 1 through 5. We can store the numbers 1 through 5 in an object in a few different ways. Let's have a look at those few different ways. 
+
+The way a beginner thinks would probably be to save the numbers in the object like so:
+
+```{r}
+
+testObject = c(1, 2, 3, 4, 5)
+
+```
+
+This most certainly isn't wrong, and we achieved our goal. Good, right? Yes, it is! If you did something similar above, that's great. It means you've gotten a grasp on the basics. 
+
+But, let's say we want to be lazy. If I have even ten numbers, typing the number and comma is a lot of work. I don't like work. So let's make a our lives a little easier by using the fabulous `:` that R provides us with to make a sequence of numbers, like so: 
+
+```{r}
+
+testObject = 1:5
+
+```
+
+Since we are also not stringing numbers together, but using the sequence operator `:`, we do not need to concatenate function `c()`--you can use it if you want, but you don't need it. 
+
+Everything clear? Hervorragend, then let's move on to the next exercise. 
+
+</details> 
+
+
+
+
+
+
+
+### Exercise 2
+
+Create a **character** vector of your name and save it as the object `Name`
+
+**HINT**: The individual elements of a character vector must be under quotation marks
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+I tend to use character vectors quite often (we will hear later in this workshop why), so I find it important to take a little bit of time to get to know them. 
+
+If we want a character vector consisting of different individual elements, then you know what that means: IT'S CONCATINATE TIME! We need the `c()` in order to string together different character elements, like so:
+
+```{r}
+
+Name = c("Mason", "Allen", "Wirtz")
+
+```
+
+Of course, if you don't need individual character elements (but I prefer them and oftentimes you also need the individual elements), you can also solve this without concatenating things. 
+
+```{r}
+
+Name = "Mason Allen Wirtz"
+
+```
+
+But, using the `c()` and creating individual character elements gives us more freedom to play around with the vector. More on this later. 
+
+</details> 
+
+
+
+
+
+
+
+### Exercise 3
+
+Create a vector named `numbers` and save the sequence 1--100 in it. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+I hinted about this above: If we want to have a larger data frame, it would take us sooooo long to do c(1, 2, 3, 4, 5, 6, ...), I personally would die of boredom. Luckily, we can use the `:` operator and let R work its magic and create us a sequence of numbers between 1 and 100, namely like so: 
+
+```{r}
+
+numbers = 1:100
+
+```
+
+
+</details> 
+
+
+
+
+
+
+
+### Exercise 4
+
+In R, we have arithmetic operators (we will go into logical operators later) with which we can do simple math. Below, you can find a list of these, which are all very self-explanatory. 
+
+|   Operator        |   Description            |
+|-------------------|--------------------------|
+|   +               |   Addition               |
+|   -               |   Subtraction            |
+|   *               |   Multiplication         |
+|   /               |   Division               |
+|   ^ OR **         |   Exponentiation         |
+
+Add 1 and 1 together to get two
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+I think this one is pretty self-explanatory, but just in case: 
+
+```{r}
+
+1 + 1
+
+```
+
+
+</details> 
+
+
+
+
+
+
+### Exercise 5
+
+We can also add vectors together, provided they are numeric. Add the two vectors below together--why does R throw an error? 
+
+```{r}
+
+a = 4:9
+b = 10:17
+
+```
+
+What would we need to do in order to fix this error? 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+Only vectors of the same length can meaningfully be added/subtracted etc. Since vector `a` contains six values, and vector `b` eight values, R added the fist six values together of the two vectors. Since vector `b` is longer than vector `a` though, the last two numbers in vector `b` were added to the first *two* numbers in vector `a`. Basically, vector `b` realized, "oh no, there are no more numbers in vector `a`, what do I do?! Oh, I know, I'll take the first two numbers of vector `a` and add them to my own last two values!". R threw us an error to make us aware of this. 
+
+
+</details> 
+
+
+
+
+
+### Exercise 6 
+
+Create two vectors (using whatever numerical values you'd like) under the names `a` and `b` (the two variables above will be overwritten) and divide the two vectors. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+Nothing we haven't already seen here. We'll start with generating two vectors, like so: 
+
+```{r}
+
+a = 1:100
+b = 101:200
+
+```
+
+And then let's go ahead and just divide them by each other. The lovely thing about vectors and being able to save them as objects is that it makes doing simple arithmetic operations like this so easy and readable!
+
+```{r}
+
+a/b
+
+```
+
+What R did here was divide each number in the vector `a` by the number in the same position in vector `b` (i.e. 1/101, 2/102, 3/103 etc.), so we should wind up with a vector of 100 values in total. 
+
+
+</details> 
+
+
+
+
+
+
+
+
+
+### Exercise 7
+
+Alright, let's say we ran an experiment and tested the reaction times of a language learner once a day for seven days. We have the reaction times (these are provided for you, see below), but we want to make a vector with the days of the week. 
+
+Create a character vector with the days of the week and save it as `daysOfTheWeek` 
+
+```{r, eval = FALSE}
+
+reactionTimes = rnorm(n = 7, mean = .25, sd = .1) # you don't need to do anything here
+
+daysOfTheWeek =
+
+```
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION** 
+
+All we have to do here is string together the days of the week and save it under the object `daysOfTheWeek`, only this time we have a character vector (similar to what we had with our name).
+
+```{r}
+
+reactionTimes = rnorm(n = 7, mean = .25, sd = .1) # you don't need to do anything here
+
+daysOfTheWeek = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+```
+
+There is also a nice little base R function (we will learn more about functions later) called `weekdays()`, which takes a date as an argument. I put together a few variations of how to generate weekdays using this function, in case anyone ever really needs to add this to a data set. Just run the code lines and have a quick look at the output. 
+
+It's probably important to mention here: There is always an elegant solution to any question, and probably an easier way to do it. While typing the whole vector our like in my solution above is easy, these solutions are also quite elegant and easily readable. Just food for thought. 
+
+```{r}
+
+weekdays(ISOdate(1, 1, 1:7))
+weekdays(Sys.Date()+0:6) # days of the week starting on whatever day today is
+weekdays(as.Date(4,"1970-01-01",tz="GMT")+0:6)
+
+```
+
+We could then combine these two vectors to create a data frame using the function `data.frame()` from base R (we will learn more about functions in the next section), like so:
+
+```{r}
+
+data.frame(daysOfTheWeek, reactionTimes)
+
+```
+
+</details> 

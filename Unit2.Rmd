@@ -1,0 +1,147 @@
+---
+title: "Baby steps: Basics of coding in RStudio, part 1"
+description: |
+  Unit 2
+output: distill::distill_article
+---
+
+
+## Presentation
+
+### What is a variable
+- A variable (or object, as we refer to them in `R`) is a 'container' that stores data
+- A variable (or object/data container) is
+    - saved under a name / defined by a **name**
+    - contains **values** and/or content 
+    - has a **data type** (numeric, character, logical)
+
+### Assigning variables 
+
+We can assign variables in a few different ways 
+
+- Equal operator **=**  
+
+```{r}
+
+variable = 5
+
+```
+
+- Leftward operator **<-** (short cut: option + -)
+
+```{r}
+
+variable <- 5
+
+```
+
+- Rightward operator **->**
+
+```{r}
+
+5 -> variable
+
+```
+
+### Vectors
+
+What is a vector?
+
+A vector...
+
+- is the most common data structure in R
+- is a 1-D set of values with the same type of data structure (e.g. numeric, logical, character)
+
+Examples
+
+Vectors can have different data structures
+
+- Numeric vector
+
+```{r, echo = FALSE}
+
+rnorm(n = 5, mean = 12, sd = 1)
+
+```
+
+- Logical vector
+
+```{r, echo = FALSE}
+
+c(1 == 0, 1 == 0, 1 == 1, 1 == 1, 1 == 0)
+
+```
+
+- Character vector
+
+```{r, echo = FALSE}
+
+c("Mason", "Allen", "Wirtz")
+
+```
+
+Creating vectors
+
+We can create vectors and save them as objects (i.e. as variables)
+
+```{r}
+
+v1 = c(1, 2, 3, 4, 5)
+# OR
+v2 = c(1:5)
+
+```
+
+What we are using here is the concatenate function, it binds individual integers, characters, etc. together to make a vector. 
+
+**CAREFUL** Everything in a single concatenate sequence must have the **SAME** data type
+
+What do you think is going to happen when we call v1 and v2? 
+
+Creating vectors
+
+Let's have a look...
+
+```{r}
+
+v1
+v2
+
+```
+
+Basically, what we did was **string together these integers** to make a vector. 
+
+### Data frames
+
+Creating and understanding data frames
+
+Let's go ahead and look at our `Vampires` data frame again 
+
+```{r}
+
+Vampires = read.csv("Vampires.csv", sep = ",") 
+
+```
+
+```{r} 
+
+knitr::kable(head(Vampires), caption = "Example data set: Vampires") # This does not read in the data, just displays the first few rows
+DT::datatable(Vampires)
+
+```
+
+**What kind of vectors do we have here in this data frame?**
+
+The Vampires data frame
+
+**idVampire** Integer (Or, more commonly seen saved as a factor, which is stored in R as a vector of integer values with a corresponding set of character values)
+
+**ageOfVampire** Numeric vector
+
+**deadOrAlive** Character vector
+
+**hasFangs** Numeric vector
+
+
+These vectors, when combined, create a data frame 
+
