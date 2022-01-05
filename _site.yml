@@ -40,5 +40,5 @@ navbar:
     - text: "Data"
       menu:
         - text: "Vampires"
-          href: <a href="Vampires.csv" download>Click here</a>
+          href: https://osf.io/ub2g7/download
 output: distill::distill_article

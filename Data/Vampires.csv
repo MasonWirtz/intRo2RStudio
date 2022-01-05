@@ -1,101 +1,101 @@
 "idVampire","gender","ageOfVampire","deadOrAlive","hasFangs","bornIn","visitedCities","numberOfChildren","numberChangedToVamp"
-"1","Male",93,"Alive","No","Africa",22,6,9
-"2","Male",72,"Alive","No","Asia",43,1,5
-"3","Female",3,"Alive","Yes","South America",3,3,6
-"4","Female",95,"Alive","Yes","Antarctica",47,4,9
-"5","Male",71,"Dead","No","Australia",162,6,11
-"6","Female",44,"Alive","No","South America",9,4,6
-"7","Male",57,"Dead","Yes","South America",2,3,12
-"8","Male",117,"Alive","No","Australia",27,2,13
-"9","Female",103,"Dead","No","South America",133,4,7
-"10","Female",138,"Dead","Yes","South America",17,6,8
-"11","Male",45,"Alive","Yes","North America",11,2,5
-"12","Male",86,"Dead","No","North America",62,1,11
-"13","Male",101,"Dead","Yes","North America",8,4,13
-"14","Female",94,"Alive","No","Europa",52,1,7
-"15","Female",99,"Alive","Yes","Australia",43,5,4
-"16","Male",112,"Alive","Yes","South America",4,0,10
-"17","Female",83,"Alive","Yes","South America",10,3,4
-"18","Male",70,"Dead","Yes","Australia",43,6,5
-"19","Male",36,"Dead","No","South America",87,4,18
-"20","Female",58,"Alive","No","Antarctica",18,4,4
-"21","Female",33,"Alive","Yes","Antarctica",75,6,8
-"22","Male",65,"Dead","No","Europa",55,1,4
-"23","Male",21,"Dead","No","North America",10,0,5
-"24","Male",94,"Dead","Yes","North America",36,7,3
-"25","Female",57,"Dead","No","Australia",38,3,7
-"26","Female",95,"Dead","Yes","Antarctica",16,6,7
-"27","Male",69,"Alive","Yes","Antarctica",3,2,5
-"28","Female",112,"Dead","Yes","Australia",29,2,9
-"29","Male",92,"Dead","No","Antarctica",54,4,7
-"30","Male",125,"Alive","No","Australia",23,0,15
-"31","Female",67,"Dead","Yes","Australia",11,3,14
-"32","Female",59,"Alive","Yes","Europa",5,0,13
-"33","Female",65,"Dead","Yes","Antarctica",11,0,4
-"34","Male",44,"Alive","Yes","Antarctica",12,0,8
-"35","Female",106,"Dead","No","Antarctica",142,5,9
-"36","Female",59,"Alive","Yes","Australia",9,3,4
-"37","Female",102,"Dead","No","Antarctica",123,5,6
-"38","Male",67,"Dead","No","South America",22,3,8
-"39","Male",51,"Dead","Yes","Asia",24,5,6
-"40","Female",49,"Alive","No","Antarctica",55,1,7
-"41","Female",80,"Alive","Yes","Antarctica",13,2,19
-"42","Female",98,"Alive","No","Antarctica",79,4,10
-"43","Female",73,"Alive","Yes","Antarctica",56,4,17
-"44","Male",80,"Alive","No","Antarctica",5,1,8
-"45","Male",88,"Dead","Yes","Australia",96,5,4
-"46","Female",47,"Dead","Yes","North America",13,4,6
-"47","Female",98,"Alive","No","Antarctica",4,1,6
-"48","Male",97,"Dead","No","Australia",15,0,6
-"49","Male",80,"Alive","No","Europa",139,8,7
-"50","Male",91,"Dead","No","Antarctica",10,3,6
-"51","Male",74,"Dead","Yes","Antarctica",7,2,12
-"52","Female",73,"Alive","Yes","Australia",13,3,5
-"53","Female",93,"Alive","No","Antarctica",17,0,18
-"54","Male",67,"Alive","Yes","Africa",17,3,12
-"55","Male",114,"Alive","No","Australia",14,1,8
-"56","Male",56,"Alive","Yes","North America",9,5,6
-"57","Female",79,"Alive","Yes","Australia",13,5,5
-"58","Female",148,"Alive","Yes","Antarctica",28,2,22
-"59","Female",65,"Dead","No","South America",132,4,7
-"60","Female",73,"Alive","No","North America",70,4,12
-"61","Male",82,"Alive","No","Antarctica",179,5,4
-"62","Male",75,"Dead","Yes","North America",30,4,5
-"63","Female",99,"Dead","No","North America",6,1,4
-"64","Female",82,"Dead","No","Australia",26,1,8
-"65","Female",110,"Dead","Yes","North America",40,3,10
-"66","Male",39,"Alive","No","South America",20,0,4
-"67","Male",115,"Alive","Yes","Antarctica",15,3,11
-"68","Male",66,"Dead","No","Antarctica",11,3,12
-"69","Female",53,"Dead","Yes","South America",84,2,8
-"70","Male",119,"Dead","Yes","Antarctica",25,4,10
-"71","Male",63,"Alive","No","Antarctica",42,3,4
-"72","Female",94,"Alive","No","Europa",23,4,6
-"73","Female",120,"Alive","Yes","South America",61,5,11
-"74","Male",91,"Dead","Yes","Australia",18,3,6
-"75","Female",73,"Alive","Yes","Australia",26,5,5
-"76","Male",146,"Alive","Yes","South America",11,5,22
-"77","Female",116,"Alive","No","Asia",16,6,9
-"78","Female",98,"Alive","No","Antarctica",6,4,7
-"79","Female",57,"Dead","Yes","Europa",14,5,4
-"80","Female",77,"Dead","Yes","South America",3,3,4
-"81","Male",68,"Dead","No","Europa",4,4,4
-"82","Female",78,"Alive","Yes","Europa",9,2,5
-"83","Male",145,"Alive","Yes","Europa",34,5,12
-"84","Female",68,"Dead","No","Africa",14,6,5
-"85","Female",16,"Dead","Yes","North America",40,1,4
-"86","Female",33,"Alive","Yes","Australia",9,2,22
-"87","Female",131,"Dead","No","North America",51,3,10
-"88","Female",91,"Dead","Yes","South America",43,2,12
-"89","Male",125,"Alive","Yes","South America",11,2,11
-"90","Female",64,"Alive","Yes","Antarctica",20,5,17
-"91","Female",87,"Dead","No","South America",18,0,6
-"92","Female",99,"Dead","No","Antarctica",53,1,8
-"93","Male",66,"Dead","No","Antarctica",17,5,22
-"94","Male",63,"Dead","No","Antarctica",64,4,6
-"95","Male",109,"Alive","No","South America",34,1,3
-"96","Male",37,"Alive","No","South America",16,6,20
-"97","Female",57,"Alive","Yes","Africa",507,1,3
-"98","Female",52,"Alive","No","Australia",5,2,14
-"99","Male",26,"Dead","Yes","North America",13,0,5
-"100","Male",96,"Dead","Yes","Australia",5,4,8
+"1","Female",69,"Alive","No","South America",62,9,7
+"2","Male",53,"Dead","Yes","Antarctica",8,1,15
+"3","Female",104,"Dead","Yes","South America",10,2,7
+"4","Female",14,"Dead","Yes","Australia",17,3,9
+"5","Female",75,"Dead","Yes","Australia",63,4,4
+"6","Female",60,"Dead","Yes","South America",26,2,16
+"7","Male",26,"Dead","No","Antarctica",8,5,4
+"8","Male",68,"Dead","No","Africa",20,1,8
+"9","Male",69,"Alive","No","Africa",8,4,3
+"10","Female",76,"Alive","Yes","North America",14,2,10
+"11","Male",59,"Alive","No","Australia",41,2,21
+"12","Male",60,"Dead","No","North America",37,3,3
+"13","Female",72,"Dead","No","Africa",2,2,6
+"14","Male",36,"Dead","Yes","South America",23,4,7
+"15","Female",62,"Alive","Yes","Australia",9,4,8
+"16","Female",85,"Dead","Yes","Australia",12,4,5
+"17","Female",136,"Dead","No","South America",13,0,5
+"18","Female",65,"Alive","Yes","North America",23,4,9
+"19","Male",63,"Dead","No","Australia",9,3,10
+"20","Female",95,"Dead","Yes","North America",62,2,6
+"21","Female",29,"Dead","Yes","Australia",7,2,4
+"22","Female",88,"Dead","Yes","Antarctica",24,1,6
+"23","Male",53,"Dead","Yes","South America",1,6,14
+"24","Male",73,"Alive","No","Antarctica",29,4,8
+"25","Female",58,"Alive","No","Antarctica",69,3,13
+"26","Female",102,"Alive","Yes","Antarctica",18,1,7
+"27","Male",46,"Dead","No","Europa",20,3,4
+"28","Male",64,"Dead","No","Antarctica",19,3,6
+"29","Male",80,"Alive","No","Antarctica",47,3,12
+"30","Male",137,"Dead","Yes","North America",63,6,25
+"31","Female",68,"Alive","Yes","Australia",21,2,5
+"32","Male",80,"Dead","No","Antarctica",20,3,8
+"33","Male",102,"Alive","No","Australia",10,2,4
+"34","Female",98,"Dead","No","Antarctica",12,6,4
+"35","Female",61,"Dead","Yes","Antarctica",46,6,6
+"36","Female",117,"Dead","Yes","Antarctica",10,3,4
+"37","Male",84,"Alive","No","Antarctica",143,5,3
+"38","Female",101,"Dead","Yes","Antarctica",16,1,6
+"39","Male",49,"Alive","No","Australia",3,1,6
+"40","Female",95,"Dead","Yes","Antarctica",8,1,5
+"41","Female",55,"Dead","No","Antarctica",2,1,15
+"42","Female",22,"Alive","No","Antarctica",119,0,12
+"43","Female",53,"Dead","No","North America",40,2,5
+"44","Female",103,"Dead","Yes","Antarctica",27,4,5
+"45","Male",140,"Alive","Yes","South America",39,3,11
+"46","Male",27,"Alive","No","Europa",7,0,4
+"47","Female",87,"Dead","No","North America",10,1,5
+"48","Male",87,"Dead","Yes","Antarctica",85,1,8
+"49","Female",54,"Dead","No","Antarctica",27,1,3
+"50","Female",50,"Dead","No","North America",24,2,7
+"51","Female",92,"Alive","Yes","South America",16,2,4
+"52","Female",102,"Alive","Yes","Europa",65,1,8
+"53","Female",60,"Dead","No","South America",18,0,43
+"54","Male",107,"Dead","No","South America",5,5,11
+"55","Female",102,"Alive","No","Antarctica",33,3,7
+"56","Male",86,"Alive","No","Australia",30,5,6
+"57","Female",60,"Alive","No","Antarctica",32,4,19
+"58","Male",37,"Alive","No","North America",18,4,6
+"59","Male",154,"Alive","Yes","Antarctica",6,2,24
+"60","Female",32,"Dead","No","Antarctica",12,3,4
+"61","Male",77,"Alive","Yes","South America",8,9,8
+"62","Male",42,"Alive","Yes","North America",22,3,7
+"63","Female",84,"Alive","No","Africa",4,4,16
+"64","Male",29,"Dead","Yes","South America",14,2,12
+"65","Male",13,"Dead","No","Antarctica",6,0,6
+"66","Male",91,"Alive","No","Antarctica",24,2,12
+"67","Female",81,"Dead","No","Europa",39,3,4
+"68","Female",86,"Alive","Yes","Antarctica",43,4,3
+"69","Female",119,"Dead","Yes","Antarctica",34,6,3
+"70","Male",69,"Alive","Yes","Antarctica",20,1,9
+"71","Male",118,"Alive","No","Antarctica",25,2,5
+"72","Female",161,"Alive","No","Australia",8,5,5
+"73","Female",56,"Alive","Yes","Antarctica",43,2,12
+"74","Female",82,"Dead","No","Europa",17,3,9
+"75","Female",78,"Alive","No","South America",20,4,11
+"76","Male",107,"Alive","No","Australia",78,2,10
+"77","Male",131,"Dead","No","Antarctica",4,3,7
+"78","Female",90,"Dead","Yes","North America",14,4,5
+"79","Female",60,"Alive","Yes","South America",58,3,7
+"80","Male",92,"Alive","Yes","South America",24,1,13
+"81","Male",104,"Dead","Yes","Europa",8,5,6
+"82","Female",136,"Dead","Yes","North America",9,2,8
+"83","Female",82,"Alive","Yes","North America",40,0,3
+"84","Female",53,"Dead","Yes","North America",70,5,10
+"85","Female",61,"Dead","Yes","South America",20,4,14
+"86","Female",101,"Alive","No","North America",23,5,5
+"87","Male",137,"Alive","No","South America",46,5,4
+"88","Male",19,"Alive","No","Europa",71,3,4
+"89","Female",109,"Dead","Yes","South America",3,2,9
+"90","Female",18,"Dead","No","Australia",15,7,8
+"91","Female",57,"Dead","Yes","Europa",157,4,5
+"92","Male",50,"Alive","No","Australia",35,4,13
+"93","Female",93,"Dead","Yes","Australia",18,2,6
+"94","Female",34,"Alive","Yes","South America",34,3,7
+"95","Female",16,"Alive","Yes","Australia",23,1,4
+"96","Male",75,"Alive","Yes","Australia",24,6,10
+"97","Male",47,"Alive","No","Europa",10,4,5
+"98","Male",102,"Dead","No","Australia",34,3,9
+"99","Male",76,"Alive","No","Antarctica",44,5,10
+"100","Female",91,"Dead","No","North America",4,3,5
