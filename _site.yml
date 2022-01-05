@@ -2,7 +2,6 @@ name: "R you ready? IntRo to RStudio and R Markdown"
 title: "IntRo to RStudio and R Markdown"
 description: |
   IntRo to RStudio and R Markdown
-exclude: ["Data/*.csv", "Makefile"]
 output_dir: "."
 navbar:
   right:
@@ -41,5 +40,5 @@ navbar:
     - text: "Data"
       menu:
         - text: "Vampires"
-          href: Data/Vampires.csv
+          href: <a href="Vampires.csv" download>Click here</a>
 output: distill::distill_article
