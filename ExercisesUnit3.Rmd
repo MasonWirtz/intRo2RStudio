@@ -89,9 +89,7 @@ Poisson = rpois(n = 10000, lambda = 3)
 
 So, you've generated (maybe your first?) Poisson distribution, yay! 
 
-(Fun side note: The Poisson distribution is being used more and more in linguistics, since it is the canonical distribution for characterizing count data. If you want to e.g. compute a model where your DP is the number of errors produced, number of dialect realizations in an interaction, number of case markers etc., the Poisson distribution should become your new best friend. Bodo Winter's book Statistics for Linguists has an entire chapter dedicated to the Poisson distribution, would definately recommend a read.) 
-
-Alright, back to the exercise. Let's say we now want to plot the random data we just generated. Go to the help pane and look up the arguments for the function `hist()`. BUT, instead of plotting the FREQUENCY of each value, we want the PROBABILITY. How would we do this? What argument do we need to adjust? 
+Let's say we now want to plot the random data we just generated. Go to the help pane and look up the arguments for the function `hist()`. BUT, instead of plotting the FREQUENCY of each value, we want the PROBABILITY. How would we do this? What argument do we need to adjust? 
 
 **HINT** The plot that you generate should look similar to this one (but don't fret if the values are a bit different, we are all generating RANDOM values, after all, so they will differ a bit): 
 
@@ -130,6 +128,8 @@ hist(Poisson, probability = T)
 hist(Poisson, freq = F)
 
 ```
+
+*(Fun side note: The Poisson distribution is being used more and more in linguistics, since it is the canonical distribution for characterizing count data. If you want to e.g. compute a model where your DV is the number of errors produced, number of dialect realizations in an interaction, number of case markers etc., the Poisson distribution should become your new best friend. Bodo Winter's book Statistics for Linguists has an entire chapter dedicated to the Poisson distribution, I would definitely recommend a read.)*
 
 </details> 
 

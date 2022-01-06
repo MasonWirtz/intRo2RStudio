@@ -2069,7 +2069,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="index.html">
 <i class="fas fa-home" aria-hidden="true"></i>
 </a>
-<a href="about.html">Getting started</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Getting started
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="about.html">Preliminaries</a>
+<a href="Schedule.html">Schedule</a>
+</div>
+</div>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Slides
@@ -2098,16 +2108,32 @@ Exercises
 <a href="ExercisesUnit3.html">3. Baby steps: Basics of coding in RStudio, part 2</a>
 <a href="ExercisesUnit4.html">4. The tidier the better: Basics of coding with the Tidyverse</a>
 <span class="nav-dropdown-header">Day 2: Give me an R for reproducibility</span>
+<a href="ExercisesUnit5.html">5. Setting up a project</a>
+<a href="ExercisesUnit6.html">6. Code chunks in R Markdown</a>
+<a href="ExercisesUnit7.html">7. Putting it all together</a>
+<span class="nav-dropdown-header">8. Let’s get plotting, plot 1</span>
+<span class="nav-dropdown-header">9. Let’s get plotting, plot 2</span>
+<span class="nav-dropdown-header">10. Reporting and reproducibility</span>
+<span class="nav-dropdown-header">11. You don’t just knit with needles: Knitting in R Markdown</span>
 </div>
 </div>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
-Extras
+Exercise scripts
  
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="DataGeneration.html">Data generation script</a>
+<a href="https://osf.io/a295p/download">Exercise script 2</a>
+<a href="https://osf.io/cjp3g/download">Exercise script 3</a>
+<span class="nav-dropdown-header">Exercise script 4</span>
+<span class="nav-dropdown-header">Exercise script 5</span>
+<span class="nav-dropdown-header">Exercise script 6</span>
+<span class="nav-dropdown-header">Exercise script 7</span>
+<span class="nav-dropdown-header">Exercise script 8</span>
+<span class="nav-dropdown-header">Exercise script 9</span>
+<span class="nav-dropdown-header">Exercise script 10</span>
+<span class="nav-dropdown-header">Exercise script 11</span>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2118,6 +2144,16 @@ Data
 </button>
 <div class="nav-dropdown-content">
 <a href="https://osf.io/ub2g7/download">Vampires</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Extras
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="DataGeneration.html">Data generation script</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2366,8 +2402,8 @@ Click for Answer
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/weekday.POSIXt.html'>weekdays</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>0</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>)</span> <span class='co'># days of the week starting on whatever day today is</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;   
-[6] &quot;Monday&quot;    &quot;Tuesday&quot;  </code></pre>
+<pre><code>[1] &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot;  &quot;Sunday&quot;    &quot;Monday&quot;   
+[6] &quot;Tuesday&quot;   &quot;Wednesday&quot;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/weekday.POSIXt.html'>weekdays</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='st'>"1970-01-01"</span>,tz<span class='op'>=</span><span class='st'>"GMT"</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>0</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>)</span>
 </code></pre>
@@ -2382,13 +2418,13 @@ Click for Answer
 </code></pre>
 </div>
 <pre><code>  daysOfTheWeek reactionTimes
-1        Monday    0.31357948
-2       Tuesday    0.34828362
-3     Wednesday    0.06115596
-4      Thursday    0.05355019
-5        Friday    0.28128339
-6      Saturday    0.31470412
-7        Sunday    0.24409110</code></pre>
+1        Monday     0.2143019
+2       Tuesday     0.2712334
+3     Wednesday     0.1977503
+4      Thursday     0.2283690
+5        Friday     0.1891334
+6      Saturday     0.2037882
+7        Sunday     0.1682134</code></pre>
 </div>
 </details>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

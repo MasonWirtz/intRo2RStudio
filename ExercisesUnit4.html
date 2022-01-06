@@ -2069,7 +2069,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="index.html">
 <i class="fas fa-home" aria-hidden="true"></i>
 </a>
-<a href="about.html">Getting started</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Getting started
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="about.html">Preliminaries</a>
+<a href="Schedule.html">Schedule</a>
+</div>
+</div>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Slides
@@ -2098,16 +2108,32 @@ Exercises
 <a href="ExercisesUnit3.html">3. Baby steps: Basics of coding in RStudio, part 2</a>
 <a href="ExercisesUnit4.html">4. The tidier the better: Basics of coding with the Tidyverse</a>
 <span class="nav-dropdown-header">Day 2: Give me an R for reproducibility</span>
+<a href="ExercisesUnit5.html">5. Setting up a project</a>
+<a href="ExercisesUnit6.html">6. Code chunks in R Markdown</a>
+<a href="ExercisesUnit7.html">7. Putting it all together</a>
+<span class="nav-dropdown-header">8. Let’s get plotting, plot 1</span>
+<span class="nav-dropdown-header">9. Let’s get plotting, plot 2</span>
+<span class="nav-dropdown-header">10. Reporting and reproducibility</span>
+<span class="nav-dropdown-header">11. You don’t just knit with needles: Knitting in R Markdown</span>
 </div>
 </div>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
-Extras
+Exercise scripts
  
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="DataGeneration.html">Data generation script</a>
+<a href="https://osf.io/a295p/download">Exercise script 2</a>
+<a href="https://osf.io/cjp3g/download">Exercise script 3</a>
+<span class="nav-dropdown-header">Exercise script 4</span>
+<span class="nav-dropdown-header">Exercise script 5</span>
+<span class="nav-dropdown-header">Exercise script 6</span>
+<span class="nav-dropdown-header">Exercise script 7</span>
+<span class="nav-dropdown-header">Exercise script 8</span>
+<span class="nav-dropdown-header">Exercise script 9</span>
+<span class="nav-dropdown-header">Exercise script 10</span>
+<span class="nav-dropdown-header">Exercise script 11</span>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2118,6 +2144,16 @@ Data
 </button>
 <div class="nav-dropdown-content">
 <a href="https://osf.io/ub2g7/download">Vampires</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Extras
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="DataGeneration.html">Data generation script</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2202,7 +2238,7 @@ Click for Answer
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1  28.6  27.6</code></pre>
+1  31.6  44.1</code></pre>
 </div>
 </details>
 <h1 id="exercise-3">Exercise 3</h1>
@@ -2226,8 +2262,8 @@ Click for Answer
 <pre><code># A tibble: 2 × 2
   gender  mean
   &lt;chr&gt;  &lt;dbl&gt;
-1 Female  76.3
-2 Male    74.9</code></pre>
+1 Female  75.4
+2 Male    79.8</code></pre>
 </div>
 </details>
 <h1 id="exercise-4">Exercise 4</h1>
@@ -2262,8 +2298,8 @@ Click for Answer
 <pre><code># A tibble: 2 × 2
   hasFangs  mean
   &lt;chr&gt;    &lt;dbl&gt;
-1 No        8.56
-2 Yes       8.45</code></pre>
+1 No        8.46
+2 Yes       7.30</code></pre>
 </div>
 </details>
 <h1 id="exercise-5">Exercise 5</h1>
@@ -2327,16 +2363,16 @@ Click for Answer
 <pre><code># A tibble: 300 × 4
    ID    Time  weeklyExposure logWeeklyExposure
    &lt;fct&gt; &lt;fct&gt;          &lt;dbl&gt;             &lt;dbl&gt;
- 1 1     1               7.74             2.05 
- 2 1     2               7.86             2.06 
- 3 1     3              16.0              2.77 
- 4 1     4              65.8              4.19 
- 5 1     5              10.2              2.33 
- 6 1     6              12.4              2.52 
- 7 1     7              19.2              2.96 
- 8 1     8              32.3              3.48 
- 9 1     9              31.7              3.46 
-10 1     10              1.85             0.615
+ 1 1     1               0.6             -0.511
+ 2 1     2               2.38             0.867
+ 3 1     3              35.3              3.56 
+ 4 1     4              27.9              3.33 
+ 5 1     5              12.6              2.53 
+ 6 1     6               1.12             0.113
+ 7 1     7              38.4              3.65 
+ 8 1     8               5.72             1.74 
+ 9 1     9               1.84             0.610
+10 1     10              8.56             2.15 
 # … with 290 more rows</code></pre>
 </div>
 </details>
@@ -2362,16 +2398,16 @@ Click for Answer
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1          17
- 2 1          16
- 3 1          21
- 4 1          17
- 5 1          21
- 6 1          26
- 7 1          15
- 8 1          15
+ 1 1          16
+ 2 1          12
+ 3 1          13
+ 4 1          14
+ 5 1          16
+ 6 1          19
+ 7 1          23
+ 8 1          20
  9 1          19
-10 1          12
+10 1          14
 # … with 50 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>CTest_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
@@ -2383,9 +2419,9 @@ Click for Answer
 <pre><code># A tibble: 3 × 5
   Version   max   min  mean    sd
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 1          26    11  17.0  3.78
-2 2          24    11  17.5  4.07
-3 3          29    12  21.4  4.03</code></pre>
+1 1          26     7  16.6  4.47
+2 2          25    14  19    3.24
+3 3          27    12  19.6  4.20</code></pre>
 </div>
 <p>So, now we have a data frame with the version of the C Test (<code>Version</code>) and each participant’s score on the C Tests (<code>CTest</code>).</p>
 <p>Adjust the variable <code>CTest</code> by subtracting or adding the difference of each C Test version’s mean score from the overall mean score of the C Tests from or to each individual score.</p>
@@ -2422,16 +2458,16 @@ Click for Answer
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1        18.7
- 2 1        17.7
- 3 1        22.7
- 4 1        18.7
- 5 1        22.7
- 6 1        27.6
- 7 1        16.7
- 8 1        16.7
- 9 1        20.7
-10 1        13.7
+ 1 1        17.8
+ 2 1        13.8
+ 3 1        14.8
+ 4 1        15.8
+ 5 1        17.8
+ 6 1        20.8
+ 7 1        24.8
+ 8 1        21.8
+ 9 1        20.8
+10 1        15.8
 # … with 50 more rows</code></pre>
 </div>
 </details>

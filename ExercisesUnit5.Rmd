@@ -1,0 +1,10 @@
+---
+title: "5. Setting up a project"
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+output:
+  distill::distill_article:
+    toc: true
+---

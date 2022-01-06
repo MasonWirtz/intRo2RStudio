@@ -1,0 +1,75 @@
+---
+title: "Schedule"
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+output:
+  distill::distill_article:
+    toc: true
+---
+
+# Schedule 
+
+## **Day 1. Getting wet in the coding waters: Basics of RStudio**
+
+### **1. Introduction to RStudio**
+
+* Which panes exist? 
+* How can I read in data?
+
+### **2. Baby steps: Basics of coding in RStudio, part 1**
+
+* Vectors
+* Factors
+* Data frames
+
+### **3. Baby steps: Basics of coding in RStudio, part 2**
+
+* Objects 
+* Functions
+* Packages
+
+### **4. The tidier the better: Basics of coding with the Tidyverse**
+
+* Tibbles
+* Data wrangling with dplyr
+* Piping with magritter
+
+## **Day 2. Give me an R for reproducibility: Basics of R Markdown**
+
+### **5. Setting up a project**
+
+* How do I create an .Rproj file? 
+* How can/should I structure my folders/files? 
+* Relative/absolute file paths 
+
+### **6. Code chunks in R Markdown**
+
+* What is a code chunk in R Markdown? 
+* Structuring code chunks 
+
+### **7. Putting it all together**
+
+* Data wrangling 
+* Sourcing scripts  
+
+### **8. Let’s get plotting, plot 1**
+
+* Plotting with ggplot2
+
+### **9. Let’s get plotting, plot 2**
+
+* Saving ggplots 
+
+### **10. Reporting and reproducibility**
+
+* R Markdown syntax
+* Inline formatting 
+* Block-level elements  
+
+### **11. You don’t just knit with needles: Knitting in R Markdown**
+
+* Knitting an HTML document
+* Knitting a Word document 
+* Uploading/downloading from OSF

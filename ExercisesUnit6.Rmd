@@ -1,0 +1,53 @@
+---
+title: "6. Code chunks in R Markdown"
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+output:
+  distill::distill_article:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+
+Vampires = read_csv("./Data/Vampires.csv")
+
+```
+
+# Exercise 1
+
+Create a new code chunk using the `Insert` button in RStudio. In your new code chunk, complete the following exercise: 
+
+Use the `ifelse()` function to create a new categorical variable called `VampOld`: All vampires older than 100 should be categorized as *Old*, all vampires younger than 100 should be categorized as *Young*. 
+
+**HINT** You will need the `mutate()` function and the `ifelse()` function. 
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+Since we are interested in creating a new variable, this should tell us immediately that we need the `mutate()` function. In the `mutate()` function, we need to define our new variable `VampOld`. 
+
+Once we have defined the new variable, we need to define what should be included in the new variable. Since we want to categorize the age variable (which we really wouldn't ever want to do in real life, but for practice, it's an easy example), we can use the `ifelse()` statement, which first takes an argument to evaluate. The argument to evaluate we need to supply the function with is "if the vampire is older than 100...", which we can do using the variable `ageOfVampire` and the `>` operator. Once we have supplied the 'if' argument, we need the 'then do' argument, i.e. what needs to happen when this argument is true? In this case, all vampires older than 100 should be categorized as 'old', so we supply the function with 'old'. The final argument in the function takes the 'else' part, i.e. what happens when the first argument is false? Since we just want to categorize the variable into old and young, if the vampire is not old, then they must be young, so we supply the final argument with the character value 'young'. 
+
+```{r}
+
+Vampires = Vampires %>% 
+  mutate(VampOld = ifelse(ageOfVampire > 100, "Old", "Young"))
+
+```
+
+</details> 
+
+
+
+
+
+
+
+
+
+
+
