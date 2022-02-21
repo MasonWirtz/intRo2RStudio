@@ -1,5 +1,5 @@
 ---
-title: "7. Putting it all together"
+title: "7. Let’s get plotting"
 author:
   - name: "Mason A. Wirtz"
     url: https://masonwirtz.github.io
