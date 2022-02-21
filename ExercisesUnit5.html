@@ -2126,7 +2126,7 @@ Exercise scripts
 <div class="nav-dropdown-content">
 <a href="https://osf.io/a295p/download">Exercise script 2</a>
 <a href="https://osf.io/cjp3g/download">Exercise script 3</a>
-<span class="nav-dropdown-header">Exercise script 4</span>
+<a href="https://osf.io/w7eas/download">Exercise script 4</a>
 <span class="nav-dropdown-header">Exercise script 5</span>
 <span class="nav-dropdown-header">Exercise script 6</span>
 <span class="nav-dropdown-header">Exercise script 7</span>
@@ -2134,6 +2134,7 @@ Exercise scripts
 <span class="nav-dropdown-header">Exercise script 9</span>
 <span class="nav-dropdown-header">Exercise script 10</span>
 <span class="nav-dropdown-header">Exercise script 11</span>
+<a href="https://osf.io/cug24/download">reverseItems_Functions.R</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2144,6 +2145,8 @@ Data
 </button>
 <div class="nav-dropdown-content">
 <a href="https://osf.io/ub2g7/download">Vampires</a>
+<a href="https://osf.io/95te4/download">mtcars</a>
+<a href="https://osf.io/e2qc7/download">swiss</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2178,6 +2181,91 @@ Extras
 </div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#exercise-1">Exercise 1</a></li>
+<li><a href="#exercise-2">Exercise 2</a>
+<ul>
+<li><a href="#exercise-2.1">Exercise 2.1</a></li>
+<li><a href="#exercise-2.2">Exercise 2.2</a></li>
+<li><a href="#exercise-2.3">Exercise 2.3</a></li>
+<li><a href="#exercise-2.4-experts">Exercise 2.4 (Experts)</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="exercise-1">Exercise 1</h1>
+<p>Create a new R script in RStudio. Save this script in the <strong>script folder</strong> we created in our new project structure.</p>
+<p>On the workshop website, download the data frame <code>mtcars</code> and save this in the <strong>data folder</strong> we created in our new project structure.</p>
+<p>Using the <code>read_csv()</code> function, load the data frame <code>mtcars</code> into your global environment and save this data frame under the variable name <code>cars</code>. Remember to use a RELATIVE PATH when loading in this data.</p>
+<p><strong>HINT</strong>: Don’t forget to put the call in parentheses, and don’t forget the <code>.</code></p>
+<details>
+<summary>
+Click for Answer
+</summary>
+<p><strong>SOLUTION</strong></p>
+<p>If we use the <code>read_csv</code> function, we are loading in our data as a tibble, which is really neat (thanks to the <code>tidyverse</code> package(s)). When we read in data from other folders, i.e. from places that are not in the same folder that our script is saved, we need to define the RELATIVE path, which in this case is <code>"./Data/mtcars.csv"</code>. Since this data is saved in the Data folder, but our script is in the Script folder, we need to jump OUT of the Scripts folder (which is what the <code>.</code> does), and then jump INTO the Data folder (which is what the <code>/Data/</code>) does. Once we have defined this as our RELATIVE path, we can then enter the name of the data frame we want to load (which is <code>mtcars.csv</code>).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cars</span> <span class='op'>=</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"./Data/mtcars.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+</details>
+<h1 id="exercise-2">Exercise 2</h1>
+<p>When dealing with data, we oftentimes have functions that we write ourselves, because we use them over and over again. For example, if you used a questionnaire and formed items in the negative, you need to reverse this scale. An easy way to do this is to write a function that you can then use on all the items formulated in the reverse.</p>
+<h2 id="exercise-2.1">Exercise 2.1</h2>
+<p>Create a new folder in our folder structure called Functions (you can do this on your regular user system, i.e. how you would normally create a new folder). Make sure this folder is in the <code>R you ready</code> folder structure.</p>
+<p>Download the script from the workshop website called <code>reverseItems_Functions.R</code> from the Exercise scripts drop-down pane. Save this script (saved under THE SAME NAME) in the functions folder.</p>
+<h2 id="exercise-2.2">Exercise 2.2</h2>
+<p>Once we have the functions saved in the <code>Functions</code> folder, we can use the lovely <code>source()</code> function to call up these functions and use them in a new script. I am a fan of the <code>source()</code> function (and maybe even overuse it…). It takes as its argument a RELATIVE path to an .R file.</p>
+<p>Source the <code>reverseItems_Functions.R</code> file that you saved in the Functions folder, using the RELATIVE path to this .R document. DON’T FORGET THE PARENTHESES!!</p>
+<details>
+<summary>
+Click for Answer
+</summary>
+<p>Using the relative path, we can source in the functions (and the data frame I included in this script). The source function runs and loads the script in its entirety, so if you created variables, data frames etc. in this script, those will be loaded along with the functions you wrote.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/source.html'>source</a></span><span class='op'>(</span><span class='st'>"./Functions/reverseItems_Functions.R"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+</details>
+<h2 id="exercise-2.3">Exercise 2.3</h2>
+<p>Look at the variable <code>item_6.3</code> using the call <code>df_items$item_6.3</code>. Then use the <code>linkScaleRev6</code> function on the variable <code>item_6.3</code>. What did this function do?</p>
+<details>
+<summary>
+Click for Answer
+</summary>
+<p>You guessed it, this home-made function reversed the scale, turning 1s into 6s, 2s into 5s, and so forth. Isn’t that practical?!</p>
+</details>
+<h2 id="exercise-2.4-experts">Exercise 2.4 (Experts)</h2>
+<p>Take a look at the <code>reverseItems_Functions.R</code> document and the functions I wrote. Write a function that reverses 7-scale items using the <code>ifelse</code> statement. Call this function linkScaleRev7 that takes the argument of an item</p>
+<details>
+<summary>
+Click for Answer
+</summary>
+<p>If you understood the functions I wrote, this activity shouldn’t be all that challenging :) All you need to do is add an extra <code>ifelse()</code> function to the mix, so that the entire scale is reversed.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># reverse a 6-scale item ----</span>
+<span class='va'>linkScaleRev7</span> <span class='op'>=</span>
+  <span class='kw'>function</span><span class='op'>(</span><span class='va'>item</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>item</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='fl'>7</span>,
+           <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>item</span> <span class='op'>==</span> <span class='fl'>2</span>, <span class='fl'>6</span>,
+                  <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>item</span> <span class='op'>==</span> <span class='fl'>3</span>, <span class='fl'>5</span>,
+                         <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>item</span> <span class='op'>==</span> <span class='fl'>4</span>, <span class='fl'>4</span>,
+                                <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>item</span> <span class='op'>==</span> <span class='fl'>5</span>, <span class='fl'>3</span>,
+                                       <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>item</span> <span class='op'>==</span> <span class='fl'>6</span>, <span class='fl'>2</span>, 
+                                              <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>item</span> <span class='op'>==</span> <span class='fl'>7</span>, <span class='fl'>2</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+</details>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

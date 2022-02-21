@@ -58,7 +58,7 @@ navbar:
         - text: "Exercise script 3"
           href: https://osf.io/cjp3g/download
         - text: "Exercise script 4"
-
+          href: https://osf.io/w7eas/download
         - text: "Exercise script 5"
 
         - text: "Exercise script 6"
@@ -72,10 +72,17 @@ navbar:
         - text: "Exercise script 10"
 
         - text: "Exercise script 11"
+
+        - text: "reverseItems_Functions.R"
+          href: https://osf.io/cug24/download
     - text: "Data"
       menu:
         - text: "Vampires"
           href: https://osf.io/ub2g7/download
+        - text: "mtcars"
+          href: https://osf.io/95te4/download
+        - text: "swiss"
+          href: https://osf.io/e2qc7/download
     - text: "Extras"
       menu:
         - text: "Data generation script"

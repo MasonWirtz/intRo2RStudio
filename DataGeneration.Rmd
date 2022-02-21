@@ -7,7 +7,7 @@ author:
 site: distill::distill_website
 ---
 
-This script shows the code for generating the `Vampires` data frame. 
+This script shows the code for generating the necessary data frames used in the workshop. 
 
 ```{r}
 
@@ -36,7 +36,21 @@ Vampires =
                                               ifelse(bornIn >= 4 & bornIn < 5, "South America",
                                                      ifelse(bornIn >= 5 & bornIn < 6, "Australia", "Antarctica")))))))
 
-write.csv(Vampires, file = "./Data/Vampires.csv", row.names = F) # write the file
+write_csv(Vampires, file = "./Data/Vampires.csv") # write the file
 
 ```
+
+Export the `mtcars` and `swiss` data frames as a .csv files to upload to the workshop website.
+
+```{r}
+
+write_csv(mtcars, file = "./Data/mtcars.csv")
+
+write_csv(swiss, file = "./Data/swiss.csv")
+
+```
+
+
+
+
 

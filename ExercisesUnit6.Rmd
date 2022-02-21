@@ -43,6 +43,25 @@ Vampires = Vampires %>%
 
 
 
+# Exercise 2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

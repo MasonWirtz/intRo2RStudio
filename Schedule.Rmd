@@ -49,27 +49,26 @@ output:
 * What is a code chunk in R Markdown? 
 * Structuring code chunks 
 
-### **7. Putting it all together**
-
-* Data wrangling 
-* Sourcing scripts  
-
-### **8. Let’s get plotting, plot 1**
+### **7. Let’s get plotting**
 
 * Plotting with ggplot2
+* Saving ggplots
 
-### **9. Let’s get plotting, plot 2**
-
-* Saving ggplots 
-
-### **10. Reporting and reproducibility**
+### **8. Reporting and reproducibility**
 
 * R Markdown syntax
 * Inline formatting 
 * Block-level elements  
 
-### **11. You don’t just knit with needles: Knitting in R Markdown**
+### **9. You don’t just knit with needles: Knitting in R Markdown**
 
 * Knitting an HTML document
 * Knitting a Word document 
 * Uploading/downloading from OSF
+
+### **10. Fun with coding**
+
+* Working with your own data
+* Questions, individual work
+
+*Note: If you don't have your own data, send me a short description of your project and I will simulate data similar to the data you will be working with so that you have something to practice!*

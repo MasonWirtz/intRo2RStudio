@@ -8,3 +8,121 @@ output:
   distill::distill_article:
     toc: true
 ---
+
+# Exercise 1
+
+Create a new R script in RStudio. Save this script in the **script folder** we created in our new project structure.
+
+On the workshop website, download the data frame `mtcars` and save this in the **data folder** we created in our new project structure. 
+
+Using the `read_csv()` function, load the data frame `mtcars` into your global environment and save this data frame under the variable name `cars`. Remember to use a RELATIVE PATH when loading in this data.
+
+**HINT**: Don't forget to put the call in parentheses, and don't forget the `.`
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+If we use the `read_csv` function, we are loading in our data as a tibble, which is really neat (thanks to the `tidyverse` package(s)). When we read in data from other folders, i.e. from places that are not in the same folder that our script is saved, we need to define the RELATIVE path, which in this case is `"./Data/mtcars.csv"`. Since this data is saved in the Data folder, but our script is in the Script folder, we need to jump OUT of the Scripts folder (which is what the `.` does), and then jump INTO the Data folder (which is what the `/Data/`) does. Once we have defined this as our RELATIVE path, we can then enter the name of the data frame we want to load (which is `mtcars.csv`). 
+
+```{r}
+
+cars = read_csv("./Data/mtcars.csv")
+
+```
+
+</details> 
+
+# Exercise 2
+
+When dealing with data, we oftentimes have functions that we write ourselves, because we use them over and over again. For example, if you used a questionnaire and formed items in the negative, you need to reverse this scale. An easy way to do this is to write a function that you can then use on all the items formulated in the reverse. 
+
+## Exercise 2.1
+
+Create a new folder in our folder structure called Functions (you can do this on your regular user system, i.e. how you would normally create a new folder). Make sure this folder is in the `R you ready` folder structure.  
+
+Download the script from the workshop website called `reverseItems_Functions.R` from the Exercise scripts drop-down pane. Save this script (saved under THE SAME NAME) in the functions folder. 
+
+## Exercise 2.2
+
+Once we have the functions saved in the `Functions` folder, we can use the lovely `source()` function to call up these functions and use them in a new script. I am a fan of the `source()` function (and maybe even overuse it...). It takes as its argument a RELATIVE path to an .R file. 
+
+Source the `reverseItems_Functions.R` file that you saved in the Functions folder, using the RELATIVE path to this .R document. DON'T FORGET THE PARENTHESES!!
+
+
+<details>
+  <summary>Click for Answer</summary>
+
+Using the relative path, we can source in the functions (and the data frame I included in this script). The source function runs and loads the script in its entirety, so if you created variables, data frames etc. in this script, those will be loaded along with the functions you wrote. 
+
+```{r}
+
+source("./Functions/reverseItems_Functions.R")
+
+```
+
+</details> 
+
+## Exercise 2.3
+
+Look at the variable `item_6.3` using the call `df_items$item_6.3`. Then use the `linkScaleRev6` function on the variable `item_6.3`. What did this function do? 
+
+<details>
+  <summary>Click for Answer</summary>
+
+You guessed it, this home-made function reversed the scale, turning 1s into 6s, 2s into 5s, and so forth. Isn't that practical?!
+
+</details> 
+
+## Exercise 2.4 (Experts)
+
+Take a look at the `reverseItems_Functions.R` document and the functions I wrote. Write a function that reverses 7-scale items using the `ifelse` statement. Call this function linkScaleRev7 that takes the argument of an item
+
+<details>
+  <summary>Click for Answer</summary>
+
+If you understood the functions I wrote, this activity shouldn't be all that challenging :) All you need to do is add an extra `ifelse()` function to the mix, so that the entire scale is reversed. 
+
+```{r}
+
+# reverse a 6-scale item ----
+linkScaleRev7 =
+  function(item){
+    ifelse(item == 1, 7,
+           ifelse(item == 2, 6,
+                  ifelse(item == 3, 5,
+                         ifelse(item == 4, 4,
+                                ifelse(item == 5, 3,
+                                       ifelse(item == 6, 2, 
+                                              ifelse(item == 7, 2, NA)))))))
+  }
+
+```
+
+
+</details> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
