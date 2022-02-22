@@ -2094,6 +2094,7 @@ Slides
 <a href="PPTs/Unit 4- The tidier the better- Basics of coding with the Tidyverse.pdf">4. The tidier the better: Basics of coding with the Tidyverse</a>
 <span class="nav-dropdown-header">Day 2: Give me an R for reproducibility</span>
 <a href="PPTs/Unit 5- Setting up a project.pdf">5. Setting up a project</a>
+<a href="PPTs/Unit 6- Code chunks in R Markdown.pdf">6. Code chunks in R Markdown</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2110,11 +2111,10 @@ Exercises
 <span class="nav-dropdown-header">Day 2: Give me an R for reproducibility</span>
 <a href="ExercisesUnit5.html">5. Setting up a project</a>
 <a href="ExercisesUnit6.html">6. Code chunks in R Markdown</a>
-<a href="ExercisesUnit7.html">7. Putting it all together</a>
-<span class="nav-dropdown-header">8. Let’s get plotting, plot 1</span>
-<span class="nav-dropdown-header">9. Let’s get plotting, plot 2</span>
-<span class="nav-dropdown-header">10. Reporting and reproducibility</span>
-<span class="nav-dropdown-header">11. You don’t just knit with needles: Knitting in R Markdown</span>
+<a href="ExercisesUnit7.html">7. Let’s get plotting</a>
+<span class="nav-dropdown-header">8. Reporting and reproducibility</span>
+<span class="nav-dropdown-header">9. You don’t just knit with needles: Knitting in R Markdown</span>
+<span class="nav-dropdown-header">10. Fun with coding</span>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2405,8 +2405,8 @@ Click for Answer
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/weekday.POSIXt.html'>weekdays</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>0</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>)</span> <span class='co'># days of the week starting on whatever day today is</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;   
-[6] &quot;Saturday&quot;  &quot;Sunday&quot;   </code></pre>
+<pre><code>[1] &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;    &quot;Saturday&quot; 
+[6] &quot;Sunday&quot;    &quot;Monday&quot;   </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/weekday.POSIXt.html'>weekdays</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='st'>"1970-01-01"</span>,tz<span class='op'>=</span><span class='st'>"GMT"</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>0</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>)</span>
 </code></pre>

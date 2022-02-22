@@ -27,6 +27,8 @@ navbar:
         - text: "Day 2: Give me an R for reproducibility"
         - text: "5. Setting up a project"
           href: "PPTs/Unit 5- Setting up a project.pdf"
+        - text: "6. Code chunks in R Markdown"
+          href: "PPTs/Unit 6- Code chunks in R Markdown.pdf"
     - text: "Exercises"
       menu:
         - text: "Day 1: Getting wet in the coding waters"
@@ -41,16 +43,14 @@ navbar:
           href: ExercisesUnit5.html
         - text: "6. Code chunks in R Markdown"
           href: ExercisesUnit6.html
-        - text: "7. Putting it all together"
+        - text: "7. Let’s get plotting"
           href: ExercisesUnit7.html
-        - text: "8. Let’s get plotting, plot 1"
+        - text: "8. Reporting and reproducibility"
           # href: ExercisesUnit8.html
-        - text: "9. Let’s get plotting, plot 2"
+        - text: "9. You don’t just knit with needles: Knitting in R Markdown"
           # href: ExercisesUnit9.html
-        - text: "10. Reporting and reproducibility"
+        - text: "10. Fun with coding"
           # href: ExercisesUnit10.html
-        - text: "11. You don’t just knit with needles: Knitting in R Markdown"
-          # href: ExercisesUnit11.html
     - text: "Exercise scripts"
       menu:
         - text: "Exercise script 2"
