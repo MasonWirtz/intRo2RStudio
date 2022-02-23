@@ -8,3 +8,173 @@ output:
   distill::distill_article:
     toc: true
 ---
+
+# Exercise 1
+
+Run the following code chunk
+
+```{r}
+
+# libraries
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  tidyverse,      # data manipulation
+  languageR       # package from Gries
+)
+
+# set ggplot2 theme
+theme_set(theme_bw(12))   
+
+dative = dative
+iris = iris
+Vampires = read_csv("./Data/Vampires.csv")
+
+```
+
+## Exercise 1.1
+
+The data frame `iris` contains the two variables `Sepal.Length` and `Sepal.Width`. Both variables are continuous, meaning we can make a scatter plot to show the relationship between the two variables. Using `Sepal.Length` as the x and `Sepal.Width` as the y, plot these two variables using a scatter plot. 
+
+**HINT** You will need the function `geom_point()`. 
+
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+When plotting with `ggplot2`, we first have to define which data frame contains the two variables. In this case, this is the data frame `iris`. 
+
+```{r}
+
+iris %>% 
+  ggplot(aes(x = Sepal.Length, 
+             y = Sepal.Width)) + 
+  geom_point()
+
+```
+
+</details> 
+
+
+## Exercise 1.2 
+
+`ggplot2` is extremely flexible, and we can plot just about everything we can image (and then some). The data frame `iris` also contains the variable `Species` (which are the 3 species of iris, namely *setosa*, *versicolor* and *virginica*). Let's say we would like to focus of finding a method to classify the species. To do this, we could simply color-code the data points according to which species they belong to.
+
+Building off the code from the previous code chunk, color-code the variables according to which species (variable: `Species`) they belong to.
+
+**HINT** Remember, when we want to assign colors (i.e. AESTHETICS) to a geom, we do this via the mapping function (i.e. the `aes()` function). 
+
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+Building off the code we have already written, we can assign the colors using the color argument in the `aes()` function. 
+
+```{r}
+
+iris %>% 
+  ggplot(aes(x = Sepal.Length, 
+             y = Sepal.Width)) + 
+  geom_point(aes(color = Species))
+
+```
+
+Note, play with the color of the plots, see [this document](https://garthtarr.github.io/meatR/ggplot_extensions.html). 
+
+</details> 
+
+# Exercise 2
+
+Especially when we are first having a look at our data, and when we then want to somehow plot our descriptive statistics (e.g. gender, age etc.), many are tempted to use barplots. Barplots, however, are relatively uninformative, and can oftentimes be misleading. In the words of McElreath (2015: 203)
+
+> Barplots suck. [...] The only problem with barplots is that they have bars. The bars carry only a little information—which way to zero, usually—but greatly clutter the presentation and generate optical illusions.
+
+It's therefore better to use other visualization methods such as dotplots, density plots, violin plots, eye or half-eye plots. These types of plots are extremely easy to make in R (even easier than barplots). 
+
+## Exercise 2.1
+
+Let's take our `Vampires` data frame. We would like to visualize the data distribution of age (variable: `ageOfVampire`) in our group using a density plot (`geom_density()`). When plotting a density plot, the `aes()` function only takes an `x = ` argument.  
+
+
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+When visualizing a density plot, we as always need to define which data frame our variable(s) are saved in. In this case, this is the `Vampires` data frame. We then use the pipe and begin with the `ggplot()` function. We then need to define our `x = ` argument in the `aes()` function. After, we simply apply the `geom_density()` function.
+
+```{r}
+
+Vampires %>% 
+  ggplot(aes(x = ageOfVampire)) + 
+  geom_density()
+
+```
+
+</details> 
+
+## Example 2.2
+
+Alright, now let's say we would like to display the age distribution according to the gender of the vampires. To do this, we can apply the `fill` argument to the `aes()` function, and instructing ggplot to plot the `ageOfVampire` variable, filling the density plots by gender. 
+
+Apply the variable `gender` to the fill argument in the `aes()` function.
+
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+Now, to plot the density plots according to gender, all we need to do is apply the `fill` argument to the `aes()` function. 
+
+```{r}
+
+Vampires %>% 
+  ggplot(aes(x = ageOfVampire, fill = gender)) + 
+  geom_density()
+
+```
+
+</details> 
+
+## Exercise 2.3
+
+But WAIT! The plots overlap and we can't see them well. We have several options here---probably the easiest is that we can make the density plots 'lighter', so that we can see both plots and their distributions. We do this by applying the `alpha` argument to the respective geom. 
+
+Apply the `alpha = .4` argument to the `geom_density()` function. After, play with changing the .4 to higher / lower (between 0 and 1) to see what this function does. 
+
+
+
+<details>
+  <summary>Click for Answer</summary>
+
+**SOLUTION**
+
+To make the density plots more transparent, we can apply the `alpha` argument and adjust the degree of transparency.
+
+```{r}
+
+Vampires %>% 
+  ggplot(aes(x = ageOfVampire, fill = gender)) + 
+  geom_density(alpha = .4)
+
+```
+
+</details> 
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -95,7 +95,7 @@ linkScaleRev7 =
                          ifelse(item == 4, 4,
                                 ifelse(item == 5, 3,
                                        ifelse(item == 6, 2, 
-                                              ifelse(item == 7, 2, NA)))))))
+                                              ifelse(item == 7, 1, NA)))))))
   }
 
 ```
