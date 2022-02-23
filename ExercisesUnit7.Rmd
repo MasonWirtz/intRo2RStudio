@@ -175,6 +175,70 @@ Vampires %>%
 
 
 
+# Advanced: Visualizing GAMs using ggplot2
+
+If you're ever interested in using generalized additive models (GAMs), it is also entirely possible to visually diagnose whether the data you are dealing with are nonlinear enough to advocate/justify using GAMs. 
+
+Let's say we are interested in visualizing the nonlinear effects of age of the vampires on the number of people a vampire has changed into vampires, with seperate smooths fitted to gender. We can diagnose whether a GAM is perhaps justified by plotting this using the geom_smooth function, specifying the method as "gam" and the formula as y as a function of the smooth term x. This shows us a relatively linear model, so we might think twice before using a complexer model such as a GAM or GAMM. 
+
+```{r}
+
+Vampires %>% 
+  ggplot(aes(x = numberChangedToVamp, 
+             y = ageOfVampire)) + 
+  geom_point() + 
+  geom_smooth(aes(color = gender, fill = gender), 
+              method = "gam", 
+              formula = y ~ s(x)) + 
+  scale_color_viridis_d("gender") + 
+  scale_fill_viridis_d("gender")
+```
+
+Let's take a look at what would justify using a GAM: 
+
+```{r}
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  mgcv,      # GAMs
+  gratia     # plot GAM
+)
+
+set.seed(4444)
+dat = gamSim(4, n = 400)
+
+dat %>% 
+  ggplot(aes(x = x2, 
+             y = y)) + 
+  geom_point() + 
+  geom_smooth(aes(color = fac, fill = fac), 
+              method = "gam", 
+              formula = y ~ s(x)) + 
+  scale_color_viridis_d("fac") + 
+  scale_fill_viridis_d("fac")
+
+```
+
+We see very clear nonlinear trends. Let's compare this to output after we have decided to run a GAM. 
+
+```{r}
+
+model = bam(
+  y ~
+    s(x2, by = fac),
+  data = dat
+)
+
+draw(model) & theme_bw()
+
+```
+
+Given there are no extra random effects/factor smooths to be taken into account, this should provide us with the same smooths as shown above. 
+
+
+
+
+
 
 
 

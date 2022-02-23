@@ -2196,6 +2196,7 @@ Extras
 <li><a href="#example-2.2">Example 2.2</a></li>
 <li><a href="#exercise-2.3">Exercise 2.3</a></li>
 </ul></li>
+<li><a href="#advanced-visualizing-gams-using-ggplot2">Advanced: Visualizing GAMs using ggplot2</a></li>
 </ul>
 </nav>
 </div>
@@ -2323,7 +2324,68 @@ Click for Answer
 <p><img src="ExercisesUnit7_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
 </details>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="advanced-visualizing-gams-using-ggplot2">Advanced: Visualizing GAMs using ggplot2</h1>
+<p>If you’re ever interested in using generalized additive models (GAMs), it is also entirely possible to visually diagnose whether the data you are dealing with are nonlinear enough to advocate/justify using GAMs.</p>
+<p>Let’s say we are interested in visualizing the nonlinear effects of age of the vampires on the number of people a vampire has changed into vampires, with seperate smooths fitted to gender. We can diagnose whether a GAM is perhaps justified by plotting this using the geom_smooth function, specifying the method as “gam” and the formula as y as a function of the smooth term x. This shows us a relatively linear model, so we might think twice before using a complexer model such as a GAM or GAMM.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>numberChangedToVamp</span>, 
+             y <span class='op'>=</span> <span class='va'>ageOfVampire</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>gender</span>, fill <span class='op'>=</span> <span class='va'>gender</span><span class='op'>)</span>, 
+              method <span class='op'>=</span> <span class='st'>"gam"</span>, 
+              formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='fu'>s</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_color_viridis_d</a></span><span class='op'>(</span><span class='st'>"gender"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_fill_viridis_d</a></span><span class='op'>(</span><span class='st'>"gender"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ExercisesUnit7_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p>Let’s take a look at what would justify using a GAM:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/trinker/pacman'>"pacman"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"pacman"</span><span class='op'>)</span>
+<span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span>
+  <span class='va'>mgcv</span>,      <span class='co'># GAMs</span>
+  <span class='va'>gratia</span>     <span class='co'># plot GAM</span>
+<span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>4444</span><span class='op'>)</span>
+<span class='va'>dat</span> <span class='op'>=</span> <span class='fu'>gamSim</span><span class='op'>(</span><span class='fl'>4</span>, n <span class='op'>=</span> <span class='fl'>400</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Factor `by&#39; variable example</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dat</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x2</span>, 
+             y <span class='op'>=</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>fac</span>, fill <span class='op'>=</span> <span class='va'>fac</span><span class='op'>)</span>, 
+              method <span class='op'>=</span> <span class='st'>"gam"</span>, 
+              formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='fu'>s</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_color_viridis_d</a></span><span class='op'>(</span><span class='st'>"fac"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_fill_viridis_d</a></span><span class='op'>(</span><span class='st'>"fac"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ExercisesUnit7_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<p>We see very clear nonlinear trends. Let’s compare this to output after we have decided to run a GAM.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>=</span> <span class='fu'>bam</span><span class='op'>(</span>
+  <span class='va'>y</span> <span class='op'>~</span>
+    <span class='fu'>s</span><span class='op'>(</span><span class='va'>x2</span>, by <span class='op'>=</span> <span class='va'>fac</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='va'>dat</span>
+<span class='op'>)</span>
+
+<span class='fu'>draw</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ExercisesUnit7_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<p>Given there are no extra random effects/factor smooths to be taken into account, this should provide us with the same smooths as shown above.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
