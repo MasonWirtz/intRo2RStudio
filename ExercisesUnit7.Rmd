@@ -27,7 +27,6 @@ pacman::p_load(
 # set ggplot2 theme
 theme_set(theme_bw(12))   
 
-dative = dative
 iris = iris
 Vampires = read_csv("./Data/Vampires.csv")
 
