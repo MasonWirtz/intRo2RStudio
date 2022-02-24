@@ -9,6 +9,8 @@ output:
     toc: true
 ---
 
+For (later) reference, you can find [here a list of common geom_ functions](https://ggplot2.tidyverse.org/reference/)
+
 # Exercise 1
 
 Run the following code chunk
@@ -18,8 +20,8 @@ Run the following code chunk
 # libraries
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(
-  tidyverse,      # data manipulation
-  languageR       # package from Gries
+  tidyverse,        # data manipulation
+  palmerpenguins    # package containing data frame to plot
 )
 
 # set ggplot2 theme
@@ -86,7 +88,204 @@ Note, play with the color of the plots, see [this document](https://garthtarr.gi
 
 </details> 
 
+
+
+## Exercise 1.3
+
+Using the `labs()` function, change the x axis of the plot to read "Sepal Length", the y axis to read "Sepal Width" and the title to read "Iris Scatterplot".
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+Using the `labs()` function is very intuitive, all we need to do is add the `labs()` function and specify the x, y and title arguments. REMEMBER when specifying these, the labs need to be in parentheses!
+
+```{r}
+
+iris %>% 
+  ggplot(aes(x = Sepal.Length, 
+             y = Sepal.Width)) + 
+  geom_point(aes(color = Species)) + 
+  labs(x = "Sepal Length", 
+       y = "Sepal Width", 
+       title = "Iris Scatterplot")
+
+```
+
+</details> 
+
+
+
+## Exercise 1.4
+
+Using the `ggsave()` function, save this plot as "scatterplotIris" using a RELATIVE PATH to the folder `Figures`. Save the plot as a .png file. 
+
+**HINT** REMEMBER, we have to save our final plot as an object before saving it! To specify the relative path, you will need the `file = ` argument, i.e. ggplot(OBJECT, file = "./Figure/scatterplotIris.pdf")
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+To save a plot, we first need to save this as an object, which the directions specified as "scatterplotIris". So, we first save the plot using the `=` operator. 
+
+
+```{r}
+
+scatterplotIris = iris %>% 
+  ggplot(aes(x = Sepal.Length, 
+             y = Sepal.Width)) + 
+  geom_point(aes(color = Species))
+
+ggsave(scatterplotIris, file = "./Figures/boxplotPenguine.png")
+
+```
+
+</details> 
+
+
+
 # Exercise 2
+
+Before beginning with the following exercises, run the following code:
+
+```{r}
+
+penguins = penguins %>% tibble()
+
+```
+
+
+## Exercise 2.1
+
+Take a look at the `penguins` data frame (using either `view(penguins)` or simple `penguins`). Let us say we are interested in the extent to which the body mass of the penguins (variable: `body_mass_g`) differs between islands (variable: `islands`). We would like to plot this using a boxplot. 
+
+If we were to plot this in base R, the plot would look like the following:
+
+```{r}
+
+# run this code to see what the plot looks like in base R
+boxplot(penguins$body_mass_g ~ penguins$island)
+
+```
+
+What is the x variable? What is the y variable? What do we need to enter into our ggplot to recreate this base R plot using `ggplot2`?
+
+**HINT** You will need the geom `geom_boxplot`
+
+
+
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+As always, we specify our data frame, which in this case is `penguins`. After that, we need to specify our aesthetics arguments, i.e. the x and y arguments. Since we want to divide the boxplot up by islands, this has to be our x argument, since the x axis shows the different groups (i.e. different islands). The y axis on the other hand shows the body mass of the penguins. After we have defined our aesthetics arguments, we can then simply tell ggplot to plot a boxplot by specifying `geom_boxplot()`. Easy, right?!
+
+```{r}
+
+penguins %>% 
+  ggplot(aes(x = island, 
+             y = body_mass_g)) + 
+  geom_boxplot()
+
+```
+
+</details> 
+
+
+## Exercise 2.2
+
+Alright, so we have now plotted a boxplot. This is great, but boxplots are not necessarily always the best way to visualize data, because the distribution of the groups are not shown. A boxplot only displays the median, and the data's quartiles. This isn't always helpful, so we often want to somehow show the distribution of our data. We can very easily do this in ggplot by simply adding the individual data points.
+
+To display the individual data points, we can add the geom `geom_jitter` (which is similar to `geom_point()`, the only difference being the dots are spread out a little more). Add `geom_jitter()` to the ggplot code from exercise 2.1.
+
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+The great thing about ggplot is that we can stack geoms on top of each other, adding layers to our plot. This makes it very simple to create informative plots. 
+
+To add the individual data points, we can simply add the `geom_point()` function to the plot we have already created. 
+
+```{r}
+
+penguins %>% 
+  ggplot(aes(x = island, 
+             y = body_mass_g)) + 
+  geom_boxplot() + 
+  geom_jitter()
+
+```
+
+</details> 
+
+
+## Exercise 2.3
+
+Now, let's say that we would like to color code the islands, so that each island on the boxplot has a different color. How could we do this? 
+
+**HINT** Remember, if we want to specify the ASTHETICS (such as color), we need the `aes()` function, and in this case we would like to FILL the boxplots with color. 
+
+
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+Since we want to define some type of aesthetic, we need the `aes()` function. We can EITHER define this in the `aes()` function in the `ggplot()` function, or in the `geom_boxplot()` function (doesn't make any difference either way). Since we want to fill the boxplots according to the island, we have to specify the `fill` argument in the `aes()` function, as seen below.
+
+```{r}
+
+penguins %>% 
+  ggplot(aes(x = island, 
+             y = body_mass_g)) + 
+  geom_boxplot(aes(fill = island)) + 
+  geom_jitter()
+
+```
+
+</details> 
+
+
+## Exercise 2.4
+
+Using the `ggsave()` function, save this plot as "boxplotPenguine" using a RELATIVE PATH to the folder `Figures`. 
+
+**HINT** REMEMBER, we have to save our final plot as an object before saving it! To specify the relative path, you will need the `file = ` argument. Don't forget the NAME the plot in the file argument!
+
+<details>
+  <summary>Click for Answer</summary>
+  
+**SOLUTION**
+
+To save a plot, we first need to save this as an object, which the directions specified as "boxplotPenguine". So, we first save the plot using the `=` operator. 
+
+
+```{r}
+
+boxplotPenguine= penguins %>% 
+  ggplot(aes(x = island, 
+             y = body_mass_g)) + 
+  geom_boxplot(aes(fill = island)) + 
+  geom_jitter()
+
+ggsave(boxplotPenguine, file = "./Figures/boxplotPenguine.pdf")
+
+```
+
+</details> 
+
+
+
+
+
+# Exercise 3
 
 Especially when we are first having a look at our data, and when we then want to somehow plot our descriptive statistics (e.g. gender, age etc.), many are tempted to use barplots. Barplots, however, are relatively uninformative, and can oftentimes be misleading. In the words of McElreath (2015: 203)
 
@@ -94,7 +293,7 @@ Especially when we are first having a look at our data, and when we then want to
 
 It's therefore better to use other visualization methods such as dotplots, density plots, violin plots, eye or half-eye plots. These types of plots are extremely easy to make in R (even easier than barplots). 
 
-## Exercise 2.1
+## Exercise 3.1
 
 Let's take our `Vampires` data frame. We would like to visualize the data distribution of age (variable: `ageOfVampire`) in our group using a density plot (`geom_density()`). When plotting a density plot, the `aes()` function only takes an `x = ` argument.  
 
@@ -117,7 +316,7 @@ Vampires %>%
 
 </details> 
 
-## Example 2.2
+## Example 3.2
 
 Alright, now let's say we would like to display the age distribution according to the gender of the vampires. To do this, we can apply the `fill` argument to the `aes()` function, and instructing ggplot to plot the `ageOfVampire` variable, filling the density plots by gender. 
 
@@ -141,7 +340,7 @@ Vampires %>%
 
 </details> 
 
-## Exercise 2.3
+## Exercise 3.3
 
 But WAIT! The plots overlap and we can't see them well. We have several options here---probably the easiest is that we can make the density plots 'lighter', so that we can see both plots and their distributions. We do this by applying the `alpha` argument to the respective geom. 
 
