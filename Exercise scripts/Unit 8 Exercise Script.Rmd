@@ -9,7 +9,13 @@ When we conduct a study, we want to report it, right? Of course, our first step 
 
 In this report, we are going to report on the Vampires data frame. We are going to outline our results and document our work process as we go. 
 
-On an important note, the directions in this exercise are very vague---there is a reason for that. While there are, of course, guidelines for reporting, how we choose to report results is often an individual process/decision (i.e. what do we plot? What do we show in the form of a table? Which variables do we plot/describe first?) This exercise is set up in a manner similar to the methods and results section of a paper. I will give you broad guidelines, but now it is your turn to develop an individual process of how you would like to report using R Markdown. Let's get started! 
+On an important note, the directions in this exercise are very vague---there is a reason for that. While there are, of course, guidelines for reporting, how we choose to report results is often an individual process/decision (i.e. what do we plot? What do we show in the form of a table? Which variables do we plot/describe first?) This exercise is set up in a manner similar to the methods and results section of a paper. I will give you broad guidelines, but now it is your turn to develop an individual process of how you would like to report using R Markdown. 
+
+Take this exercise as a free-for-all. Plot excessively, practice manipulating data and most importantly: ASK QUESTIONS! There are binary factors, categorical factors and numeric factors, so there are a lot of plotting and reporting possibilities. Use this exercise to take what we have learned and apply it to a reporting situation. 
+
+While you can work alone for this exercise, I suggest group work to bounce ideas off of one another. It is also a great space to get to know other reporting styles. 
+
+Let's get started! 
 
 # This Study 
 

@@ -381,6 +381,8 @@ WHO CAN MAKE THE UGLIEST PLOT?!
 
 Take 15-20 minutes and (either alone or in groups) attempt to make the absolut worst, ugliest, horribly looking and utterly vomit-worthy plot you can manage by stacking geoms on top of each other. 
 
+And don't forget to test out [different ggplot2 THEMES](https://ggplot2.tidyverse.org/reference/ggtheme.html)!!
+
 Save this plot, USING A RELATIVE PATH, in the Figures folder as a .png file under the name uglyPlot_*your initials*.png
 
 Send this to me via E-Mail (mason.wirtz@stud.sbg.ac.at) once you are finished. 

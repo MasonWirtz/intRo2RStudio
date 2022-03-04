@@ -29,6 +29,8 @@ navbar:
           href: "PPTs/Unit 5- Setting up a project.pdf"
         - text: "6. Code chunks in R Markdown"
           href: "PPTs/Unit 6- Code chunks in R Markdown.pdf"
+        - text: "7. Let's get plotting"
+          href: "PPTs/Unit 7- Let's get plotting.pdf"
     - text: "Exercises"
       menu:
         - text: "Day 1: Getting wet in the coding waters"
@@ -64,9 +66,9 @@ navbar:
         - text: "Exercise script 6"
           href: https://osf.io/mukgq/download
         - text: "Exercise script 7"
-          href: https://osf.io/w74ef/download
+          href: https://osf.io/g3fe4/download
         - text: "Exercise script 8"
-          href: https://osf.io/h2yc7/download
+          href: https://osf.io/kfvu6/download
         - text: "Exercise script 9"
 
         - text: "Exercise script 10"
@@ -85,4 +87,6 @@ navbar:
       menu:
         - text: "Data generation script"
           href: DataGeneration.html
+        - text: "ggplot2 PPT plots script"
+          href: ggplotScript.html
 output: distill::distill_article

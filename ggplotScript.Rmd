@@ -1,0 +1,9 @@
+---
+title: "ggplot2 Script"
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+site: distill::distill_website
+---
+
