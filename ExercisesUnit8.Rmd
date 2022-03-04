@@ -1,0 +1,114 @@
+---
+title: "8. Reporting and reproducibility"
+author:
+  - name: "Mason A. Wirtz"
+    url: https://masonwirtz.github.io
+    orcid_id: 0000-0002-9408-1993
+output:
+  distill::distill_article:
+    toc: true
+---
+
+When we conduct a study, we want to report it, right? Of course, our first step might be to publish the study, but what about all that extra, supplementary material? Or what if you would just like to document your work and analysis process in one big document? R Markdown is the way to go! 
+
+In this report, we are going to report on the Vampires data frame. We are going to outline our results and document our work process as we go. 
+
+On an important note, the directions in this exercise are very vague---there is a reason for that. While there are, of course, guidelines for reporting, how we choose to report results is often an individual process/decision (i.e. what do we plot? What do we show in the form of a table? Which variables do we plot/describe first?) This exercise is set up in a manner similar to the methods and results section of a paper. I will give you broad guidelines, but now it is your turn to develop an individual process of how you would like to report using R Markdown. Let's get started! 
+
+# This Study 
+
+Given the dearth of empirical research on the background lives of vampires and what influences certain domains of their decision making process (particularly, turning another person into a vampire), a questionnaire study was conducted. The present contribution in particular aims to ascertain the respective influence and predictive power of exploratory background variables on the number of humans vampires have turned into vampires. These results should thus give rise to new research initiatives delving into e.g. socio-affective, psycho-cognitive and background predictor variables of vampires' decision making processes. 
+
+## Research Questions
+
+Given the small number of vampires in comparison to humans, the primary goal of this study was to determine what animates a vampire to change a human into a vampire. The following exploratory research questions will be addressed: 
+
+RQ1: How can the (socio-)demographics of this vampire sample be characterized?
+
+RQ2: What background variable(s) predict the amount of humans a vampire changes into a vampire? 
+
+The first research question takes a descriptive approach, mapping out (a) how many cities the average vampire has visited; (b) the number of children the average vampire has and (c) how many people the average vampire has changed into a vampire. These results should shed light on the lives vampires have led hitherto. Several background variables were also collected, i.e. gender (binary; male vs. female, no vampires identified as diverse in this sample), age (numerical), state of living (binary; dead vs. alive---interestingly, the response quote by the dead vampires was unexpectedly high), whether the respective vampire identifies as having fangs (binary; yes vs. no) and where the respective vampires was born (categorical; continent). 
+
+The second question aims to ascertain how select background variables are statistically related to the number of humans a vampire changes into a vampire. 
+
+## Participants 
+
+TASK: Using descriptive statistics (mean, standard deviation, max., min., etc.), outline the participant group in question. Which variables are important to outline here? Should these be reported using tables? Is there a reason to plot any of the variables? How could we plot some of these variables? Remember, it's important to visually display your data (even if you don't publish the plots) so as to get to know your data better!!
+
+
+
+
+
+
+
+
+
+
+
+
+## Tasks and Instruments
+
+A questionnaire was used to collect data on the variables in question. Via personal networks and social media, participants were recruited. The questionnaire was administered in a quiet, distraction-free room. In future studies, it would be advisable to conduct such studies via online questionnaire tools such as LimeSurvey, as multiple student assistants suddenly disappeared during the face-to-face data collection process (reason unknown). 
+
+## Statistical analysis (group work advised)
+
+TASK: The inferential goal of this study is to ascertain the respective influence of (several) predictor variable(s) on the amount of humans a vampire has changed into a vampire. What inferential methods could we use to do this? Discuss with a partner! 
+
+Don't forget to think about variable transformations! E.g. centering variables, standardizing variables etc.
+
+After you have decided on which statistical analysis methods you might want to use, look up packages/functions with which these can be done. Do you need any extra packages? Are there methods included in base R? 
+
+If you are a novice, there are two simple methods you can use: linear regression or correlation analyses. 
+
+**Correlation analysis**: A correlation anaysis does not assess the effect of a predictor variable on a response variable, but rater judges the strength of a relationship between two variables (r value between -1 (perfect NEGATIVE relationship) and 1 (perfect POSITIVE relationship)). For those not yet fit in statistical analysis, this would be a good method to start with. In base R, we can use the `cor.test()` function. 
+
+**Linear regression**: This assesses the respective effect of the predictor variable x (or predictor variable*S* x + x + x...) on the response variable y (`numberChangedToVampire`). For simple linear regression, we can use the base R function `lm()`
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Results
+
+## RQ1: How can the (socio-)demographics of this vampire sample be characterized?
+
+TASK: Using tables, plots and however you feel you can best answer this research questions, report the results that answer this research question. You should present descriptive statistics and/or visual displays of the variables contained in the data set (with the exception of the id variable, of course). Don't forget to provide short descriptions of your work process, and make sure to comment your code in the respective code chunks! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## RQ2: What background variable(s) predict the amount of humans a vampire changes into a vampire? 
+
+TASK: Using what you discussed in the statistical analyses, do your best to use these methods to assess the respective relationship between predictor variables (your choice which variables you choose) and the amount of humans a vampire changes into a vampire.  
+
+
+
+
+
+
+
+
+
+
+
+
+

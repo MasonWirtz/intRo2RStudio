@@ -46,7 +46,7 @@ navbar:
         - text: "7. Let’s get plotting"
           href: ExercisesUnit7.html
         - text: "8. Reporting and reproducibility"
-          # href: ExercisesUnit8.html
+          href: ExercisesUnit8.html
         - text: "9. You don’t just knit with needles: Knitting in R Markdown"
           # href: ExercisesUnit9.html
         - text: "10. Fun with coding"
@@ -60,18 +60,16 @@ navbar:
         - text: "Exercise script 4"
           href: https://osf.io/w7eas/download
         - text: "Exercise script 5"
-
+          href: https://osf.io/z4r7j/download
         - text: "Exercise script 6"
-
+          href: https://osf.io/mukgq/download
         - text: "Exercise script 7"
-
+          href: https://osf.io/w74ef/download
         - text: "Exercise script 8"
-
+          href: https://osf.io/h2yc7/download
         - text: "Exercise script 9"
 
         - text: "Exercise script 10"
-
-        - text: "Exercise script 11"
 
         - text: "reverseItems_Functions.R"
           href: https://osf.io/cug24/download

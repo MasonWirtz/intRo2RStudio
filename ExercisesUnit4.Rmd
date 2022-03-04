@@ -178,7 +178,6 @@ We will continue building a data frame---I have generated a new variable for you
 # RUN THE FOLLOWING CODE CHUNK
 # YOU DON'T NEED TO DO ANYTHING 
 # OTHER THAN RUN THE CHUNK
-
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(
   reshape2                                        # load reshape2 library; reshape data

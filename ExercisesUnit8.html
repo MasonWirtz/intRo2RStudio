@@ -87,27 +87,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>IntRo to RStudio and R Markdown: 6. Code chunks in R Markdown</title>
+  <title>IntRo to RStudio and R Markdown: 8. Reporting and reproducibility</title>
 
 
 
   <meta name="article:author" content="Mason A. Wirtz"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="IntRo to RStudio and R Markdown: 6. Code chunks in R Markdown"/>
+  <meta property="og:title" content="IntRo to RStudio and R Markdown: 8. Reporting and reproducibility"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="IntRo to RStudio and R Markdown"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="IntRo to RStudio and R Markdown: 6. Code chunks in R Markdown"/>
+  <meta property="twitter:title" content="IntRo to RStudio and R Markdown: 8. Reporting and reproducibility"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","output"]}},"value":[{"type":"character","attributes":{},"value":["6. Code chunks in R Markdown"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Mason A. Wirtz"]},{"type":"character","attributes":{},"value":["https://masonwirtz.github.io"]},{"type":"character","attributes":{},"value":["0000-0002-9408-1993"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","output"]}},"value":[{"type":"character","attributes":{},"value":["8. Reporting and reproducibility"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Mason A. Wirtz"]},{"type":"character","attributes":{},"value":["https://masonwirtz.github.io"]},{"type":"character","attributes":{},"value":["0000-0002-9408-1993"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2055,7 +2055,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"6. Code chunks in R Markdown","authors":[{"author":"Mason A. Wirtz","authorURL":"https://masonwirtz.github.io","affiliation":"&nbsp;","affiliationURL":"#","orcidID":"0000-0002-9408-1993"}]}
+{"title":"8. Reporting and reproducibility","authors":[{"author":"Mason A. Wirtz","authorURL":"https://masonwirtz.github.io","affiliation":"&nbsp;","affiliationURL":"#","orcidID":"0000-0002-9408-1993"}]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2167,7 +2167,7 @@ Extras
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>6. Code chunks in R Markdown</h1>
+<h1>8. Reporting and reproducibility</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2184,217 +2184,49 @@ Extras
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#exercise-1">Exercise 1</a></li>
-<li><a href="#exercise-2">Exercise 2</a></li>
-<li><a href="#exercise-3-intermediate-level">Exercise 3 (intermediate level)</a>
+<li><a href="#this-study">This Study</a>
 <ul>
-<li><a href="#exercise-3.1">Exercise 3.1</a></li>
-<li><a href="#exercise-3.2">Exercise 3.2</a></li>
-<li><a href="#exercise-3.3">Exercise 3.3</a></li>
-<li><a href="#exercise-3.4">Exercise 3.4</a></li>
-<li><a href="#exercise-3.5">Exercise 3.5</a></li>
+<li><a href="#research-questions">Research Questions</a></li>
+<li><a href="#participants">Participants</a></li>
+<li><a href="#tasks-and-instruments">Tasks and Instruments</a></li>
+<li><a href="#statistical-analysis-group-work-advised">Statistical analysis (group work advised)</a></li>
+</ul></li>
+<li><a href="#results">Results</a>
+<ul>
+<li><a href="#rq1-how-can-the-socio-demographics-of-this-vampire-sample-be-characterized">RQ1: How can the (socio-)demographics of this vampire sample be characterized?</a></li>
+<li><a href="#rq2-what-background-variables-predict-the-amount-of-humans-a-vampire-changes-into-a-vampire">RQ2: What background variable(s) predict the amount of humans a vampire changes into a vampire?</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
-<h1 id="exercise-1">Exercise 1</h1>
-<p>Create a new R Markdown document and name it “Exercise 6”. Delete the example content in the markdown document <strong>(from line 12 and down)</strong>. Insert a new R chunk by clicking on the <strong>Insert</strong> button in the editor toolbar (this is the button with a white C in a green square) and choosing R.</p>
-<p>Import the <code>Vampires.csv</code> data set in this chunk using the <code>read_csv()</code> function and save this under the object Vampires. Don’t forget that this data frame should now be in our Data folder!!! Write the relative path in the <code>read_csv()</code> function accordingly!</p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>By inserting a code chunk, we are effectively structuring our code in a readable manner and in a way that makes following what our process of analysis is easier. When you look back at your code after a time away from it, it is also much easier to understand what you yourself were thinking when coding. To read in the data frame we are interested in, we do this in our code chunks exactly the same way as we did when working with regular .R documents.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'>=</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"./Data/Vampires.csv"</span><span class='op'>)</span>         <span class='co'># read in data with a relative path</span>
-</code></pre>
-</div>
-</div>
-</details>
-<h1 id="exercise-2">Exercise 2</h1>
-<p>Create a new code chunk using the <code>Insert</code> button in RStudio. In your new code chunk, complete the following exercise:</p>
-<p>Using the help bar (or console), look up the arguments of the <code>ifelse()</code> function. What arguments does it take?</p>
-<p>Use the <code>ifelse()</code> function to create a new categorical variable called <code>VampOld</code>: All vampires older than 100 should be categorized as <em>Old</em>, all vampires younger than 100 should be categorized as <em>Young</em>.</p>
-<p><strong>HINT</strong> You will need the <code>mutate()</code> function and the <code>ifelse()</code> function.</p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>Since we are interested in creating a new variable, this should tell us immediately that we need the <code>mutate()</code> function. In the <code>mutate()</code> function, we need to define our new variable <code>VampOld</code>.</p>
-<p>Once we have defined the new variable, we need to define what should be included in the new variable. Since we want to categorize the age variable (which we really wouldn’t ever want to do in real life, but for practice, it’s an easy example), we can use the <code>ifelse()</code> statement, which first takes an argument to evaluate. The argument to evaluate we need to supply the function with is “if the vampire is older than 100…”, which we can do using the variable <code>ageOfVampire</code> and the <code>&gt;</code> operator. Once we have supplied the ‘if’ argument, we need the ‘then do’ argument, i.e. what needs to happen when this argument is true? In this case, all vampires older than 100 should be categorized as ‘old’, so we supply the function with ‘old’. The final argument in the function takes the ‘else’ part, i.e. what happens when the first argument is false? Since we just want to categorize the variable into old and young, if the vampire is not old, then they must be young, so we supply the final argument with the character value ‘young’.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'>=</span>                                  <span class='co'># define object              </span>
-  <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                              <span class='co'># data</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>VampOld <span class='op'>=</span>                          <span class='co'># define NEW VARIABLE</span>
-           <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span> <span class='op'>&gt;</span> <span class='fl'>100</span>,       <span class='co'># TEST (the "if" argument)</span>
-                  <span class='st'>"Old"</span>,                    <span class='co'># if the test is TRUE, change to OLD</span>
-                  <span class='st'>"Young"</span><span class='op'>)</span><span class='op'>)</span>                 <span class='co'># if the test is FALSE, change to YOUNG</span>
-</code></pre>
-</div>
-</div>
-</details>
-<h1 id="exercise-3-intermediate-level">Exercise 3 (intermediate level)</h1>
-<p>You can name R chunks in R Markdown, which is practical when structuring your analysis process. This can be done by writing a name beside the ` r at the top of the chunk, e.g. as follows</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># This is an example code chunk NAMED "example"</span>
-</code></pre>
-</div>
-</div>
-<p>We are going to run a simple linear regression using the base-R <code>lm()</code> function. For those not familiar with regression modeling, it is the most basic form of predictive analysis. The overall idea of regression analysis is to examine the predictive power of a variable, i.e. how well of a job does a particular independent variable (predictor) do in predicting the outcome of a dependent variable?</p>
-<p>If you’ve never conducted a regression analysis before, I’m going to walk you through this process here. Alright, let’s get started.</p>
-<h2 id="exercise-3.1">Exercise 3.1</h2>
-<p>Create an R code chunk and name it <code>modAge</code></p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>This activity should be relatively self explanatory, but here it is:</p>
-<p>{r modAge}</p>
-</details>
-<h2 id="exercise-3.2">Exercise 3.2</h2>
-<p>Above, I explained the general goals of a regression analysis. The goal is to determine how well a predictor variable explains the outcome of a dependent variable. In this case, we are interested in whether the age of the vampire (variable: <code>ageOfVampire</code>) has explanatory value in predicting how many people a vampire changes into vampires (variable: <code>numberChangedToVamp</code>).</p>
-<p>The <code>lm()</code> (which stands for linear model) takes the arguments FORMULA and DATA. FORMULA refers to the formula y ~ x, i.e. the dependent variable <code>y</code> (<code>numberChangedToVamp</code>) as a function of the independent variable <code>x</code> (<code>ageOfVampire</code>). DATA refers to the data set in which your variables are saved.</p>
-<p>Using the <code>lm()</code> function, replace the y and x with the respective variables from above, fill in the data argument in the code chunk below, and save this as an object with the name <code>modAge</code>.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>...</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, data <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>With this model, we are assessing the predictive power of the age of the vampires on how many people the vampires in this data set change to vampires.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modAge</span> <span class='op'>=</span>                                     <span class='co'># define object</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span> <span class='op'>~</span> <span class='va'>ageOfVampire</span>,     <span class='co'># number changed to vamp as a function of vampire age</span>
-     data <span class='op'>=</span> <span class='va'>Vampires</span><span class='op'>)</span>                        <span class='co'># supply the data frame in which the variables are saved</span>
-</code></pre>
-</div>
-</div>
-</details>
-<h2 id="exercise-3.3">Exercise 3.3</h2>
-<p>Alright, now we have run a simple linear regression model. The hard part is always interpreting the output that we have here.</p>
-<p>To have a look at the output of this regression model, you can use the <code>summary()</code> function, with the argument being a linear model. Insert the <code>modAge</code> linear regression into the <code>summary()</code> function.</p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>We can get the results of our linear regression model by running the following code chunk.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modAge</span><span class='op'>)</span>          <span class='co'># call summary of the model</span>
-</code></pre>
-</div>
-<pre><code>
-Call:
-lm(formula = numberChangedToVamp ~ ageOfVampire, data = Vampires)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.8882 -3.8348 -0.8844  2.1492 20.1860 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  8.765389   1.404782   6.240 1.12e-08 ***
-ageOfVampire 0.001279   0.017710   0.072    0.943    
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-Residual standard error: 5.081 on 98 degrees of freedom
-Multiple R-squared:  5.325e-05, Adjusted R-squared:  -0.01015 
-F-statistic: 0.005219 on 1 and 98 DF,  p-value: 0.9426</code></pre>
-</div>
-</details>
-<h2 id="exercise-3.4">Exercise 3.4</h2>
-<p>The output of the linear regression model gives us important information, namely the intercept and the slope of the respective predictor variable. But what do these <em>actually</em> mean? Well, good question!</p>
-<p>The INTERCEPT is the y-value when x = 0, so the amount of people vampires at age 0 have changed into vampires.</p>
-<p>The SLOPE tells us: for every increase of 1 unit from 0, the outcome variable changes (starting from the value of the intercept) by this value. In our case, this means: For every year increase (from 0), i.e. for every year older a vampire becomes, a vampire changes .008 more people into vampires (again, from the intercept).</p>
-<p>Not very intuitive, right? It doesn’t make a lot of sense. A vampire 1 year old probably wouldn’t be changing anyone into anything. How do we fix this?</p>
-<p>Well, to make regression modeling more intuitive, we tend to CENTER variables, which just means we <strong>subtract the mean</strong> from each data point. Thus, the variable is expressed in terms of <strong>how much each data point is ABOVE the mean (positive score) or BELOW the mean (negative score)</strong>. If a variable is centered, then zero represents the MEAN of the respective variable. We can center variables using the <code>scale()</code> function and adding the argument <code>scale = FALSE</code>.</p>
-<p>Your next task: Using the <code>mutate()</code> function, center the variable <code>ageOfVampire</code>, and save the new data frame as <code>vampDat</code>. Save this code chunk as <code>manipuate data frame</code>.</p>
-<p><strong>HINT</strong> You will need to form the <code>scale()</code> function as <code>scale(ageOfVampire, scale = FALSE)</code></p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>This one is a bit tricky. To start off, we know we need the save the data set as <code>vampDat</code>, which we can do relatively easily using the <code>=</code> operator. After that, we need to define the data frame that we want to ‘reach into’, which in this case is the <code>Vampires</code> data frame. We then use the pipe %&gt;% to signal that we want to string functions together. After this, we need the <code>mutate()</code> function. The <code>mutate()</code> function takes the name of the new variable as its first argument. We want to overwrite the <code>ageOfVampire</code> variable in this new data frame, so we just add this name. Then we add the <code>=</code> operator, after which we apply the <code>scale()</code> function given above.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>vampDat</span> <span class='op'>=</span>                            <span class='co'># define object</span>
-  <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                       <span class='co'># data</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ageOfVampire <span class='op'>=</span>              <span class='co'># define NEW VARIABLE (this overrides current age variable)</span>
-           <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span>,       <span class='co'># apply the scale() function</span>
-                 scale <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>     <span class='co'># set scale argument to false, which centers the variable</span>
-</code></pre>
-</div>
-</div>
-</details>
-<h2 id="exercise-3.5">Exercise 3.5</h2>
-<p>Now that we have centered our predictor variable, we can more easily interpret the slopes and intercept. Run another linear model using the same variables, but changing the data frame to <code>vampDat</code>, since this has the newly centered predictor variable <code>ageOfVampire</code>. Save this model as <code>modAge_c</code>.</p>
-<p>How can we interpret this output?</p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>Let’s first run the linear model.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modAge_c</span> <span class='op'>=</span>                                  <span class='co'># define object</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span> <span class='op'>~</span> <span class='va'>ageOfVampire</span>,    <span class='co'># number changed to vamp as a function of vampire age</span>
-     data <span class='op'>=</span> <span class='va'>vampDat</span><span class='op'>)</span>                        <span class='co'># supply data frame in which the variables are contained</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modAge_c</span><span class='op'>)</span>                           <span class='co'># call model summary</span>
-</code></pre>
-</div>
-<pre><code>
-Call:
-lm(formula = numberChangedToVamp ~ ageOfVampire, data = vampDat)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--5.8882 -3.8348 -0.8844  2.1492 20.1860 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  8.860000   0.508088  17.438   &lt;2e-16 ***
-ageOfVampire 0.001279   0.017710   0.072    0.943    
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-Residual standard error: 5.081 on 98 degrees of freedom
-Multiple R-squared:  5.325e-05, Adjusted R-squared:  -0.01015 
-F-statistic: 0.005219 on 1 and 98 DF,  p-value: 0.9426</code></pre>
-</div>
-<p>The INTERCEPT is the predicted <strong>mean of people changed to vampires when we consider the average age of the vampires in the data set</strong>. In other words, vampires in an average age (of our sample)—which is 81.49—are predicted to have changed 8.4 people into vampires. We can check this in a broad way by running the following code as well, which filters the data frame to vampires around the approximate mean age of the sample, and then checking the mean amount of people they have changed to vampires. We should get a value relatively close to the intercept of the new model.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                             <span class='co'># data</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span> <span class='op'>&gt;</span> <span class='fl'>80</span> <span class='op'>|</span> <span class='va'>ageOfVampire</span> <span class='op'>&lt;</span> <span class='fl'>82</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>      <span class='co'># select vamps between ages of 80 and 82</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>,            <span class='co'># receive mean of vamps between ages of 80 and 82</span>
-            sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span><span class='op'>)</span>                <span class='co'># receive standard deviation</span>
-</code></pre>
-</div>
-<pre><code># A tibble: 1 × 2
-   mean    sd
-  &lt;dbl&gt; &lt;dbl&gt;
-1  8.86  5.06</code></pre>
-</div>
-<p>The SLOPE now tells us that for every increase from 0 (which is NOW the mean of the group) by 1 unit (i.e. by 1 year in this case), the number of vampires changed increases (from the intercept) by this amount (i.e. .008).</p>
-</details>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>When we conduct a study, we want to report it, right? Of course, our first step might be to publish the study, but what about all that extra, supplementary material? Or what if you would just like to document your work and analysis process in one big document? R Markdown is the way to go!</p>
+<p>In this report, we are going to report on the Vampires data frame. We are going to outline our results and document our work process as we go.</p>
+<p>On an important note, the directions in this exercise are very vague—there is a reason for that. While there are, of course, guidelines for reporting, how we choose to report results is often an individual process/decision (i.e. what do we plot? What do we show in the form of a table? Which variables do we plot/describe first?) This exercise is set up in a manner similar to the methods and results section of a paper. I will give you broad guidelines, but now it is your turn to develop an individual process of how you would like to report using R Markdown. Let’s get started!</p>
+<h1 id="this-study">This Study</h1>
+<p>Given the dearth of empirical research on the background lives of vampires and what influences certain domains of their decision making process (particularly, turning another person into a vampire), a questionnaire study was conducted. The present contribution in particular aims to ascertain the respective influence and predictive power of exploratory background variables on the number of humans vampires have turned into vampires. These results should thus give rise to new research initiatives delving into e.g. socio-affective, psycho-cognitive and background predictor variables of vampires’ decision making processes.</p>
+<h2 id="research-questions">Research Questions</h2>
+<p>Given the small number of vampires in comparison to humans, the primary goal of this study was to determine what animates a vampire to change a human into a vampire. The following exploratory research questions will be addressed:</p>
+<p>RQ1: How can the (socio-)demographics of this vampire sample be characterized?</p>
+<p>RQ2: What background variable(s) predict the amount of humans a vampire changes into a vampire?</p>
+<p>The first research question takes a descriptive approach, mapping out (a) how many cities the average vampire has visited; (b) the number of children the average vampire has and (c) how many people the average vampire has changed into a vampire. These results should shed light on the lives vampires have led hitherto. Several background variables were also collected, i.e. gender (binary; male vs. female, no vampires identified as diverse in this sample), age (numerical), state of living (binary; dead vs. alive—interestingly, the response quote by the dead vampires was unexpectedly high), whether the respective vampire identifies as having fangs (binary; yes vs. no) and where the respective vampires was born (categorical; continent).</p>
+<p>The second question aims to ascertain how select background variables are statistically related to the number of humans a vampire changes into a vampire.</p>
+<h2 id="participants">Participants</h2>
+<p>TASK: Using descriptive statistics (mean, standard deviation, max., min., etc.), outline the participant group in question. Which variables are important to outline here? Should these be reported using tables? Is there a reason to plot any of the variables? How could we plot some of these variables? Remember, it’s important to visually display your data (even if you don’t publish the plots) so as to get to know your data better!!</p>
+<h2 id="tasks-and-instruments">Tasks and Instruments</h2>
+<p>A questionnaire was used to collect data on the variables in question. Via personal networks and social media, participants were recruited. The questionnaire was administered in a quiet, distraction-free room. In future studies, it would be advisable to conduct such studies via online questionnaire tools such as LimeSurvey, as multiple student assistants suddenly disappeared during the face-to-face data collection process (reason unknown).</p>
+<h2 id="statistical-analysis-group-work-advised">Statistical analysis (group work advised)</h2>
+<p>TASK: The inferential goal of this study is to ascertain the respective influence of (several) predictor variable(s) on the amount of humans a vampire has changed into a vampire. What inferential methods could we use to do this? Discuss with a partner!</p>
+<p>Don’t forget to think about variable transformations! E.g. centering variables, standardizing variables etc.</p>
+<p>After you have decided on which statistical analysis methods you might want to use, look up packages/functions with which these can be done. Do you need any extra packages? Are there methods included in base R?</p>
+<p>If you are a novice, there are two simple methods you can use: linear regression or correlation analyses.</p>
+<p><strong>Correlation analysis</strong>: A correlation anaysis does not assess the effect of a predictor variable on a response variable, but rater judges the strength of a relationship between two variables (r value between -1 (perfect NEGATIVE relationship) and 1 (perfect POSITIVE relationship)). For those not yet fit in statistical analysis, this would be a good method to start with. In base R, we can use the <code>cor.test()</code> function.</p>
+<p><strong>Linear regression</strong>: This assesses the respective effect of the predictor variable x (or predictor variable<em>S</em> x + x + x…) on the response variable y (<code>numberChangedToVampire</code>). For simple linear regression, we can use the base R function <code>lm()</code></p>
+<h1 id="results">Results</h1>
+<h2 id="rq1-how-can-the-socio-demographics-of-this-vampire-sample-be-characterized">RQ1: How can the (socio-)demographics of this vampire sample be characterized?</h2>
+<p>TASK: Using tables, plots and however you feel you can best answer this research questions, report the results that answer this research question. You should present descriptive statistics and/or visual displays of the variables contained in the data set (with the exception of the id variable, of course). Don’t forget to provide short descriptions of your work process, and make sure to comment your code in the respective code chunks!</p>
+<h2 id="rq2-what-background-variables-predict-the-amount-of-humans-a-vampire-changes-into-a-vampire">RQ2: What background variable(s) predict the amount of humans a vampire changes into a vampire?</h2>
+<p>TASK: Using what you discussed in the statistical analyses, do your best to use these methods to assess the respective relationship between predictor variables (your choice which variables you choose) and the amount of humans a vampire changes into a vampire.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -11,7 +11,7 @@ output:
 
 # Exercise 1
 
-Create a new R script in RStudio. Save this script in the **script folder** we created in our new project structure.
+Download Exercise script 5 from the workshop website. Save this script in the **script folder** we created in our new project structure.
 
 On the workshop website, download the data frame `mtcars` and save this in the **data folder** we created in our new project structure. 
 

@@ -1,0 +1,147 @@
+---
+title: "Unit 6 Exercise Script"
+author: "..."
+date: "3/4/2022"
+output: html_document
+---
+
+# Exercise 1
+
+Create a new R Markdown document and name it "Exercise 6". Delete the example content in the markdown document **(from line 12 and down)**. Insert a new R chunk by clicking on the **Insert** button in the editor toolbar (this is the button with a white C in a green square) and choosing R. 
+
+Import the `Vampires.csv` data set in this chunk using the `read_csv()` function and save this under the object Vampires. Don't forget that this data frame should now be in our Data folder!!! Write the relative path in the `read_csv()` function accordingly!
+
+
+
+
+
+
+
+
+
+
+# Exercise 2
+
+Create a new code chunk using the `Insert` button in RStudio. In your new code chunk, complete the following exercise: 
+
+Using the help bar (or console), look up the arguments of the `ifelse()` function. What arguments does it take?
+
+Use the `ifelse()` function to create a new categorical variable called `VampOld`: All vampires older than 100 should be categorized as *Old*, all vampires younger than 100 should be categorized as *Young*. 
+
+**HINT** You will need the `mutate()` function and the `ifelse()` function. 
+
+
+
+
+
+
+
+
+
+
+# Exercise 3 (intermediate level)
+
+You can name R chunks in R Markdown, which is practical when structuring your analysis process. This can be done by writing a name beside the ` r at the top of the chunk, e.g. as follows
+
+```{r example}
+
+# This is an example code chunk NAMED "example"
+
+```
+
+We are going to run a simple linear regression using the base-R `lm()` function. For those not familiar with regression modeling, it is the most basic form of predictive analysis. The overall idea of regression analysis is to examine the predictive power of a variable, i.e. how well of a job does a particular independent variable (predictor) do in predicting the outcome of a dependent variable?
+
+If you've never conducted a regression analysis before, I'm going to walk you through this process here. 
+Alright, let's get started. 
+
+## Exercise 3.1 
+
+Create an R code chunk and name it `modAge`
+
+
+
+
+
+
+
+
+
+
+## Exercise 3.2
+
+Above, I explained the general goals of a regression analysis. The goal is to determine how well a predictor variable explains the outcome of a dependent variable. In this case, we are interested in whether the age of the vampire (variable: `ageOfVampire`) has explanatory value in predicting how many people a vampire changes into vampires (variable: `numberChangedToVamp`). 
+
+The `lm()` (which stands for linear model) takes the arguments FORMULA and DATA. FORMULA refers to the formula y ~ x, i.e. the dependent variable `y` (`numberChangedToVamp`) as a function of the independent variable `x` (`ageOfVampire`). DATA refers to the data set in which your variables are saved. 
+
+Using the `lm()` function, replace the y and x with the respective variables from above, fill in the data argument in the code chunk below, and save this as an object with the name `modAge`. 
+
+```{r, eval = FALSE}
+
+... = lm(y ~ x, data = ...)
+
+```
+
+
+
+
+
+
+
+
+
+
+## Exercise 3.3
+
+Alright, now we have run a simple linear regression model. The hard part is always interpreting the output that we have here. 
+
+To have a look at the output of this regression model, you can use the `summary()` function, with the argument being a linear model. Insert the `modAge` linear regression into the `summary()` function. 
+
+
+
+
+
+
+
+
+
+
+## Exercise 3.4
+
+The output of the linear regression model gives us important information, namely the intercept and the slope of the respective predictor variable. But what do these *actually* mean? Well, good question! 
+
+The INTERCEPT is the y-value when x = 0, so the amount of people vampires at age 0 have changed into vampires.
+
+The SLOPE tells us: for every increase of 1 unit from 0, the outcome variable changes (starting from the value of the intercept) by this value. In our case, this means: For every year increase (from 0), i.e. for every year older a vampire becomes, a vampire changes .008 more people into vampires (again, from the intercept). 
+
+Not very intuitive, right? It doesn't make a lot of sense. A vampire 1 year old probably wouldn't be changing anyone into anything. How do we fix this? 
+
+Well, to make regression modeling more intuitive, we tend to CENTER variables, which just means we **subtract the mean** from each data point. Thus, the variable is expressed in terms of **how much each data point is ABOVE the mean (positive score) or BELOW the mean (negative score)**. If a variable is centered, then zero represents the MEAN of the respective variable. We can center variables using the `scale()` function and adding the argument `scale = FALSE`. 
+
+Your next task: 
+Using the `mutate()` function, center the variable `ageOfVampire`, and save the new data frame as `vampDat`. Save this code chunk as `manipuate data frame`. 
+
+**HINT** You will need to form the `scale()` function as `scale(ageOfVampire, scale = FALSE)`
+
+
+
+
+
+
+
+
+
+
+## Exercise 3.5
+
+Now that we have centered our predictor variable, we can more easily interpret the slopes and intercept. Run another linear model using the same variables, but changing the data frame to `vampDat`, since this has the newly centered predictor variable `ageOfVampire`. Save this model as `modAge_c`. 
+
+How can we interpret this output?
+
+
+
+
+
+
+
+
+
