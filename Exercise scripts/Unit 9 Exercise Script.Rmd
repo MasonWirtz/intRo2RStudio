@@ -1,0 +1,95 @@
+---
+title: "Unit 7 Exercise Script"
+author: "..."
+date: "3/4/2022"
+output: html_document
+---
+
+
+# Exercise 1
+
+Using the `Knit` tab, knit your R Markdown document into a HTML file. 
+
+## Exercise 1.1
+
+The default settings for the HTML output are rather dull...that's why we sometimes change one thing or another to make the document more readable or other suitable for our needs. Using the `number_sections` argument, reformat the output code of your report document from exercise 8 to number the sections in the document. 
+
+
+
+
+
+
+
+
+
+
+
+## Exercise 1.2 
+
+Using the `toc` argument, reformat the output to include a table of contents.
+
+
+
+
+
+
+
+
+
+
+
+# Exercise 2
+
+## Exercise 2.1
+
+Take at look at the two documents below and have a look at the following output arguments (these are included in the output formats in the first few lines of each document). 
+
+Documents (raw analysis scripts): 
+
+* [Document 1](https://osf.io/6eg3h/)
+* [Document 2](https://osf.io/qep5b/)
+
+What do you think the following output arguments do? How do they change the HTML output of the respective document? 
+
+Output arguments: 
+
+* toc_float
+* code_folding
+* fig_height
+* theme
+* highlight
+
+
+
+
+
+
+
+
+
+
+
+## Exercise 2.2
+
+The next several links lead to the HTML outputs (you will have to click on the blue download button in the upper right corner to view the HTML documents). 
+
+Documents (HTML outputs): 
+
+* [Document 1](https://osf.io/nw85k/)
+* [Document 2](https://osf.io/gny7r/)
+
+Compare your assumptions about what the respective HTML outputs do with what you see in the documents. How do these documents differ to those you knitted in the previous exercises? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
