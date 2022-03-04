@@ -13,12 +13,24 @@ output:
 
 ## **Day 1. Getting wet in the coding waters: Basics of RStudio**
 
+### **0. Introductions**
+
+(13:00---13:45)
+
+* Hellos, introductions
+* What kind of data are we working with?
+* Getting to know the website
+
 ### **1. Introduction to RStudio**
+
+(13:45---14:15)
 
 * Which panes exist? 
 * How can I read in data?
 
 ### **2. Baby steps: Basics of coding in RStudio, part 1**
+
+(14:15---15:00)
 
 * Vectors
 * Factors
@@ -26,11 +38,15 @@ output:
 
 ### **3. Baby steps: Basics of coding in RStudio, part 2**
 
+(15:00---16:00)
+
 * Objects 
 * Functions
 * Packages
 
 ### **4. The tidier the better: Basics of coding with the Tidyverse**
+
+(16:00---17:00)
 
 * Tibbles
 * Data wrangling with dplyr
@@ -40,21 +56,31 @@ output:
 
 ### **5. Setting up a project**
 
+(09:00---10:00)
+
 * How do I create an .Rproj file? 
 * How can/should I structure my folders/files? 
 * Relative/absolute file paths 
 
 ### **6. Code chunks in R Markdown**
 
+(10:00---11:30)
+
 * What is a code chunk in R Markdown? 
 * Structuring code chunks 
 
+**LUNCH**
+
 ### **7. Let’s get plotting**
+
+(12:30---14:30)
 
 * Plotting with ggplot2
 * Saving ggplots
 
 ### **8. Reporting and reproducibility**
+
+(14:30---15:30)
 
 * R Markdown syntax
 * Inline formatting 
@@ -62,11 +88,15 @@ output:
 
 ### **9. You don’t just knit with needles: Knitting in R Markdown**
 
+(15:30---16:00)
+
 * Knitting an HTML document
 * Knitting a Word document 
 * Uploading/downloading from OSF
 
 ### **10. Fun with coding**
+
+(16:00---17:00)
 
 * Working with your own data
 * Questions, individual work

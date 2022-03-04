@@ -2209,16 +2209,19 @@ Click for Answer
 <p>Since our goal here is to simply subset the data frame and select on certain columns, we can use the function <code>select()</code> from the <code>dplyr</code> package included in the <code>tidyverse</code>. This will allow us to pick and choose which columns we want to subset. We can then assign these subsetted variables to a new object, which the directions ask us to call <code>Vamps</code>. Let’s go ahead and do this:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vamps</span> <span class='op'>=</span> <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>idVampire</span>, <span class='va'>gender</span>, <span class='va'>ageOfVampire</span>, <span class='va'>numberOfChildren</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vamps</span> <span class='op'>=</span>                                       <span class='co'># define object</span>
+  <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                <span class='co'># data</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>idVampire</span>, <span class='va'>gender</span>,                   <span class='co'># select variables (i.e. subset data)</span>
+         <span class='va'>ageOfVampire</span>, <span class='va'>numberOfChildren</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>Since the first three columns we want to subset are in a row (i.e. the first three columns), we can also easily specify 1:3 (i.e. columns 1 through 3), plus the variable <code>numberOfChildren</code>, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vamps</span> <span class='op'>=</span> <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>numberOfChildren</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vamps</span> <span class='op'>=</span>                                 <span class='co'># define object</span>
+  <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                          <span class='co'># data</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>numberOfChildren</span><span class='op'>)</span>         <span class='co'># select variables (i.e. subset data)</span>
 </code></pre>
 </div>
 </div>
@@ -2233,15 +2236,15 @@ Click for Answer
 <p>As always, our first step is to reach into the data frame we are interested in, namely <code>Vampires</code>, and then simply use the summarize function, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>visitedCities</span><span class='op'>)</span>, 
-            sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>visitedCities</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                       <span class='co'># dataa</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>visitedCities</span><span class='op'>)</span>,            <span class='co'># calculate mean</span>
+            sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>visitedCities</span><span class='op'>)</span><span class='op'>)</span>                <span class='co'># calculate SD</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1  29.6  47.1</code></pre>
+1  33.4  40.0</code></pre>
 </div>
 </details>
 <h1 id="exercise-3">Exercise 3</h1>
@@ -2256,17 +2259,20 @@ Click for Answer
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Group the data frame by the gender variable, which is binary, i.e. only male or female. </span>
+  
+  <span class='co'># Group the data frame by the gender variable, </span>
+  <span class='co'># which is binary, i.e. only male or female.</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>gender</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Summarize the grouped data </span>
+  
+  <span class='co'># Summarize the grouped data </span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 2 × 2
   gender  mean
   &lt;chr&gt;  &lt;dbl&gt;
-1 Female  78.3
-2 Male    85.1</code></pre>
+1 Female  73.7
+2 Male    74.2</code></pre>
 </div>
 </details>
 <h1 id="exercise-4">Exercise 4</h1>
@@ -2290,19 +2296,25 @@ Click for Answer
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Filter the data frame so that it ONLY includes vampires that are ALIVE</span>
+  
+  <span class='co'># Filter the data frame so that it </span>
+  <span class='co'># ONLY includes vampires that are ALIVE</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>deadOrAlive</span> <span class='op'>==</span> <span class='st'>"Alive"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Group the data frame by the hasFangs variable, which is binary, i.e. only yes or no. </span>
+
+  <span class='co'># Group the data frame by the hasFangs variable, </span>
+  <span class='co'># which is binary, i.e. only yes or no. </span>
+  
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>hasFangs</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Summarize the grouped data </span>
+  
+  <span class='co'># Summarize the grouped data </span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 2 × 2
   hasFangs  mean
   &lt;chr&gt;    &lt;dbl&gt;
-1 No        7.85
-2 Yes       7.37</code></pre>
+1 No       11.0 
+2 Yes       8.96</code></pre>
 </div>
 </details>
 <h1 id="exercise-5">Exercise 5</h1>
@@ -2310,18 +2322,28 @@ Click for Answer
 <p>In case you didn’t get to that exercise, run the following code to catch up:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='co'># Create ID variables for 20 data collection times</span>
-<span class='va'>Time</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>, times <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span> <span class='co'># Repeat 1 through 20 as factors 15 times</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>               <span class='co'># Create ID variables for 20 data collection times</span>
+<span class='va'>Time</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>,       <span class='co'># Repeat 1 through 20 as factors 15 times</span>
+           times <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span> 
 </code></pre>
 </div>
 </div>
-<p>We will continue building a data frame—I have generated a new variable for you, namely <code>weeklyExposure</code>, which should be understood as the total number of hours per week participants spend engaging with native speakers. Run the following code to generate this variable. If you have not already installed the <code>reshape2</code> package, you can do so by using the function <code>install.packages("reshape2")</code>.</p>
+<p>We will continue building a data frame—I have generated a new variable for you, namely <code>weeklyExposure</code>, which should be understood as the total number of hours per week participants spend engaging with native speakers. Run the following code to generate this variable.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("reshape2") # delete the # and run if you have not yet installed the reshape2 package</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/hadley/reshape'>reshape2</a></span><span class='op'>)</span>
-<span class='va'>weeklyExposure</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Exponential.html'>rexp</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, rate <span class='op'>=</span> <span class='fl'>.05</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># create expo. increasing values</span>
-<span class='va'>weeklyExposure</span> <span class='op'>=</span> <span class='va'>weeklyExposure</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># RUN THE FOLLOWING CODE CHUNK</span>
+<span class='co'># YOU DON'T NEED TO DO ANYTHING </span>
+<span class='co'># OTHER THAN RUN THE CHUNK</span>
+
+<span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/trinker/pacman'>"pacman"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"pacman"</span><span class='op'>)</span>
+<span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span>
+  <span class='va'>reshape2</span>                                        <span class='co'># load reshape2 library; reshape data</span>
+<span class='op'>)</span>
+
+<span class='va'>weeklyExposure</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>20</span>,                    <span class='co'># create expo. increasing values</span>
+                           <span class='fu'><a href='https://rdrr.io/r/stats/Exponential.html'>rexp</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, 
+                                rate <span class='op'>=</span> <span class='fl'>.05</span><span class='op'>)</span><span class='op'>)</span> 
+<span class='va'>weeklyExposure</span> <span class='op'>=</span> <span class='va'>weeklyExposure</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>               <span class='co'># bound at 0 and 80</span>
   <span class='fu'><a href='https://rdrr.io/pkg/reshape2/man/melt.html'>melt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>weeklyExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='st'>"value"</span> <span class='op'>&gt;</span> <span class='fl'>80</span>, <span class='fl'>80</span>, <span class='va'>weeklyExposure</span><span class='op'>)</span>,
          weeklyExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='st'>"value"</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='va'>weeklyExposure</span><span class='op'>)</span>,
@@ -2339,7 +2361,8 @@ Click for Answer
 <p><strong>SOLUTION</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>=</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span><span class='va'>ID</span>, <span class='va'>Time</span>, <span class='va'>weeklyExposure</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>=</span>                                    <span class='co'># data</span>
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span><span class='va'>ID</span>, <span class='va'>Time</span>, <span class='va'>weeklyExposure</span><span class='op'>)</span>      <span class='co'># create tibble of variables</span>
 </code></pre>
 </div>
 </div>
@@ -2356,8 +2379,10 @@ Click for Answer
 <p>To create a new variable, we need the <code>mutate()</code> function. We can then specify how we would like to mutate the contents of a variable in the data frame. Since we simply want to log transform the <code>weeklyExposure</code> variable, we just need to apply the <code>log()</code> function to the <code>weeklyExposure</code> variable.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>=</span> <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>logWeeklyExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>=</span>                                       <span class='co'># define object</span>
+  <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                   <span class='co'># data</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>logWeeklyExposure <span class='op'>=</span>               <span class='co'># create NEW variable </span>
+           <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span><span class='op'>)</span><span class='op'>)</span>            <span class='co'># define TERMS for new variable</span>
 
 <span class='co'># Check df to make sure we got this new variable </span>
 <span class='va'>df</span>
@@ -2366,16 +2391,16 @@ Click for Answer
 <pre><code># A tibble: 300 × 4
    ID    Time  weeklyExposure logWeeklyExposure
    &lt;fct&gt; &lt;fct&gt;          &lt;dbl&gt;             &lt;dbl&gt;
- 1 1     1               6.46              1.87
- 2 1     2              52.5               3.96
- 3 1     3              34.3               3.54
- 4 1     4              34.4               3.54
- 5 1     5               5.81              1.76
- 6 1     6              24.2               3.19
- 7 1     7               0.01             -4.61
- 8 1     8               6.05              1.80
- 9 1     9              16.8               2.82
-10 1     10             22.9               3.13
+ 1 1     1               3.14              1.14
+ 2 1     2              16.6               2.81
+ 3 1     3              69.6               4.24
+ 4 1     4              58.4               4.07
+ 5 1     5              18.4               2.91
+ 6 1     6               3.26              1.18
+ 7 1     7              31.0               3.43
+ 8 1     8              10.6               2.36
+ 9 1     9              13.1               2.57
+10 1     10              5.2               1.65
 # … with 290 more rows</code></pre>
 </div>
 </details>
@@ -2385,14 +2410,16 @@ Click for Answer
 <p>Let me generate some data for you that replicates this situation:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>CTest_df</span> <span class='op'>=</span> 
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>3</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>,
-       CTest <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>17</span>, sd <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>, 
-                 <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>19</span>, sd <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>, 
-                 <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>20</span>, sd <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># RUN THE FOLLOWING CODE CHUNK</span>
+
+<span class='va'>CTest_df</span> <span class='op'>=</span>                                                          <span class='co'># define object</span>
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>3</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>,                               <span class='co'># generate data</span>
+         CTest <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>17</span>, sd <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,    <span class='co'># generate CTest 1</span>
+                 <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>19</span>, sd <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,      <span class='co'># generate CTest 2</span>
+                 <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>20</span>, sd <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>      <span class='co'># generate CTest 3</span>
 <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>CTest <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>CTest</span> <span class='op'>&gt;</span> <span class='fl'>30</span>, <span class='fl'>30</span>, <span class='va'>CTest</span><span class='op'>)</span>, <span class='co'># just in case there are any wild deviations</span>
-         CTest <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>CTest</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='va'>CTest</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># just in case there are any wild deviations</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>CTest <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>CTest</span> <span class='op'>&gt;</span> <span class='fl'>30</span>, <span class='fl'>30</span>, <span class='va'>CTest</span><span class='op'>)</span>,                     <span class='co'># delete wild devs</span>
+         CTest <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>CTest</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='va'>CTest</span><span class='op'>)</span><span class='op'>)</span> 
 
 <span class='co'># Let's have a look</span>
 <span class='va'>CTest_df</span>
@@ -2401,16 +2428,16 @@ Click for Answer
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1          22
- 2 1          16
- 3 1          20
- 4 1          10
- 5 1          13
- 6 1          22
- 7 1          14
- 8 1          21
- 9 1          21
-10 1          17
+ 1 1          21
+ 2 1          20
+ 3 1          14
+ 4 1          13
+ 5 1          10
+ 6 1          16
+ 7 1          21
+ 8 1          14
+ 9 1          12
+10 1          16
 # … with 50 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>CTest_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
@@ -2422,9 +2449,9 @@ Click for Answer
 <pre><code># A tibble: 3 × 5
   Version   max   min  mean    sd
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 1          25    10  17.8  3.56
-2 2          28    10  20.1  4.81
-3 3          28    13  20    4.39</code></pre>
+1 1          21     8  15.3  3.83
+2 2          27    13  18.7  4.03
+3 3          27     9  19.2  4.63</code></pre>
 </div>
 <p>So, now we have a data frame with the version of the C Test (<code>Version</code>) and each participant’s score on the C Tests (<code>CTest</code>).</p>
 <p>Adjust the variable <code>CTest</code> by subtracting or adding the difference of each C Test version’s mean score from the overall mean score of the C Tests from or to each individual score.</p>
@@ -2438,39 +2465,56 @@ Click for Answer
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>CTest_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># First we need to group by version, since we need the mean of each VERSION of the CTest</span>
+  
+  <span class='co'># First we need to group by version, </span>
+  <span class='co'># since we need the mean of each </span>
+  <span class='co'># VERSION of the CTest</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>Version</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Now we create a NEW variable called CTestMean, which gives us the mean of each version</span>
+  
+  <span class='co'># Now we create a NEW variable called </span>
+  <span class='co'># CTestMean, which gives us the mean of </span>
+  <span class='co'># each version</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>CTestMean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>CTest</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># We haven't seen this function yet, but what it does is the exact opposite of the group_by() function, </span>
-<span class='co'># but instead of grouping the different levels of a factor, it ungroups them to give us back</span>
-<span class='co'># the actual data frame, just now with the new variable (i.e. CTestMean) we just created</span>
+  
+  <span class='co'># We haven't seen this function yet, </span>
+  <span class='co'># but what it does is the exact opposite </span>
+  <span class='co'># of the group_by() function, </span>
+  <span class='co'># but instead of grouping the different </span>
+  <span class='co'># levels of a factor, it ungroups them </span>
+  <span class='co'># to give us back the actual data frame, </span>
+  <span class='co'># just now with the new variable </span>
+  <span class='co'># (i.e. CTestMean) we just created</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Now we need to create a few different variables: </span>
-  <span class='co'># We need the OVERALL mean, i.e. the mean of ALL the C Test scores; </span>
-  <span class='co'># We need the difference between the OVERALL mean score and the mean scores of each version of the C test</span>
-  <span class='co'># We then change the original CTest variable by adding the difference (positive or negative)</span>
-    <span class='co'># to each individual CTest score</span>
+  
+  <span class='co'># Now we need to create a few different variables: </span>
+  <span class='co'># We need the OVERALL mean, i.e. the mean of ALL the </span>
+  <span class='co'># C Test scores; We need the difference between the </span>
+  <span class='co'># OVERALL mean score and the mean scores of each </span>
+  <span class='co'># version of the C test. We then change the original </span>
+  <span class='co'># CTest variable by adding the difference (positive or </span>
+  <span class='co'># negative) to each individual CTest score</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>CTestMean_overall <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>CTestMean</span><span class='op'>)</span>, 
          CTestMean_difference <span class='op'>=</span> <span class='va'>CTestMean_overall</span> <span class='op'>-</span> <span class='va'>CTestMean</span>, 
          CTest <span class='op'>=</span> <span class='va'>CTest</span> <span class='op'>+</span> <span class='va'>CTestMean_difference</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-<span class='co'># Now we just get rid of the extra noise variables that we needed to calculate the adjusted C Test scores</span>
+  
+  <span class='co'># Now we just get rid of the extra noise variables </span>
+  <span class='co'># that we needed to calculate the adjusted C Test scores</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>CTestMean</span>, <span class='va'>CTestMean_overall</span>, <span class='va'>CTestMean_difference</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1        23.5
- 2 1        17.5
- 3 1        21.5
- 4 1        11.5
- 5 1        14.5
- 6 1        23.5
- 7 1        15.5
- 8 1        22.5
- 9 1        22.5
-10 1        18.5
+ 1 1        23.4
+ 2 1        22.4
+ 3 1        16.4
+ 4 1        15.4
+ 5 1        12.4
+ 6 1        18.4
+ 7 1        23.4
+ 8 1        16.4
+ 9 1        14.4
+10 1        18.4
 # … with 50 more rows</code></pre>
 </div>
 </details>

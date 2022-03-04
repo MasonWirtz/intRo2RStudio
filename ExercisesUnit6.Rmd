@@ -30,7 +30,7 @@ By inserting a code chunk, we are effectively structuring our code in a readable
 
 ```{r}
 
-Vampires = read_csv("./Data/Vampires.csv")
+Vampires = read_csv("./Data/Vampires.csv")         # read in data with a relative path
 
 ```
 
@@ -41,6 +41,8 @@ Vampires = read_csv("./Data/Vampires.csv")
 # Exercise 2
 
 Create a new code chunk using the `Insert` button in RStudio. In your new code chunk, complete the following exercise: 
+
+Using the help bar (or console), look up the arguments of the `ifelse()` function. What arguments does it take?
 
 Use the `ifelse()` function to create a new categorical variable called `VampOld`: All vampires older than 100 should be categorized as *Old*, all vampires younger than 100 should be categorized as *Young*. 
 
@@ -57,8 +59,12 @@ Once we have defined the new variable, we need to define what should be included
 
 ```{r}
 
-Vampires = Vampires %>% 
-  mutate(VampOld = ifelse(ageOfVampire > 100, "Old", "Young"))
+Vampires =                                  # define object              
+  Vampires %>%                              # data
+  mutate(VampOld =                          # define NEW VARIABLE
+           ifelse(ageOfVampire > 100,       # TEST (the "if" argument)
+                  "Old",                    # if the test is TRUE, change to OLD
+                  "Young"))                 # if the test is FALSE, change to YOUNG
 
 ```
 
@@ -77,7 +83,7 @@ You can name R chunks in R Markdown, which is practical when structuring your an
 
 ```
 
-We are going to run a simple linear regression using the base-R `lm()` function. For those not familiar with regression modeling, it is the most basic form of predictive analysis. The overall idea of regression analysis is to examine the predictive power of a variable, i.e. how well of a job does a particular independent variable (predictor) do in predicting the outcome of a dependent variable.
+We are going to run a simple linear regression using the base-R `lm()` function. For those not familiar with regression modeling, it is the most basic form of predictive analysis. The overall idea of regression analysis is to examine the predictive power of a variable, i.e. how well of a job does a particular independent variable (predictor) do in predicting the outcome of a dependent variable?
 
 If you've never conducted a regression analysis before, I'm going to walk you through this process here. 
 Alright, let's get started. 
@@ -100,11 +106,11 @@ This activity should be relatively self explanatory, but here it is:
 
 ## Exercise 3.2
 
-Above, I explained the general goals of a regression analysis. The goal is to determine how well a predictor variable explains the outcome of a dependent variable. In this case, we are interested in whether the age of the vampire (variable: `ageOfVampire`) has explanatory value in predicting how many people were changed into vampires (variable: `numberChangedToVamp`). 
+Above, I explained the general goals of a regression analysis. The goal is to determine how well a predictor variable explains the outcome of a dependent variable. In this case, we are interested in whether the age of the vampire (variable: `ageOfVampire`) has explanatory value in predicting how many people a vampire changes into vampires (variable: `numberChangedToVamp`). 
 
 The `lm()` (which stands for linear model) takes the arguments FORMULA and DATA. FORMULA refers to the formula y ~ x, i.e. the dependent variable `y` (`numberChangedToVamp`) as a function of the independent variable `x` (`ageOfVampire`). DATA refers to the data set in which your variables are saved. 
 
-For this exercise, use the same code chunk you made in the previous exercise. Using the `lm()` function, replace the y and x with the respective variables from above, fill in the data argument in the code chunk below, and save this as an object with the name `modAge`. 
+Using the `lm()` function, replace the y and x with the respective variables from above, fill in the data argument in the code chunk below, and save this as an object with the name `modAge`. 
 
 ```{r, eval = FALSE}
 
@@ -123,7 +129,9 @@ With this model, we are assessing the predictive power of the age of the vampire
 
 ```{r}
 
-modAge = lm(numberChangedToVamp ~ ageOfVampire, data = Vampires)
+modAge =                                     # define object
+  lm(numberChangedToVamp ~ ageOfVampire,     # number changed to vamp as a function of vampire age
+     data = Vampires)                        # supply the data frame in which the variables are saved
 
 ```
 
@@ -146,7 +154,7 @@ We can get the results of our linear regression model by running the following c
 
 ```{r}
 
-summary(modAge)
+summary(modAge)          # call summary of the model
 
 ```
 
@@ -179,8 +187,11 @@ This one is a bit tricky. To start off, we know we need the save the data set as
 
 ```{r manipulate data frame}
 
-vampDat = Vampires %>% 
-  mutate(ageOfVampire = scale(ageOfVampire, scale = FALSE))
+vampDat =                            # define object
+  Vampires %>%                       # data
+  mutate(ageOfVampire =              # define NEW VARIABLE (this overrides current age variable)
+           scale(ageOfVampire,       # apply the scale() function
+                 scale = FALSE))     # set scale argument to false, which centers the variable
 
 ```
 
@@ -202,8 +213,11 @@ Let's first run the linear model.
 
 ```{r}
 
-modAge_c = lm(numberChangedToVamp ~ ageOfVampire, data = vampDat)
-summary(modAge_c)
+modAge_c =                                  # define object
+  lm(numberChangedToVamp ~ ageOfVampire,    # number changed to vamp as a function of vampire age
+     data = vampDat)                        # supply data frame in which the variables are contained
+
+summary(modAge_c)                           # call model summary
 
 ```
 
@@ -212,10 +226,10 @@ The INTERCEPT is the predicted **mean of people changed to vampires when we cons
 
 ```{r}
 
-Vampires %>% 
-  filter(ageOfVampire > 80 | ageOfVampire < 82) %>%   # select vamps between ages of 80 and 82
-  summarize(mean = mean(numberChangedToVamp),         # receive mean of vamps between ages of 80 and 82
-            sd = sd(numberChangedToVamp))             # receive standard deviation
+Vampires %>%                                             # data
+  filter(ageOfVampire > 80 | ageOfVampire < 82) %>%      # select vamps between ages of 80 and 82
+  summarize(mean = mean(numberChangedToVamp),            # receive mean of vamps between ages of 80 and 82
+            sd = sd(numberChangedToVamp))                # receive standard deviation
 
 ```
 

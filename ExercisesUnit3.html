@@ -2239,18 +2239,22 @@ Click for Answer
 <p><strong>HINT</strong> The plot that you generate should look similar to this one (but don’t fret if the values are a bit different, we are all generating RANDOM values, after all, so they will differ a bit):</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Poisson</span> <span class='op'>=</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Poisson <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10000</span>, lambda <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># YOU DON'T NEED TO DO ANYTHING HERE</span>
+<span class='co'># THIS CODE BIT GENERATES A SIMILAR PLOT</span>
+<span class='co'># TO THE ONE YOURS SHOULD GENERATE</span>
 
-<span class='va'>Poisson</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Poisson</span>, 
-             y <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes_eval.html'>stat</a></span><span class='op'>(</span><span class='va'>count</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>count</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>1</span>, 
+<span class='va'>Poisson</span> <span class='op'>=</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Poisson <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10000</span>, lambda <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>Poisson</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                           <span class='co'># data </span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Poisson</span>,                             <span class='co'># aesthetics </span>
+             y <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes_eval.html'>stat</a></span><span class='op'>(</span><span class='va'>count</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>count</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>         <span class='co'># get probability</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>1</span>,                        <span class='co'># define binwidth  </span>
                  color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>3</span>, 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>3</span>,                          <span class='co'># add line at lamba value</span>
              color <span class='op'>=</span> <span class='st'>"red"</span>, 
              alpha <span class='op'>=</span> <span class='fl'>.5</span>,
              linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Count/Number of successes"</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Count/Number of successes"</span>,               <span class='co'># add plot labels</span>
        y <span class='op'>=</span> <span class='st'>"Probability"</span>,
        title <span class='op'>=</span> <span class='st'>"10000 samples of Pois(lambda = 3)"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -2266,9 +2270,9 @@ Click for Answer
 <p>So, we want to plot our generated data, not as frequencies, but as probabilities, using the function <code>hist()</code>. Our first step here should be to go ahead and look at the arguments that the function takes. Theoretically, we can change the arguments freq and probability in order to get the probability density of the values. If we change the probability argument, we can change it to true (we can write this as TRUE or T, for short). We can also change the freq argument to FALSE, which throws back the probability density as well, so we should end up with the same plot either way.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Poisson</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10000</span>, lambda <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='co'># generate the data again</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Poisson</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10000</span>, lambda <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>           <span class='co'># generate the data again</span>
 
-<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Poisson</span>, probability <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Poisson</span>, probability <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>                   <span class='co'># set probability to true</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Poisson</span>, freq <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2294,25 +2298,25 @@ Click for Answer
 <p>Since I didn’t specify which variable we are interested in, we would need to search the data frame to find out which variable we need. If we just need to remind ourselves which variable we are interested in, we can do this using the <code>colnames()</code> function, which returns the names of the columns, but no information on what is actually in the columns. If we want to see what is actually in the columns without having to print the entire data frame, we can go ahead and use the <code>head()</code> function.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>                 <span class='co'># get column names for Vampires data frame</span>
 </code></pre>
 </div>
 <pre><code>[1] &quot;idVampire&quot;           &quot;gender&quot;              &quot;ageOfVampire&quot;       
 [4] &quot;deadOrAlive&quot;         &quot;hasFangs&quot;            &quot;bornIn&quot;             
 [7] &quot;visitedCities&quot;       &quot;numberOfChildren&quot;    &quot;numberChangedToVamp&quot;</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>                     <span class='co'># see first few rows of Vampires data frame</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 6 × 9
   idVampire gender ageOfVampire deadOrAlive hasFangs bornIn       
       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;        
-1         1 Male            121 Alive       No       Australia    
-2         2 Male             99 Alive       No       Antarctica   
-3         3 Female           56 Alive       Yes      North America
-4         4 Male             46 Alive       Yes      Antarctica   
-5         5 Female           40 Alive       No       South America
-6         6 Male             51 Alive       Yes      South America
+1         1 Female           54 Dead        Yes      Australia    
+2         2 Male             67 Dead        No       Antarctica   
+3         3 Female           58 Alive       Yes      Asia         
+4         4 Male            123 Alive       No       Antarctica   
+5         5 Male             55 Dead        Yes      Antarctica   
+6         6 Female           39 Alive       No       North America
 # … with 3 more variables: visitedCities &lt;dbl&gt;,
 #   numberOfChildren &lt;dbl&gt;, numberChangedToVamp &lt;dbl&gt;</code></pre>
 </div>
@@ -2320,15 +2324,15 @@ Click for Answer
 <p>Now that we know which variable we need, the exercise asks us to calculate the mean and standard deviation. We need the $ operator in order to go into the data frame and select exactly this variable. We will then wrap this in the two functions <code>mean()</code> and <code>sd()</code>, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>        <span class='co'># get mean of numberChangedToVamp</span>
 </code></pre>
 </div>
-<pre><code>[1] 8.4</code></pre>
+<pre><code>[1] 8.86</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>          <span class='co'># get SD of numberChangedToVamp</span>
 </code></pre>
 </div>
-<pre><code>[1] 4.490169</code></pre>
+<pre><code>[1] 5.05529</code></pre>
 </div>
 </details>
 <h1 id="exercise-5">Exercise 5</h1>
@@ -2352,7 +2356,7 @@ Click for Answer
 <p>If you looked at the required functions in the first part of this exercise, a bell hopefully went off in your mind saying that you can use the <code>gl()</code> function, which stands for “generate levels”. This function generates factor levels, and we need the arguments n (number of levels, so this needs to be 15, since we have 15 participants), and k (which is the number of replications, which needs to be 20, since we have 20 data collection points and need to generate each participant’s ID 20 times). So, we need the following code:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='co'># Create ID variables for 20 data collection times</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>      <span class='co'># Create ID variables for 20 data collection times</span>
 </code></pre>
 </div>
 </div>
@@ -2377,7 +2381,7 @@ Click for Answer
 <p><strong>BUT</strong>, this generates a numeric vector. Time points are not numeric, so we need a factor. We can do this a few different ways. For one, we can use the <code>as.factor()</code> function to transform the entire vector into factors, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Time</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Time</span><span class='op'>)</span>                 <span class='co'># change Time to a factor</span>
 </code></pre>
 </div>
 <pre><code>  [1] 1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1 
@@ -2400,8 +2404,8 @@ Levels: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
 <p>If we want to do everything in one step, we can just wrap one function within another, transforming the numeric vector 1:20 into a factor in the first step, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Time</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>, times <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span> <span class='co'># Repeat 1 through 20 as factors 15 times</span>
-<span class='va'>Time</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Time</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>, times <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>       <span class='co'># repeat 1 through 20 as factors 15 times</span>
+<span class='va'>Time</span>                                              <span class='co'># print Time</span>
 </code></pre>
 </div>
 <pre><code>  [1] 1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1 
@@ -2432,8 +2436,8 @@ Click for Answer
 <p>If you haven’t installed this package before, we need to first install the package before we can actually load it, using the <code>install.packages()</code> function. After that, we need to load in the package using the <code>library()</code> function, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"reshape2"</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/hadley/reshape'>reshape2</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"reshape2"</span><span class='op'>)</span>                <span class='co'># install package reshape2</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/hadley/reshape'>reshape2</a></span><span class='op'>)</span>                           <span class='co'># load in library reshape2</span>
 </code></pre>
 </div>
 </div>

@@ -1,101 +1,101 @@
 idVampire,gender,ageOfVampire,deadOrAlive,hasFangs,bornIn,visitedCities,numberOfChildren,numberChangedToVamp
-1,Male,121,Alive,No,Australia,79,5,11
-2,Male,99,Alive,No,Antarctica,9,4,4
-3,Female,56,Alive,Yes,North America,7,2,9
-4,Male,46,Alive,Yes,Antarctica,7,6,9
-5,Female,40,Alive,No,South America,11,1,8
-6,Male,51,Alive,Yes,South America,7,1,3
-7,Female,122,Alive,No,North America,1,7,3
-8,Female,71,Alive,No,Antarctica,7,4,19
-9,Male,74,Alive,Yes,Europa,35,3,11
-10,Male,104,Dead,No,Antarctica,6,3,8
-11,Female,97,Alive,Yes,Europa,12,5,3
-12,Male,74,Dead,Yes,Australia,3,4,8
-13,Female,50,Alive,Yes,Antarctica,8,4,3
-14,Female,75,Alive,Yes,Antarctica,12,1,4
-15,Female,84,Alive,No,Antarctica,37,3,7
-16,Female,96,Alive,No,Europa,38,4,8
-17,Female,42,Alive,No,Antarctica,13,3,4
-18,Female,81,Dead,Yes,Australia,172,5,10
-19,Female,119,Dead,Yes,South America,8,5,11
-20,Female,59,Dead,Yes,Antarctica,7,4,9
-21,Male,83,Alive,Yes,Australia,8,6,18
-22,Female,80,Alive,Yes,Australia,29,2,5
-23,Male,102,Dead,Yes,South America,13,2,15
-24,Male,122,Alive,No,Australia,34,2,14
-25,Female,55,Alive,No,Antarctica,9,4,9
-26,Female,24,Alive,No,Australia,8,4,5
-27,Male,36,Alive,Yes,Europa,5,6,4
-28,Male,98,Dead,No,North America,16,1,16
-29,Male,73,Dead,No,North America,49,4,7
-30,Male,94,Dead,No,Antarctica,10,3,6
-31,Male,139,Alive,Yes,Antarctica,9,1,10
-32,Male,26,Alive,Yes,Africa,9,4,7
-33,Female,78,Alive,Yes,Africa,12,5,5
-34,Female,40,Alive,Yes,Antarctica,78,0,2
-35,Male,146,Alive,No,North America,6,1,6
-36,Male,54,Dead,No,South America,96,2,5
-37,Male,85,Dead,Yes,Antarctica,12,0,7
-38,Male,85,Alive,No,Australia,65,1,7
-39,Female,99,Dead,Yes,Antarctica,12,4,12
-40,Male,68,Alive,No,Africa,13,1,6
-41,Male,76,Dead,No,South America,6,5,18
-42,Male,103,Alive,No,Australia,7,4,6
-43,Female,91,Alive,No,Africa,61,3,6
-44,Male,12,Alive,Yes,Australia,17,3,3
-45,Male,27,Alive,Yes,Australia,8,3,5
-46,Female,110,Alive,No,Europa,4,2,12
-47,Male,99,Alive,No,South America,36,3,13
-48,Female,85,Alive,Yes,Antarctica,26,2,11
-49,Female,81,Dead,Yes,Africa,7,5,11
-50,Male,86,Alive,Yes,South America,26,2,5
-51,Male,100,Dead,Yes,Asia,3,2,2
-52,Female,67,Alive,Yes,Australia,28,3,10
-53,Female,75,Alive,No,South America,18,5,8
-54,Male,107,Dead,Yes,Europa,45,2,10
-55,Male,101,Dead,Yes,Antarctica,20,2,6
-56,Female,89,Dead,Yes,Antarctica,41,3,5
-57,Male,105,Alive,No,North America,104,1,6
-58,Male,120,Alive,Yes,Australia,18,2,4
-59,Female,104,Alive,Yes,Australia,10,3,5
-60,Female,138,Alive,Yes,Antarctica,8,6,3
-61,Female,38,Alive,No,Europa,15,1,9
-62,Male,96,Dead,Yes,Antarctica,15,1,14
-63,Male,123,Alive,No,Antarctica,44,1,5
-64,Female,58,Alive,Yes,Europa,5,8,14
-65,Female,86,Alive,No,Australia,43,1,8
-66,Male,57,Dead,Yes,Australia,16,3,6
-67,Female,73,Alive,No,North America,4,3,8
-68,Male,115,Alive,Yes,Antarctica,3,9,11
-69,Female,124,Dead,No,Antarctica,53,3,7
-70,Female,138,Alive,Yes,North America,10,4,7
-71,Male,101,Alive,No,Europa,46,3,4
-72,Male,58,Dead,Yes,Australia,47,3,20
-73,Female,72,Alive,No,Australia,106,6,4
-74,Female,96,Alive,Yes,Africa,51,1,7
-75,Male,109,Alive,No,Australia,31,4,12
-76,Male,96,Dead,Yes,North America,48,1,12
-77,Female,83,Alive,No,Australia,3,2,5
-78,Male,19,Dead,No,South America,33,0,7
-79,Female,76,Alive,Yes,Australia,176,1,6
-80,Female,80,Dead,Yes,Antarctica,58,1,9
-81,Male,50,Dead,No,Antarctica,5,3,6
-82,Female,34,Alive,No,Antarctica,4,6,11
-83,Female,77,Dead,Yes,Europa,21,4,10
-84,Female,86,Dead,Yes,Antarctica,381,4,7
-85,Female,116,Dead,Yes,South America,31,7,5
-86,Male,101,Dead,No,Australia,11,3,18
-87,Male,50,Alive,Yes,Antarctica,2,2,27
-88,Female,113,Alive,No,Antarctica,25,5,5
-89,Female,41,Alive,No,Antarctica,5,2,9
-90,Female,24,Dead,Yes,Antarctica,46,0,12
-91,Male,80,Alive,No,Europa,8,4,6
-92,Male,77,Dead,Yes,Africa,13,2,6
-93,Female,95,Dead,Yes,Australia,3,3,7
-94,Female,115,Dead,No,South America,4,4,11
-95,Female,51,Alive,Yes,South America,20,5,5
-96,Female,108,Dead,No,Europa,27,7,19
-97,Male,150,Alive,No,Antarctica,16,4,12
-98,Female,4,Dead,Yes,Antarctica,16,3,10
-99,Female,78,Alive,No,Antarctica,27,3,7
-100,Female,77,Alive,Yes,Africa,24,0,5
+1,Female,54,Dead,Yes,Australia,25,3,14
+2,Male,67,Dead,No,Antarctica,23,1,4
+3,Female,58,Alive,Yes,Asia,25,1,10
+4,Male,123,Alive,No,Antarctica,15,2,19
+5,Male,55,Dead,Yes,Antarctica,39,5,6
+6,Female,39,Alive,No,North America,26,0,7
+7,Female,95,Alive,Yes,Antarctica,135,7,8
+8,Female,87,Alive,Yes,Australia,18,2,4
+9,Male,27,Dead,No,Australia,43,1,6
+10,Male,125,Alive,Yes,Antarctica,30,5,9
+11,Male,45,Alive,Yes,Antarctica,3,7,13
+12,Male,81,Dead,No,Antarctica,35,1,6
+13,Male,50,Alive,No,Antarctica,17,6,10
+14,Female,28,Dead,No,South America,12,1,8
+15,Female,65,Alive,Yes,Antarctica,103,3,9
+16,Female,36,Alive,Yes,North America,6,4,12
+17,Male,136,Alive,No,Antarctica,22,1,19
+18,Male,35,Alive,Yes,Antarctica,4,4,3
+19,Female,106,Alive,Yes,North America,29,5,16
+20,Male,68,Dead,No,Asia,23,0,6
+21,Male,81,Dead,No,Australia,9,4,5
+22,Female,77,Dead,No,Antarctica,17,2,10
+23,Female,137,Alive,Yes,North America,16,3,13
+24,Female,74,Alive,No,Antarctica,37,4,8
+25,Male,73,Alive,Yes,Antarctica,11,1,9
+26,Male,98,Dead,Yes,South America,31,4,11
+27,Male,94,Alive,No,Antarctica,3,6,6
+28,Male,74,Dead,No,Antarctica,19,2,8
+29,Female,11,Dead,Yes,South America,14,1,5
+30,Female,53,Dead,No,North America,42,9,7
+31,Male,46,Alive,Yes,South America,14,4,19
+32,Male,90,Dead,No,Australia,6,5,4
+33,Female,134,Dead,Yes,Europa,13,3,4
+34,Male,123,Dead,Yes,South America,20,3,7
+35,Female,67,Alive,No,Antarctica,4,7,3
+36,Female,81,Alive,Yes,Antarctica,2,3,4
+37,Female,103,Dead,Yes,Antarctica,16,3,11
+38,Male,58,Alive,No,South America,15,2,8
+39,Male,20,Dead,Yes,Asia,35,3,6
+40,Male,51,Dead,No,South America,22,4,17
+41,Female,71,Alive,No,North America,66,1,8
+42,Male,88,Dead,Yes,North America,20,1,8
+43,Female,66,Dead,Yes,Antarctica,19,3,6
+44,Female,79,Alive,No,South America,11,5,22
+45,Female,111,Dead,Yes,South America,43,1,6
+46,Male,85,Alive,No,Europa,24,6,4
+47,Female,97,Dead,Yes,North America,30,6,5
+48,Male,69,Alive,Yes,Australia,202,1,7
+49,Female,38,Alive,No,Africa,45,0,29
+50,Female,66,Alive,No,North America,48,5,7
+51,Male,50,Alive,Yes,Antarctica,14,4,5
+52,Male,67,Alive,Yes,Australia,7,3,5
+53,Female,61,Dead,No,North America,43,3,13
+54,Male,102,Dead,No,Australia,111,4,4
+55,Female,51,Alive,Yes,Australia,22,3,6
+56,Female,71,Alive,No,Antarctica,52,3,4
+57,Female,39,Alive,Yes,Australia,45,5,6
+58,Female,53,Alive,Yes,Australia,273,6,11
+59,Female,88,Alive,No,Antarctica,12,2,14
+60,Female,111,Alive,No,South America,21,4,5
+61,Male,44,Alive,No,Australia,17,1,15
+62,Male,31,Dead,Yes,Europa,16,0,18
+63,Male,51,Dead,Yes,North America,38,0,13
+64,Male,91,Dead,Yes,North America,37,3,8
+65,Female,102,Dead,Yes,Antarctica,41,9,4
+66,Female,54,Alive,No,Antarctica,7,4,15
+67,Male,112,Alive,No,South America,103,5,11
+68,Female,96,Dead,Yes,South America,12,1,3
+69,Female,90,Dead,Yes,Antarctica,29,2,6
+70,Male,111,Alive,No,North America,7,1,17
+71,Male,62,Dead,Yes,North America,17,3,8
+72,Male,67,Alive,Yes,Antarctica,55,4,4
+73,Female,106,Dead,No,North America,20,2,10
+74,Female,106,Alive,Yes,Australia,45,2,5
+75,Male,88,Alive,Yes,Australia,148,3,9
+76,Female,45,Alive,No,Asia,78,2,5
+77,Female,106,Dead,No,Antarctica,74,2,9
+78,Female,40,Dead,Yes,Australia,26,3,14
+79,Male,86,Alive,Yes,Europa,8,1,3
+80,Male,76,Dead,No,Antarctica,6,1,4
+81,Female,38,Alive,Yes,Antarctica,34,3,7
+82,Male,16,Alive,No,Antarctica,27,3,12
+83,Male,70,Alive,No,South America,40,6,11
+84,Female,36,Dead,Yes,North America,3,6,7
+85,Male,129,Alive,Yes,South America,15,4,23
+86,Female,105,Alive,No,South America,22,2,9
+87,Male,73,Dead,No,North America,7,4,4
+88,Male,87,Dead,No,South America,60,0,9
+89,Female,73,Dead,No,Australia,5,2,3
+90,Female,68,Alive,No,South America,27,3,8
+91,Male,57,Dead,Yes,Antarctica,39,5,11
+92,Male,33,Alive,Yes,Africa,9,4,17
+93,Female,97,Dead,Yes,Europa,19,5,10
+94,Female,67,Dead,Yes,Asia,4,4,3
+95,Female,80,Alive,Yes,Africa,11,0,5
+96,Female,49,Dead,No,South America,50,3,5
+97,Male,103,Dead,No,Australia,20,1,15
+98,Female,92,Dead,No,South America,47,1,7
+99,Male,56,Dead,No,Europa,6,2,4
+100,Male,114,Dead,No,South America,26,1,6

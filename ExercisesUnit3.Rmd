@@ -95,18 +95,22 @@ Let's say we now want to plot the random data we just generated. Go to the help 
 
 ```{r}
 
+# YOU DON'T NEED TO DO ANYTHING HERE
+# THIS CODE BIT GENERATES A SIMILAR PLOT
+# TO THE ONE YOURS SHOULD GENERATE
+
 Poisson = tibble(Poisson = rpois(n = 10000, lambda = 3))
 
-Poisson %>% 
-  ggplot(aes(x = Poisson, 
-             y = stat(count / sum(count)))) + 
-  geom_histogram(binwidth = 1, 
+Poisson %>%                                           # data 
+  ggplot(aes(x = Poisson,                             # aesthetics 
+             y = stat(count / sum(count)))) +         # get probability
+  geom_histogram(binwidth = 1,                        # define binwidth  
                  color = "black") + 
-  geom_vline(xintercept = 3, 
+  geom_vline(xintercept = 3,                          # add line at lamba value
              color = "red", 
              alpha = .5,
              linetype = "dashed") + 
-  labs(x = "Count/Number of successes",
+  labs(x = "Count/Number of successes",               # add plot labels
        y = "Probability",
        title = "10000 samples of Pois(lambda = 3)") + 
   theme_bw()
@@ -122,9 +126,9 @@ So, we want to plot our generated data, not as frequencies, but as probabilities
 
 ```{r}
 
-Poisson = rpois(n = 10000, lambda = 3) # generate the data again
+Poisson = rpois(n = 10000, lambda = 3)           # generate the data again
 
-hist(Poisson, probability = T)
+hist(Poisson, probability = T)                   # set probability to true
 hist(Poisson, freq = F)
 
 ```
@@ -163,8 +167,8 @@ Since I didn't specify which variable we are interested in, we would need to sea
 
 ```{r}
 
-colnames(Vampires)
-head(Vampires)
+colnames(Vampires)                 # get column names for Vampires data frame
+head(Vampires)                     # see first few rows of Vampires data frame
 
 ```
 
@@ -174,8 +178,8 @@ Now that we know which variable we need, the exercise asks us to calculate the m
 
 ```{r}
 
-mean(Vampires$numberChangedToVamp)
-sd(Vampires$numberChangedToVamp)
+mean(Vampires$numberChangedToVamp)        # get mean of numberChangedToVamp
+sd(Vampires$numberChangedToVamp)          # get SD of numberChangedToVamp
 
 ```
 
@@ -228,7 +232,7 @@ If you looked at the required functions in the first part of this exercise, a be
 
 ```{r}
 
-ID = gl(n = 15, k = 20) # Create ID variables for 20 data collection times
+ID = gl(n = 15, k = 20)      # Create ID variables for 20 data collection times
 
 ```
 
@@ -271,7 +275,7 @@ Time = rep(x = 1:20, times = 15)
 
 ```{r}
 
-as.factor(Time)
+as.factor(Time)                 # change Time to a factor
 
 ```
 
@@ -279,8 +283,8 @@ If we want to do everything in one step, we can just wrap one function within an
 
 ```{r}
 
-Time = rep(x = as.factor(1:20), times = 15) # Repeat 1 through 20 as factors 15 times
-Time
+Time = rep(x = as.factor(1:20), times = 15)       # repeat 1 through 20 as factors 15 times
+Time                                              # print Time
 
 ```
 
@@ -306,8 +310,8 @@ If you haven't installed this package before, we need to first install the packa
 
 ```{r, eval = FALSE}
 
-install.packages("reshape2")
-library(reshape2)
+install.packages("reshape2")                # install package reshape2
+library(reshape2)                           # load in library reshape2
 
 ```
 

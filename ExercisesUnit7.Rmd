@@ -20,15 +20,14 @@ Run the following code chunk
 # libraries
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(
-  tidyverse,        # data manipulation
-  palmerpenguins    # package containing data frame to plot
+  tidyverse,                                     # data manipulation
+  palmerpenguins                                 # package containing data frame to plot
 )
 
-# set ggplot2 theme
-theme_set(theme_bw(12))   
+theme_set(theme_bw(12))                          # set ggplot2 theme
 
-iris = iris
-Vampires = read_csv("./Data/Vampires.csv")
+iris = iris                                      # load in iris data frame
+Vampires = read_csv("./Data/Vampires.csv")       # load in Vampires data frame
 
 ```
 
@@ -48,10 +47,10 @@ When plotting with `ggplot2`, we first have to define which data frame contains 
 
 ```{r}
 
-iris %>% 
-  ggplot(aes(x = Sepal.Length, 
-             y = Sepal.Width)) + 
-  geom_point()
+iris %>%                                     # data 
+  ggplot(aes(x = Sepal.Length,               # set x value
+             y = Sepal.Width)) +             # set y value
+  geom_point()                               # apply geom_point() function
 
 ```
 
@@ -60,7 +59,7 @@ iris %>%
 
 ## Exercise 1.2 
 
-`ggplot2` is extremely flexible, and we can plot just about everything we can image (and then some). The data frame `iris` also contains the variable `Species` (which are the 3 species of iris, namely *setosa*, *versicolor* and *virginica*). Let's say we would like to focus of finding a method to classify the species. To do this, we could simply color-code the data points according to which species they belong to.
+`ggplot2` is extremely flexible, and we can plot just about everything we can imagine (and then some). The data frame `iris` also contains the variable `Species` (which are the 3 species of iris, namely *setosa*, *versicolor* and *virginica*). Let's say we would like to focus on finding a plotting method to classify the species. To do this, we could simply color-code the data points according to which species they belong to.
 
 Building off the code from the previous code chunk, color-code the variables according to which species (variable: `Species`) they belong to.
 
@@ -76,10 +75,10 @@ Building off the code we have already written, we can assign the colors using th
 
 ```{r}
 
-iris %>% 
-  ggplot(aes(x = Sepal.Length, 
-             y = Sepal.Width)) + 
-  geom_point(aes(color = Species))
+iris %>%                                        # data
+  ggplot(aes(x = Sepal.Length,                  # set x value
+             y = Sepal.Width)) +                # set y value
+  geom_point(aes(color = Species))              # aesthetics: separate colors for SPECIES
 
 ```
 
@@ -102,13 +101,13 @@ Using the `labs()` function is very intuitive, all we need to do is add the `lab
 
 ```{r}
 
-iris %>% 
-  ggplot(aes(x = Sepal.Length, 
-             y = Sepal.Width)) + 
-  geom_point(aes(color = Species)) + 
-  labs(x = "Sepal Length", 
-       y = "Sepal Width", 
-       title = "Iris Scatterplot")
+iris %>%                                      # data
+  ggplot(aes(x = Sepal.Length,                # set x value
+             y = Sepal.Width)) +              # set y value
+  geom_point(aes(color = Species)) +          # aesthetics: separate colors for SPECIES
+  labs(x = "Sepal Length",                    # label x axis
+       y = "Sepal Width",                     # label y axis
+       title = "Iris Scatterplot")            # title of the plot
 
 ```
 
@@ -120,7 +119,7 @@ iris %>%
 
 Using the `ggsave()` function, save this plot as "scatterplotIris" using a RELATIVE PATH to the folder `Figures`. Save the plot as a .png file. 
 
-**HINT** REMEMBER, we have to save our final plot as an object before saving it! To specify the relative path, you will need the `file = ` argument, i.e. ggplot(OBJECT, file = "./Figure/scatterplotIris.pdf")
+**HINT** REMEMBER, we have to save our final plot as an object before saving it! To specify the relative path, you will need the `file = ` argument, i.e. ggplot(OBJECT, file = "./Figure/scatterplotIris.png")
 
 <details>
   <summary>Click for Answer</summary>
@@ -132,12 +131,14 @@ To save a plot, we first need to save this as an object, which the directions sp
 
 ```{r}
 
-scatterplotIris = iris %>% 
-  ggplot(aes(x = Sepal.Length, 
-             y = Sepal.Width)) + 
-  geom_point(aes(color = Species))
+scatterplotIris =                           # define object
+  iris %>%                                  # data                         
+  ggplot(aes(x = Sepal.Length,              # set x value
+             y = Sepal.Width)) +            # set y value
+  geom_point(aes(color = Species))          # aesthetics: separate colors for SPECIES
 
-ggsave(scatterplotIris, file = "./Figures/boxplotPenguine.png")
+# save object to FIGURES folder and name object boxplotPenguine.png
+ggsave(scatterplotIris, file = "./Figures/boxplotPenguine.png")      
 
 ```
 
@@ -151,7 +152,7 @@ Before beginning with the following exercises, run the following code:
 
 ```{r}
 
-penguins = penguins %>% tibble()
+penguins = penguins %>% tibble()           # load in data as a atibble
 
 ```
 
@@ -164,7 +165,8 @@ If we were to plot this in base R, the plot would look like the following:
 
 ```{r}
 
-# run this code to see what the plot looks like in base R
+# RUN this code to see what the plot looks like in base R
+# you do not need to do anything with the code other than run it
 boxplot(penguins$body_mass_g ~ penguins$island)
 
 ```
@@ -185,10 +187,10 @@ As always, we specify our data frame, which in this case is `penguins`. After th
 
 ```{r}
 
-penguins %>% 
-  ggplot(aes(x = island, 
-             y = body_mass_g)) + 
-  geom_boxplot()
+penguins %>%                            # data
+  ggplot(aes(x = island,                # x value
+             y = body_mass_g)) +        # y value
+  geom_boxplot()                        # apply the BOXPLOT geom
 
 ```
 
@@ -213,11 +215,11 @@ To add the individual data points, we can simply add the `geom_point()` function
 
 ```{r}
 
-penguins %>% 
-  ggplot(aes(x = island, 
-             y = body_mass_g)) + 
-  geom_boxplot() + 
-  geom_jitter()
+penguins %>%                               # data
+  ggplot(aes(x = island,                   # set x value
+             y = body_mass_g)) +           # set y value
+  geom_boxplot() +                         # apply BOXPLOT geom
+  geom_jitter()                            # apply JITTER geom (scattered data points)
 
 ```
 
@@ -241,11 +243,11 @@ Since we want to define some type of aesthetic, we need the `aes()` function. We
 
 ```{r}
 
-penguins %>% 
-  ggplot(aes(x = island, 
-             y = body_mass_g)) + 
-  geom_boxplot(aes(fill = island)) + 
-  geom_jitter()
+penguins %>%                              # data
+  ggplot(aes(x = island,                  # set x value
+             y = body_mass_g)) +          # set y value
+  geom_boxplot(aes(fill = island)) +      # apply BOXPLOT geom; sep. colors for ISLAND
+  geom_jitter()                           # apply JITTER geom (scattered data points)
 
 ```
 
@@ -268,12 +270,14 @@ To save a plot, we first need to save this as an object, which the directions sp
 
 ```{r}
 
-boxplotPenguine= penguins %>% 
-  ggplot(aes(x = island, 
-             y = body_mass_g)) + 
-  geom_boxplot(aes(fill = island)) + 
-  geom_jitter()
+boxplotPenguine =                           # define object
+  penguins %>%                              # data
+  ggplot(aes(x = island,                    # set x value
+             y = body_mass_g)) +            # set y value
+  geom_boxplot(aes(fill = island)) +        # apply BOXPLOT geom; sep. colors for ISLAND
+  geom_jitter()                             # apply JITTER geom (scattered data points)
 
+# save boxplotPenguine object in FIGURES folder and named boxplotPenguine.pdf
 ggsave(boxplotPenguine, file = "./Figures/boxplotPenguine.pdf")
 
 ```
@@ -307,9 +311,9 @@ When visualizing a density plot, we as always need to define which data frame ou
 
 ```{r}
 
-Vampires %>% 
-  ggplot(aes(x = ageOfVampire)) + 
-  geom_density()
+Vampires %>%                            # data
+  ggplot(aes(x = ageOfVampire)) +       # set x value
+  geom_density()                        # apply DENSITY geom
 
 ```
 
@@ -331,9 +335,10 @@ Now, to plot the density plots according to gender, all we need to do is apply t
 
 ```{r}
 
-Vampires %>% 
-  ggplot(aes(x = ageOfVampire, fill = gender)) + 
-  geom_density()
+Vampires %>%                              # data
+  ggplot(aes(x = ageOfVampire,            # set x value                 
+             fill = gender)) +            # fill density with colors by GENDER
+  geom_density()                          # apply DENSITY geom
 
 ```
 
@@ -356,9 +361,10 @@ To make the density plots more transparent, we can apply the `alpha` argument an
 
 ```{r}
 
-Vampires %>% 
-  ggplot(aes(x = ageOfVampire, fill = gender)) + 
-  geom_density(alpha = .4)
+Vampires %>%                           # data
+  ggplot(aes(x = ageOfVampire,         # set x value
+             fill = gender)) +         # fill density with colors by GENDER
+  geom_density(alpha = .4)             # apply DENSITY geom; transparency 40%
 
 ```
 
@@ -367,6 +373,17 @@ Vampires %>%
 
 
 
+# Exercise 4: The Ugly Plot
+
+[Here a list of common geom_ functions](https://ggplot2.tidyverse.org/reference/): Use this list to test out different geoms on the Vampires, Iris or Penguine data frames. 
+
+WHO CAN MAKE THE UGLIEST PLOT?! 
+
+Take 15-20 minutes and (either alone or in groups) attempt to make the absolut worst, ugliest, horribly looking and utterly vomit-worthy plot you can manage by stacking geoms on top of each other. 
+
+Save this plot, USING A RELATIVE PATH, in the Figures folder as a .png file under the name uglyPlot_*your initials*.png
+
+Send this to me via E-Mail (mason.wirtz@stud.sbg.ac.at) once you are finished. 
 
 
 
@@ -375,21 +392,24 @@ Vampires %>%
 
 # Advanced: Visualizing GAMs using ggplot2
 
+When working with any type of data, visual analysis should always be your first step. Before deciding on the distribution of a model, it is worth considering whether the nonlinearity of a predictor-outcome relationship is pronounced enough to justify using methods *other* than linear methods. 
+
 If you're ever interested in using generalized additive models (GAMs), it is also entirely possible to visually diagnose whether the data you are dealing with are nonlinear enough to advocate/justify using GAMs. 
 
 Let's say we are interested in visualizing the nonlinear effects of age of the vampires on the number of people a vampire has changed into vampires, with seperate smooths fitted to gender. We can diagnose whether a GAM is perhaps justified by plotting this using the geom_smooth function, specifying the method as "gam" and the formula as y as a function of the smooth term x. This shows us a relatively linear model, so we might think twice before using a complexer model such as a GAM or GAMM. 
 
 ```{r}
 
-Vampires %>% 
-  ggplot(aes(x = numberChangedToVamp, 
-             y = ageOfVampire)) + 
-  geom_point() + 
-  geom_smooth(aes(color = gender, fill = gender), 
-              method = "gam", 
-              formula = y ~ s(x)) + 
-  scale_color_viridis_d("gender") + 
-  scale_fill_viridis_d("gender")
+Vampires %>%                               # data
+  ggplot(aes(x = numberChangedToVamp,      # set x value
+             y = ageOfVampire)) +          # set y value
+  geom_point() +                           # apply POINT geom (data points)
+  geom_smooth(aes(color = gender,          # apply SMOOTH geom; sep. color for GENDER
+                  fill = gender),          # fill color by GENDER
+              method = "gam",              # smoothing method GAM 
+              formula = y ~ s(x)) +        # formula for smoothing function; nonlinear x
+  scale_color_viridis_d("gender") +        # define color scheme
+  scale_fill_viridis_d("gender")           # define color scheme
 ```
 
 Let's take a look at what would justify using a GAM: 
@@ -398,22 +418,23 @@ Let's take a look at what would justify using a GAM:
 
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(
-  mgcv,      # GAMs
-  gratia     # plot GAM
+  mgcv,                               # GAMs
+  gratia                              # plot GAM
 )
 
-set.seed(4444)
-dat = gamSim(4, n = 400)
+set.seed(4444)                        # set seed for reproducability  
+dat = gamSim(4, n = 400)              # generate nonlinear data with factors
 
-dat %>% 
-  ggplot(aes(x = x2, 
-             y = y)) + 
-  geom_point() + 
-  geom_smooth(aes(color = fac, fill = fac), 
-              method = "gam", 
-              formula = y ~ s(x)) + 
-  scale_color_viridis_d("fac") + 
-  scale_fill_viridis_d("fac")
+dat %>%                               # data
+  ggplot(aes(x = x2,                  # set x value
+             y = y)) +                # set y value
+  geom_point() +                      # apply POINT geom (data points)
+  geom_smooth(aes(color = fac,        # apply SMOOTH geom; color by FAC
+                  fill = fac),        # fill by FAC
+              method = "gam",         # smoothing method GAM 
+              formula = y ~ s(x)) +   # formula for smoothing function; nonlinear x
+  scale_color_viridis_d("fac") +      # define color scheme
+  scale_fill_viridis_d("fac")         # define color scheme
 
 ```
 
@@ -421,13 +442,13 @@ We see very clear nonlinear trends. Let's compare this to output after we have d
 
 ```{r}
 
-model = bam(
-  y ~
-    s(x2, by = fac),
-  data = dat
+model =                       # define object
+  bam(y ~ s(x2, by = fac),    # y as a nonlinear function of x2; sep. smooths for FAC
+  data = dat                  # data argument
 )
 
-draw(model) & theme_bw()
+draw(model) &                 # plot effects, quick and dirty
+  theme_bw()                  # change scheme
 
 ```
 

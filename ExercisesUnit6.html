@@ -2209,13 +2209,14 @@ Click for Answer
 <p>By inserting a code chunk, we are effectively structuring our code in a readable manner and in a way that makes following what our process of analysis is easier. When you look back at your code after a time away from it, it is also much easier to understand what you yourself were thinking when coding. To read in the data frame we are interested in, we do this in our code chunks exactly the same way as we did when working with regular .R documents.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'>=</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"./Data/Vampires.csv"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'>=</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"./Data/Vampires.csv"</span><span class='op'>)</span>         <span class='co'># read in data with a relative path</span>
 </code></pre>
 </div>
 </div>
 </details>
 <h1 id="exercise-2">Exercise 2</h1>
 <p>Create a new code chunk using the <code>Insert</code> button in RStudio. In your new code chunk, complete the following exercise:</p>
+<p>Using the help bar (or console), look up the arguments of the <code>ifelse()</code> function. What arguments does it take?</p>
 <p>Use the <code>ifelse()</code> function to create a new categorical variable called <code>VampOld</code>: All vampires older than 100 should be categorized as <em>Old</em>, all vampires younger than 100 should be categorized as <em>Young</em>.</p>
 <p><strong>HINT</strong> You will need the <code>mutate()</code> function and the <code>ifelse()</code> function.</p>
 <details>
@@ -2227,8 +2228,12 @@ Click for Answer
 <p>Once we have defined the new variable, we need to define what should be included in the new variable. Since we want to categorize the age variable (which we really wouldn’t ever want to do in real life, but for practice, it’s an easy example), we can use the <code>ifelse()</code> statement, which first takes an argument to evaluate. The argument to evaluate we need to supply the function with is “if the vampire is older than 100…”, which we can do using the variable <code>ageOfVampire</code> and the <code>&gt;</code> operator. Once we have supplied the ‘if’ argument, we need the ‘then do’ argument, i.e. what needs to happen when this argument is true? In this case, all vampires older than 100 should be categorized as ‘old’, so we supply the function with ‘old’. The final argument in the function takes the ‘else’ part, i.e. what happens when the first argument is false? Since we just want to categorize the variable into old and young, if the vampire is not old, then they must be young, so we supply the final argument with the character value ‘young’.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'>=</span> <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>VampOld <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span> <span class='op'>&gt;</span> <span class='fl'>100</span>, <span class='st'>"Old"</span>, <span class='st'>"Young"</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'>=</span>                                  <span class='co'># define object              </span>
+  <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                              <span class='co'># data</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>VampOld <span class='op'>=</span>                          <span class='co'># define NEW VARIABLE</span>
+           <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span> <span class='op'>&gt;</span> <span class='fl'>100</span>,       <span class='co'># TEST (the "if" argument)</span>
+                  <span class='st'>"Old"</span>,                    <span class='co'># if the test is TRUE, change to OLD</span>
+                  <span class='st'>"Young"</span><span class='op'>)</span><span class='op'>)</span>                 <span class='co'># if the test is FALSE, change to YOUNG</span>
 </code></pre>
 </div>
 </div>
@@ -2241,7 +2246,7 @@ Click for Answer
 </code></pre>
 </div>
 </div>
-<p>We are going to run a simple linear regression using the base-R <code>lm()</code> function. For those not familiar with regression modeling, it is the most basic form of predictive analysis. The overall idea of regression analysis is to examine the predictive power of a variable, i.e. how well of a job does a particular independent variable (predictor) do in predicting the outcome of a dependent variable.</p>
+<p>We are going to run a simple linear regression using the base-R <code>lm()</code> function. For those not familiar with regression modeling, it is the most basic form of predictive analysis. The overall idea of regression analysis is to examine the predictive power of a variable, i.e. how well of a job does a particular independent variable (predictor) do in predicting the outcome of a dependent variable?</p>
 <p>If you’ve never conducted a regression analysis before, I’m going to walk you through this process here. Alright, let’s get started.</p>
 <h2 id="exercise-3.1">Exercise 3.1</h2>
 <p>Create an R code chunk and name it <code>modAge</code></p>
@@ -2254,9 +2259,9 @@ Click for Answer
 <p>{r modAge}</p>
 </details>
 <h2 id="exercise-3.2">Exercise 3.2</h2>
-<p>Above, I explained the general goals of a regression analysis. The goal is to determine how well a predictor variable explains the outcome of a dependent variable. In this case, we are interested in whether the age of the vampire (variable: <code>ageOfVampire</code>) has explanatory value in predicting how many people were changed into vampires (variable: <code>numberChangedToVamp</code>).</p>
+<p>Above, I explained the general goals of a regression analysis. The goal is to determine how well a predictor variable explains the outcome of a dependent variable. In this case, we are interested in whether the age of the vampire (variable: <code>ageOfVampire</code>) has explanatory value in predicting how many people a vampire changes into vampires (variable: <code>numberChangedToVamp</code>).</p>
 <p>The <code>lm()</code> (which stands for linear model) takes the arguments FORMULA and DATA. FORMULA refers to the formula y ~ x, i.e. the dependent variable <code>y</code> (<code>numberChangedToVamp</code>) as a function of the independent variable <code>x</code> (<code>ageOfVampire</code>). DATA refers to the data set in which your variables are saved.</p>
-<p>For this exercise, use the same code chunk you made in the previous exercise. Using the <code>lm()</code> function, replace the y and x with the respective variables from above, fill in the data argument in the code chunk below, and save this as an object with the name <code>modAge</code>.</p>
+<p>Using the <code>lm()</code> function, replace the y and x with the respective variables from above, fill in the data argument in the code chunk below, and save this as an object with the name <code>modAge</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>...</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, data <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
@@ -2271,7 +2276,9 @@ Click for Answer
 <p>With this model, we are assessing the predictive power of the age of the vampires on how many people the vampires in this data set change to vampires.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modAge</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span> <span class='op'>~</span> <span class='va'>ageOfVampire</span>, data <span class='op'>=</span> <span class='va'>Vampires</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modAge</span> <span class='op'>=</span>                                     <span class='co'># define object</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span> <span class='op'>~</span> <span class='va'>ageOfVampire</span>,     <span class='co'># number changed to vamp as a function of vampire age</span>
+     data <span class='op'>=</span> <span class='va'>Vampires</span><span class='op'>)</span>                        <span class='co'># supply the data frame in which the variables are saved</span>
 </code></pre>
 </div>
 </div>
@@ -2287,7 +2294,7 @@ Click for Answer
 <p>We can get the results of our linear regression model by running the following code chunk.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modAge</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modAge</span><span class='op'>)</span>          <span class='co'># call summary of the model</span>
 </code></pre>
 </div>
 <pre><code>
@@ -2295,19 +2302,19 @@ Call:
 lm(formula = numberChangedToVamp ~ ageOfVampire, data = Vampires)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--6.544 -3.231 -1.353  2.316 18.845 
+    Min      1Q  Median      3Q     Max 
+-5.8882 -3.8348 -0.8844  2.1492 20.1860 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  7.767109   1.269648   6.118 1.95e-08 ***
-ageOfVampire 0.007766   0.014566   0.533    0.595    
+(Intercept)  8.765389   1.404782   6.240 1.12e-08 ***
+ageOfVampire 0.001279   0.017710   0.072    0.943    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 4.506 on 98 degrees of freedom
-Multiple R-squared:  0.002893,  Adjusted R-squared:  -0.007282 
-F-statistic: 0.2843 on 1 and 98 DF,  p-value: 0.5951</code></pre>
+Residual standard error: 5.081 on 98 degrees of freedom
+Multiple R-squared:  5.325e-05, Adjusted R-squared:  -0.01015 
+F-statistic: 0.005219 on 1 and 98 DF,  p-value: 0.9426</code></pre>
 </div>
 </details>
 <h2 id="exercise-3.4">Exercise 3.4</h2>
@@ -2326,8 +2333,11 @@ Click for Answer
 <p>This one is a bit tricky. To start off, we know we need the save the data set as <code>vampDat</code>, which we can do relatively easily using the <code>=</code> operator. After that, we need to define the data frame that we want to ‘reach into’, which in this case is the <code>Vampires</code> data frame. We then use the pipe %&gt;% to signal that we want to string functions together. After this, we need the <code>mutate()</code> function. The <code>mutate()</code> function takes the name of the new variable as its first argument. We want to overwrite the <code>ageOfVampire</code> variable in this new data frame, so we just add this name. Then we add the <code>=</code> operator, after which we apply the <code>scale()</code> function given above.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>vampDat</span> <span class='op'>=</span> <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ageOfVampire <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span>, scale <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>vampDat</span> <span class='op'>=</span>                            <span class='co'># define object</span>
+  <span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                       <span class='co'># data</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ageOfVampire <span class='op'>=</span>              <span class='co'># define NEW VARIABLE (this overrides current age variable)</span>
+           <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span>,       <span class='co'># apply the scale() function</span>
+                 scale <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>     <span class='co'># set scale argument to false, which centers the variable</span>
 </code></pre>
 </div>
 </div>
@@ -2343,8 +2353,11 @@ Click for Answer
 <p>Let’s first run the linear model.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modAge_c</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span> <span class='op'>~</span> <span class='va'>ageOfVampire</span>, data <span class='op'>=</span> <span class='va'>vampDat</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modAge_c</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modAge_c</span> <span class='op'>=</span>                                  <span class='co'># define object</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span> <span class='op'>~</span> <span class='va'>ageOfVampire</span>,    <span class='co'># number changed to vamp as a function of vampire age</span>
+     data <span class='op'>=</span> <span class='va'>vampDat</span><span class='op'>)</span>                        <span class='co'># supply data frame in which the variables are contained</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modAge_c</span><span class='op'>)</span>                           <span class='co'># call model summary</span>
 </code></pre>
 </div>
 <pre><code>
@@ -2352,33 +2365,33 @@ Call:
 lm(formula = numberChangedToVamp ~ ageOfVampire, data = vampDat)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--6.544 -3.231 -1.353  2.316 18.845 
+    Min      1Q  Median      3Q     Max 
+-5.8882 -3.8348 -0.8844  2.1492 20.1860 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  8.400000   0.450649  18.640   &lt;2e-16 ***
-ageOfVampire 0.007766   0.014566   0.533    0.595    
+(Intercept)  8.860000   0.508088  17.438   &lt;2e-16 ***
+ageOfVampire 0.001279   0.017710   0.072    0.943    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 4.506 on 98 degrees of freedom
-Multiple R-squared:  0.002893,  Adjusted R-squared:  -0.007282 
-F-statistic: 0.2843 on 1 and 98 DF,  p-value: 0.5951</code></pre>
+Residual standard error: 5.081 on 98 degrees of freedom
+Multiple R-squared:  5.325e-05, Adjusted R-squared:  -0.01015 
+F-statistic: 0.005219 on 1 and 98 DF,  p-value: 0.9426</code></pre>
 </div>
 <p>The INTERCEPT is the predicted <strong>mean of people changed to vampires when we consider the average age of the vampires in the data set</strong>. In other words, vampires in an average age (of our sample)—which is 81.49—are predicted to have changed 8.4 people into vampires. We can check this in a broad way by running the following code as well, which filters the data frame to vampires around the approximate mean age of the sample, and then checking the mean amount of people they have changed to vampires. We should get a value relatively close to the intercept of the new model.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span> <span class='op'>&gt;</span> <span class='fl'>80</span> <span class='op'>|</span> <span class='va'>ageOfVampire</span> <span class='op'>&lt;</span> <span class='fl'>82</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   <span class='co'># select vamps between ages of 80 and 82</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>,         <span class='co'># receive mean of vamps between ages of 80 and 82</span>
-            sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span><span class='op'>)</span>             <span class='co'># receive standard deviation</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                             <span class='co'># data</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ageOfVampire</span> <span class='op'>&gt;</span> <span class='fl'>80</span> <span class='op'>|</span> <span class='va'>ageOfVampire</span> <span class='op'>&lt;</span> <span class='fl'>82</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>      <span class='co'># select vamps between ages of 80 and 82</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>,            <span class='co'># receive mean of vamps between ages of 80 and 82</span>
+            sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span><span class='op'>)</span>                <span class='co'># receive standard deviation</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1   8.4  4.49</code></pre>
+1  8.86  5.06</code></pre>
 </div>
 <p>The SLOPE now tells us that for every increase from 0 (which is NOW the mean of the group) by 1 unit (i.e. by 1 year in this case), the number of vampires changed increases (from the intercept) by this amount (i.e. .008).</p>
 </details>

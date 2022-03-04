@@ -34,8 +34,10 @@ Since our goal here is to simply subset the data frame and select on certain col
 
 ```{r}
 
-Vamps = Vampires %>% 
-  select(idVampire, gender, ageOfVampire, numberOfChildren)
+Vamps =                                       # define object
+  Vampires %>%                                # data
+  select(idVampire, gender,                   # select variables (i.e. subset data)
+         ageOfVampire, numberOfChildren)
 
 ```
 
@@ -43,8 +45,9 @@ Since the first three columns we want to subset are in a row (i.e. the first thr
 
 ```{r}
 
-Vamps = Vampires %>% 
-  select(1:3, numberOfChildren)
+Vamps =                                 # define object
+  Vampires %>%                          # data
+  select(1:3, numberOfChildren)         # select variables (i.e. subset data)
 
 ```
 
@@ -63,9 +66,9 @@ As always, our first step is to reach into the data frame we are interested in, 
 
 ```{r}
 
-Vampires %>% 
-  summarize(mean = mean(visitedCities), 
-            sd = sd(visitedCities))
+Vampires %>%                                       # dataa
+  summarize(mean = mean(visitedCities),            # calculate mean
+            sd = sd(visitedCities))                # calculate SD
 
 ```
 
@@ -87,9 +90,12 @@ Alright, so our first step, as always, is to specify which data frame we are int
 ```{r}
 
 Vampires %>% 
-# Group the data frame by the gender variable, which is binary, i.e. only male or female. 
+  
+  # Group the data frame by the gender variable, 
+  # which is binary, i.e. only male or female.
   group_by(gender) %>% 
-# Summarize the grouped data 
+  
+  # Summarize the grouped data 
   summarize(mean = mean(ageOfVampire))
 
 ```
@@ -130,11 +136,17 @@ We have an interesting outcome, vampires without fangs have changed more people 
 ```{r}
 
 Vampires %>% 
-# Filter the data frame so that it ONLY includes vampires that are ALIVE
+  
+  # Filter the data frame so that it 
+  # ONLY includes vampires that are ALIVE
   filter(deadOrAlive == "Alive") %>% 
-# Group the data frame by the hasFangs variable, which is binary, i.e. only yes or no. 
+
+  # Group the data frame by the hasFangs variable, 
+  # which is binary, i.e. only yes or no. 
+  
   group_by(hasFangs) %>% 
-# Summarize the grouped data 
+  
+  # Summarize the grouped data 
   summarize(mean = mean(numberChangedToVamp))
 
 ```
@@ -153,19 +165,29 @@ In case you didn't get to that exercise, run the following code to catch up:
 
 ```{r}
 
-ID = gl(n = 15, k = 20) # Create ID variables for 20 data collection times
-Time = rep(x = as.factor(1:20), times = 15) # Repeat 1 through 20 as factors 15 times
+ID = gl(n = 15, k = 20)               # Create ID variables for 20 data collection times
+Time = rep(x = as.factor(1:20),       # Repeat 1 through 20 as factors 15 times
+           times = 15) 
 
 ```
 
-We will continue building a data frame---I have generated a new variable for you, namely `weeklyExposure`, which should be understood as the total number of hours per week participants spend engaging with native speakers. Run the following code to generate this variable. If you have not already installed the `reshape2` package, you can do so by using the function `install.packages("reshape2")`. 
+We will continue building a data frame---I have generated a new variable for you, namely `weeklyExposure`, which should be understood as the total number of hours per week participants spend engaging with native speakers. Run the following code to generate this variable.
 
 ```{r}
 
-# install.packages("reshape2") # delete the # and run if you have not yet installed the reshape2 package
-library(reshape2)
-weeklyExposure = replicate(20, rexp(n = 15, rate = .05)) # create expo. increasing values
-weeklyExposure = weeklyExposure %>% 
+# RUN THE FOLLOWING CODE CHUNK
+# YOU DON'T NEED TO DO ANYTHING 
+# OTHER THAN RUN THE CHUNK
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  reshape2                                        # load reshape2 library; reshape data
+)
+
+weeklyExposure = replicate(20,                    # create expo. increasing values
+                           rexp(n = 15, 
+                                rate = .05)) 
+weeklyExposure = weeklyExposure %>%               # bound at 0 and 80
   melt() %>% 
   mutate(weeklyExposure = ifelse(weeklyExposure %in% "value" > 80, 80, weeklyExposure),
          weeklyExposure = ifelse(weeklyExposure %in% "value" < 0, 0, weeklyExposure),
@@ -185,7 +207,8 @@ Now, let's combine these three variables into a single data frame. Use the funct
 
 ```{r}
 
-df = tibble(ID, Time, weeklyExposure)
+df =                                    # data
+  tibble(ID, Time, weeklyExposure)      # create tibble of variables
 
 ```
 
@@ -208,8 +231,10 @@ To create a new variable, we need the `mutate()` function. We can then specify h
 
 ```{r}
 
-df = df %>% 
-  mutate(logWeeklyExposure = log(weeklyExposure))
+df =                                       # define object
+  df %>%                                   # data
+  mutate(logWeeklyExposure =               # create NEW variable 
+           log(weeklyExposure))            # define TERMS for new variable
 
 # Check df to make sure we got this new variable 
 df
@@ -228,14 +253,16 @@ Let me generate some data for you that replicates this situation:
 
 ```{r}
 
-CTest_df = 
-  tibble(Version = gl(n = 3, k = 20),
-       CTest = c(round(abs(rnorm(n = 20, mean = 17, sd = 4))), 
-                 round(abs(rnorm(n = 20, mean = 19, sd = 4))), 
-                 round(abs(rnorm(n = 20, mean = 20, sd = 4))))
+# RUN THE FOLLOWING CODE CHUNK
+
+CTest_df =                                                          # define object
+  tibble(Version = gl(n = 3, k = 20),                               # generate data
+         CTest = c(round(abs(rnorm(n = 20, mean = 17, sd = 4))),    # generate CTest 1
+                 round(abs(rnorm(n = 20, mean = 19, sd = 4))),      # generate CTest 2
+                 round(abs(rnorm(n = 20, mean = 20, sd = 4))))      # generate CTest 3
 ) %>% 
-  mutate(CTest = ifelse(CTest > 30, 30, CTest), # just in case there are any wild deviations
-         CTest = ifelse(CTest < 0, 0, CTest)) # just in case there are any wild deviations
+  mutate(CTest = ifelse(CTest > 30, 30, CTest),                     # delete wild devs
+         CTest = ifelse(CTest < 0, 0, CTest)) 
 
 # Let's have a look
 CTest_df
@@ -262,23 +289,40 @@ See the commented code below for the solution
 ```{r}
 
 CTest_df %>% 
-# First we need to group by version, since we need the mean of each VERSION of the CTest
+  
+  # First we need to group by version, 
+  # since we need the mean of each 
+  # VERSION of the CTest
   group_by(Version) %>% 
-# Now we create a NEW variable called CTestMean, which gives us the mean of each version
+  
+  # Now we create a NEW variable called 
+  # CTestMean, which gives us the mean of 
+  # each version
   mutate(CTestMean = mean(CTest)) %>% 
-# We haven't seen this function yet, but what it does is the exact opposite of the group_by() function, 
-# but instead of grouping the different levels of a factor, it ungroups them to give us back
-# the actual data frame, just now with the new variable (i.e. CTestMean) we just created
+  
+  # We haven't seen this function yet, 
+  # but what it does is the exact opposite 
+  # of the group_by() function, 
+  # but instead of grouping the different 
+  # levels of a factor, it ungroups them 
+  # to give us back the actual data frame, 
+  # just now with the new variable 
+  # (i.e. CTestMean) we just created
   ungroup() %>% 
-# Now we need to create a few different variables: 
-  # We need the OVERALL mean, i.e. the mean of ALL the C Test scores; 
-  # We need the difference between the OVERALL mean score and the mean scores of each version of the C test
-  # We then change the original CTest variable by adding the difference (positive or negative)
-    # to each individual CTest score
+  
+  # Now we need to create a few different variables: 
+  # We need the OVERALL mean, i.e. the mean of ALL the 
+  # C Test scores; We need the difference between the 
+  # OVERALL mean score and the mean scores of each 
+  # version of the C test. We then change the original 
+  # CTest variable by adding the difference (positive or 
+  # negative) to each individual CTest score
   mutate(CTestMean_overall = mean(CTestMean), 
          CTestMean_difference = CTestMean_overall - CTestMean, 
          CTest = CTest + CTestMean_difference) %>% 
-# Now we just get rid of the extra noise variables that we needed to calculate the adjusted C Test scores
+  
+  # Now we just get rid of the extra noise variables 
+  # that we needed to calculate the adjusted C Test scores
   select(-c(CTestMean, CTestMean_overall, CTestMean_difference))
 
 ```
