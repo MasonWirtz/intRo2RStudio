@@ -2143,7 +2143,7 @@ Data
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="https://osf.io/ub2g7/download">Vampires</a>
+<a href="https://osf.io/2xpkd/download">Vampires</a>
 <a href="https://osf.io/95te4/download">mtcars</a>
 <a href="https://osf.io/e2qc7/download">swiss</a>
 </div>
@@ -2301,23 +2301,26 @@ Click for Answer
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>                 <span class='co'># get column names for Vampires data frame</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;idVampire&quot;           &quot;gender&quot;              &quot;ageOfVampire&quot;       
-[4] &quot;deadOrAlive&quot;         &quot;hasFangs&quot;            &quot;bornIn&quot;             
-[7] &quot;visitedCities&quot;       &quot;numberOfChildren&quot;    &quot;numberChangedToVamp&quot;</code></pre>
+<pre><code> [1] &quot;idVampire&quot;           &quot;gender&quot;              &quot;ageOfVampire&quot;       
+ [4] &quot;deadOrAlive&quot;         &quot;hasFangs&quot;            &quot;bornIn&quot;             
+ [7] &quot;vampType&quot;            &quot;wellbeing&quot;           &quot;maritalStatus&quot;      
+[10] &quot;employment&quot;          &quot;income&quot;              &quot;visitedCities&quot;      
+[13] &quot;numberOfChildren&quot;    &quot;numberChangedToVamp&quot;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>                     <span class='co'># see first few rows of Vampires data frame</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 6 × 9
-  idVampire gender ageOfVampire deadOrAlive hasFangs bornIn       
-      &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;        
-1         1 Female           54 Dead        Yes      Australia    
-2         2 Male             67 Dead        No       Antarctica   
-3         3 Female           58 Alive       Yes      Asia         
-4         4 Male            123 Alive       No       Antarctica   
-5         5 Male             55 Dead        Yes      Antarctica   
-6         6 Female           39 Alive       No       North America
-# … with 3 more variables: visitedCities &lt;dbl&gt;,
+<pre><code># A tibble: 6 × 14
+  idVampire gender ageOfVampire deadOrAlive hasFangs bornIn   vampType
+      &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   
+1         1 Male             88 Dead        No       Antarct… hybrid  
+2         2 Male             46 Alive       Yes      Europa   hybrid  
+3         3 Male            107 Dead        Yes      Antarct… psychic 
+4         4 Female           75 Alive       No       Africa   hybrid  
+5         5 Male            102 Dead        No       North A… psychic 
+6         6 Male             83 Dead        Yes      Austral… sanguin…
+# … with 7 more variables: wellbeing &lt;dbl&gt;, maritalStatus &lt;chr&gt;,
+#   employment &lt;chr&gt;, income &lt;dbl&gt;, visitedCities &lt;dbl&gt;,
 #   numberOfChildren &lt;dbl&gt;, numberChangedToVamp &lt;dbl&gt;</code></pre>
 </div>
 <p>After exploring the data frame, we should find that the variable <code>numberChangedToVamp</code> is the one we are looking for.</p>
@@ -2327,12 +2330,12 @@ Click for Answer
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>        <span class='co'># get mean of numberChangedToVamp</span>
 </code></pre>
 </div>
-<pre><code>[1] 8.86</code></pre>
+<pre><code>[1] 8.16</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>          <span class='co'># get SD of numberChangedToVamp</span>
 </code></pre>
 </div>
-<pre><code>[1] 5.05529</code></pre>
+<pre><code>[1] 4.246734</code></pre>
 </div>
 </details>
 <h1 id="exercise-5">Exercise 5</h1>

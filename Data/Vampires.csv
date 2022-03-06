@@ -1,101 +1,101 @@
-idVampire,gender,ageOfVampire,deadOrAlive,hasFangs,bornIn,visitedCities,numberOfChildren,numberChangedToVamp
-1,Female,54,Dead,Yes,Australia,25,3,14
-2,Male,67,Dead,No,Antarctica,23,1,4
-3,Female,58,Alive,Yes,Asia,25,1,10
-4,Male,123,Alive,No,Antarctica,15,2,19
-5,Male,55,Dead,Yes,Antarctica,39,5,6
-6,Female,39,Alive,No,North America,26,0,7
-7,Female,95,Alive,Yes,Antarctica,135,7,8
-8,Female,87,Alive,Yes,Australia,18,2,4
-9,Male,27,Dead,No,Australia,43,1,6
-10,Male,125,Alive,Yes,Antarctica,30,5,9
-11,Male,45,Alive,Yes,Antarctica,3,7,13
-12,Male,81,Dead,No,Antarctica,35,1,6
-13,Male,50,Alive,No,Antarctica,17,6,10
-14,Female,28,Dead,No,South America,12,1,8
-15,Female,65,Alive,Yes,Antarctica,103,3,9
-16,Female,36,Alive,Yes,North America,6,4,12
-17,Male,136,Alive,No,Antarctica,22,1,19
-18,Male,35,Alive,Yes,Antarctica,4,4,3
-19,Female,106,Alive,Yes,North America,29,5,16
-20,Male,68,Dead,No,Asia,23,0,6
-21,Male,81,Dead,No,Australia,9,4,5
-22,Female,77,Dead,No,Antarctica,17,2,10
-23,Female,137,Alive,Yes,North America,16,3,13
-24,Female,74,Alive,No,Antarctica,37,4,8
-25,Male,73,Alive,Yes,Antarctica,11,1,9
-26,Male,98,Dead,Yes,South America,31,4,11
-27,Male,94,Alive,No,Antarctica,3,6,6
-28,Male,74,Dead,No,Antarctica,19,2,8
-29,Female,11,Dead,Yes,South America,14,1,5
-30,Female,53,Dead,No,North America,42,9,7
-31,Male,46,Alive,Yes,South America,14,4,19
-32,Male,90,Dead,No,Australia,6,5,4
-33,Female,134,Dead,Yes,Europa,13,3,4
-34,Male,123,Dead,Yes,South America,20,3,7
-35,Female,67,Alive,No,Antarctica,4,7,3
-36,Female,81,Alive,Yes,Antarctica,2,3,4
-37,Female,103,Dead,Yes,Antarctica,16,3,11
-38,Male,58,Alive,No,South America,15,2,8
-39,Male,20,Dead,Yes,Asia,35,3,6
-40,Male,51,Dead,No,South America,22,4,17
-41,Female,71,Alive,No,North America,66,1,8
-42,Male,88,Dead,Yes,North America,20,1,8
-43,Female,66,Dead,Yes,Antarctica,19,3,6
-44,Female,79,Alive,No,South America,11,5,22
-45,Female,111,Dead,Yes,South America,43,1,6
-46,Male,85,Alive,No,Europa,24,6,4
-47,Female,97,Dead,Yes,North America,30,6,5
-48,Male,69,Alive,Yes,Australia,202,1,7
-49,Female,38,Alive,No,Africa,45,0,29
-50,Female,66,Alive,No,North America,48,5,7
-51,Male,50,Alive,Yes,Antarctica,14,4,5
-52,Male,67,Alive,Yes,Australia,7,3,5
-53,Female,61,Dead,No,North America,43,3,13
-54,Male,102,Dead,No,Australia,111,4,4
-55,Female,51,Alive,Yes,Australia,22,3,6
-56,Female,71,Alive,No,Antarctica,52,3,4
-57,Female,39,Alive,Yes,Australia,45,5,6
-58,Female,53,Alive,Yes,Australia,273,6,11
-59,Female,88,Alive,No,Antarctica,12,2,14
-60,Female,111,Alive,No,South America,21,4,5
-61,Male,44,Alive,No,Australia,17,1,15
-62,Male,31,Dead,Yes,Europa,16,0,18
-63,Male,51,Dead,Yes,North America,38,0,13
-64,Male,91,Dead,Yes,North America,37,3,8
-65,Female,102,Dead,Yes,Antarctica,41,9,4
-66,Female,54,Alive,No,Antarctica,7,4,15
-67,Male,112,Alive,No,South America,103,5,11
-68,Female,96,Dead,Yes,South America,12,1,3
-69,Female,90,Dead,Yes,Antarctica,29,2,6
-70,Male,111,Alive,No,North America,7,1,17
-71,Male,62,Dead,Yes,North America,17,3,8
-72,Male,67,Alive,Yes,Antarctica,55,4,4
-73,Female,106,Dead,No,North America,20,2,10
-74,Female,106,Alive,Yes,Australia,45,2,5
-75,Male,88,Alive,Yes,Australia,148,3,9
-76,Female,45,Alive,No,Asia,78,2,5
-77,Female,106,Dead,No,Antarctica,74,2,9
-78,Female,40,Dead,Yes,Australia,26,3,14
-79,Male,86,Alive,Yes,Europa,8,1,3
-80,Male,76,Dead,No,Antarctica,6,1,4
-81,Female,38,Alive,Yes,Antarctica,34,3,7
-82,Male,16,Alive,No,Antarctica,27,3,12
-83,Male,70,Alive,No,South America,40,6,11
-84,Female,36,Dead,Yes,North America,3,6,7
-85,Male,129,Alive,Yes,South America,15,4,23
-86,Female,105,Alive,No,South America,22,2,9
-87,Male,73,Dead,No,North America,7,4,4
-88,Male,87,Dead,No,South America,60,0,9
-89,Female,73,Dead,No,Australia,5,2,3
-90,Female,68,Alive,No,South America,27,3,8
-91,Male,57,Dead,Yes,Antarctica,39,5,11
-92,Male,33,Alive,Yes,Africa,9,4,17
-93,Female,97,Dead,Yes,Europa,19,5,10
-94,Female,67,Dead,Yes,Asia,4,4,3
-95,Female,80,Alive,Yes,Africa,11,0,5
-96,Female,49,Dead,No,South America,50,3,5
-97,Male,103,Dead,No,Australia,20,1,15
-98,Female,92,Dead,No,South America,47,1,7
-99,Male,56,Dead,No,Europa,6,2,4
-100,Male,114,Dead,No,South America,26,1,6
+idVampire,gender,ageOfVampire,deadOrAlive,hasFangs,bornIn,vampType,wellbeing,maritalStatus,employment,income,visitedCities,numberOfChildren,numberChangedToVamp
+1,Male,88,Dead,No,Antarctica,hybrid,19.747313391417265,Single,Employed,177256.98163898275,22,2,10
+2,Male,46,Alive,Yes,Europa,hybrid,74.1225206060335,Single,Employed,138774.04278515282,9,5,6
+3,Male,107,Dead,Yes,Antarctica,psychic,83.80236960947514,Divorced,Not Employed,107313.32303313128,20,4,13
+4,Female,75,Alive,No,Africa,hybrid,59.30722176562995,Divorced,Employed,101224.51561422052,33,0,4
+5,Male,102,Dead,No,North America,psychic,43.301259516738355,Divorced,Employed,156178.18988748558,21,3,5
+6,Male,83,Dead,Yes,Australia,sanguinarian,59.53072593547404,Divorced,Not Employed,158301.94391113162,6,4,7
+7,Male,78,Dead,No,Europa,hybrid,30.297640641219914,Single,Employed,183811.0738886649,91,3,21
+8,Female,103,Alive,Yes,Europa,hybrid,61.19864864740521,Single,Not Employed,119224.50153555619,77,4,18
+9,Female,73,Alive,No,South America,hybrid,18.616624013520777,Divorced,Employed,190563.20233619565,14,4,6
+10,Male,50,Alive,Yes,Australia,hybrid,21.213627490215003,Divorced,Not Employed,137196.80221467259,11,3,4
+11,Female,54,Alive,Yes,South America,hybrid,2.6494435500353575,Single,Not Employed,129199.77904701709,1,1,5
+12,Male,44,Alive,Yes,South America,hybrid,62.68181852065027,Divorced,Employed,151141.1474411358,14,4,7
+13,Male,50,Dead,No,Asia,hybrid,37.238650815561414,Divorced,Employed,201609.11937297403,13,2,7
+14,Male,99,Alive,No,Antarctica,hybrid,81.39340709894896,Single,Not Employed,89039.93770242017,34,4,8
+15,Female,102,Dead,No,South America,hybrid,93.11306921299547,Divorced,Not Employed,119668.91137108888,57,10,11
+16,Male,102,Dead,No,Europa,hybrid,73.53945912327617,Single,Employed,107847.71235129105,46,8,7
+17,Female,57,Alive,No,Asia,psychic,16.803663433529437,Divorced,Employed,103963.65411975855,302,5,3
+18,Female,76,Dead,No,Australia,psychic,50.03135565202683,Single,Employed,157879.5821029328,17,5,4
+19,Male,119,Dead,Yes,North America,sanguinarian,18.761749751865864,Divorced,Not Employed,197041.67269474737,19,4,10
+20,Male,81,Dead,Yes,Antarctica,hybrid,45.782528119161725,Divorced,Employed,128095.00238559305,19,2,4
+21,Female,63,Dead,No,Antarctica,psychic,10.206774971447885,Divorced,Not Employed,154690.15659603878,3,2,4
+22,Female,87,Alive,Yes,North America,hybrid,46.15711043588817,Married,Employed,136634.535774564,35,4,10
+23,Female,100,Alive,No,Antarctica,hybrid,63.46848187968135,Divorced,Employed,126829.69336469668,23,4,3
+24,Female,104,Alive,No,North America,sanguinarian,86.5987871075049,Divorced,Employed,178095.2325751991,14,6,12
+25,Female,44,Dead,No,Antarctica,psychic,12.958591897040606,Divorced,Not Employed,160700.11313652573,9,1,8
+26,Male,54,Dead,No,South America,psychic,49.20499189756811,Single,Not Employed,127291.6136268451,19,3,5
+27,Male,53,Alive,No,Australia,psychic,8.03925208747387,Single,Not Employed,179672.80419061874,11,3,5
+28,Female,64,Alive,Yes,Australia,hybrid,27.901658485643566,Divorced,Not Employed,143581.32059702536,8,7,11
+29,Female,88,Dead,Yes,North America,hybrid,93.78441656008363,Divorced,Employed,105188.79948735333,10,1,9
+30,Male,63,Alive,Yes,Asia,hybrid,91.74655040260404,Single,Employed,159637.36128389268,6,1,9
+31,Female,86,Dead,Yes,Antarctica,hybrid,60.53414202760905,Single,Employed,203987.4419324075,15,1,7
+32,Female,97,Alive,No,South America,psychic,43.09535927604884,Single,Not Employed,137533.11331209945,11,4,4
+33,Female,91,Alive,No,North America,hybrid,6.288080243393779,Divorced,Not Employed,132277.94541503314,7,3,13
+34,Female,72,Alive,No,Antarctica,hybrid,40.707228682003915,Single,Not Employed,159876.06259291017,33,2,6
+35,Male,28,Dead,Yes,Antarctica,sanguinarian,94.65565225109458,Single,Not Employed,98230.65646330101,17,1,6
+36,Male,62,Alive,Yes,Antarctica,hybrid,85.4569983202964,Single,Employed,117772.78760402495,56,1,21
+37,Male,101,Alive,Yes,Australia,hybrid,68.42561811208725,Divorced,Employed,91078.81963497709,32,7,14
+38,Male,72,Alive,Yes,Europa,hybrid,68.37452370673418,Single,Not Employed,103627.64446756593,131,4,10
+39,Male,106,Dead,Yes,North America,psychic,54.64758360758424,Single,Employed,149110.79372914816,14,4,9
+40,Female,81,Dead,No,Antarctica,hybrid,90.26807777117938,Single,Not Employed,165520.44151528383,286,2,10
+41,Female,84,Alive,Yes,Antarctica,sanguinarian,92.83882440067828,Divorced,Not Employed,156730.8087443066,54,1,12
+42,Female,96,Alive,Yes,Antarctica,hybrid,39.8472931003198,Divorced,Not Employed,128091.38130101106,7,4,3
+43,Male,98,Alive,Yes,Africa,psychic,94.6700143860653,Single,Employed,145242.46882332859,3,5,17
+44,Female,52,Alive,No,South America,hybrid,57.17594882007688,Married,Employed,148173.11446791948,11,3,12
+45,Female,85,Alive,No,Australia,sanguinarian,18.632407416589558,Divorced,Employed,128727.12806391595,26,4,5
+46,Male,68,Alive,No,South America,hybrid,55.84914865903556,Single,Not Employed,125723.42431210533,23,0,12
+47,Male,75,Dead,No,Europa,sanguinarian,23.511535674333572,Married,Not Employed,153067.98773376405,9,1,7
+48,Female,98,Dead,No,Antarctica,hybrid,22.63386147096753,Divorced,Not Employed,160711.97088855185,19,2,6
+49,Female,70,Dead,Yes,Australia,hybrid,84.24040775280446,Divorced,Not Employed,196833.1735004998,9,3,6
+50,Female,58,Alive,No,Antarctica,sanguinarian,66.91220942884684,Divorced,Employed,182801.44253516506,70,4,3
+51,Female,81,Alive,Yes,Australia,hybrid,52.15859622694552,Married,Employed,144494.21376066236,11,7,4
+52,Female,113,Dead,No,Antarctica,psychic,52.042560814879835,Divorced,Not Employed,104953.6707139191,7,1,10
+53,Male,71,Dead,No,North America,psychic,49.135214323177934,Divorced,Not Employed,106438.13726139284,14,5,5
+54,Male,88,Dead,Yes,Antarctica,psychic,80.9132921276614,Single,Employed,131394.15146445666,17,1,4
+55,Male,47,Dead,No,South America,hybrid,3.496395447291434,Divorced,Employed,120385.35870988587,8,3,7
+56,Male,45,Dead,Yes,North America,sanguinarian,4.204025259241462,Divorced,Employed,135251.97653238475,6,3,6
+57,Female,48,Dead,No,Australia,hybrid,67.19097190070897,Divorced,Not Employed,142434.84756918548,7,3,4
+58,Female,69,Alive,Yes,South America,hybrid,84.6794577781111,Married,Not Employed,164924.4887070108,8,4,14
+59,Male,109,Dead,Yes,Antarctica,hybrid,24.99606730416417,Married,Not Employed,124846.75860637029,8,3,8
+60,Male,49,Dead,Yes,Australia,sanguinarian,34.36747454106808,Divorced,Employed,125661.93825958838,15,4,13
+61,Female,118,Dead,Yes,South America,psychic,18.403079663403332,Single,Employed,106245.37948960192,7,2,3
+62,Female,110,Dead,Yes,Australia,psychic,37.470993446186185,Single,Not Employed,150857.35945734885,19,1,10
+63,Female,70,Dead,Yes,Antarctica,hybrid,33.02260828204453,Divorced,Employed,62285.80464076689,7,3,7
+64,Female,111,Alive,No,North America,hybrid,91.83598412200809,Divorced,Employed,111662.49826430876,45,4,4
+65,Male,30,Dead,Yes,South America,hybrid,68.95363773219287,Divorced,Employed,129659.65126547859,17,1,19
+66,Male,112,Alive,Yes,Antarctica,sanguinarian,85.22911516483873,Single,Not Employed,177269.64709608225,17,5,4
+67,Female,110,Alive,No,Europa,psychic,30.26306484825909,Married,Employed,136719.4651214027,4,2,9
+68,Male,53,Dead,Yes,Antarctica,psychic,72.53933176398277,Single,Employed,183703.96319463037,3,8,8
+69,Male,107,Dead,No,Antarctica,psychic,64.30930667556822,Married,Not Employed,152068.9081302559,50,1,10
+70,Female,43,Dead,Yes,Australia,sanguinarian,71.39773075468838,Single,Employed,148301.64445851705,34,1,3
+71,Female,70,Alive,No,Europa,sanguinarian,95.60594002250582,Married,Not Employed,104306.5417255768,15,2,6
+72,Female,8,Alive,No,South America,hybrid,24.89596577361226,Divorced,Not Employed,141023.981332875,12,1,11
+73,Female,26,Dead,No,South America,hybrid,20.079361437819898,Married,Not Employed,176440.0661031832,59,8,6
+74,Female,55,Dead,No,North America,hybrid,29.36486022081226,Married,Not Employed,181213.9682686412,21,2,6
+75,Male,86,Dead,Yes,Asia,psychic,20.608500484377146,Single,Employed,168919.19090795534,70,4,10
+76,Male,18,Dead,Yes,Africa,psychic,45.24100967682898,Divorced,Not Employed,109484.63168614251,9,0,20
+77,Male,83,Alive,No,Antarctica,hybrid,43.650659383274615,Married,Not Employed,165093.73062931013,14,2,3
+78,Male,89,Alive,No,North America,sanguinarian,81.67466134764254,Divorced,Employed,115175.016522751,34,1,5
+79,Male,91,Dead,No,South America,hybrid,86.83707288000733,Single,Employed,155631.4236355352,53,2,10
+80,Female,103,Dead,No,Antarctica,sanguinarian,58.03266242146492,Married,Employed,159695.71910186423,7,4,6
+81,Male,66,Alive,Yes,Australia,psychic,96.67151696048677,Divorced,Not Employed,67756.35736276166,35,4,8
+82,Female,108,Dead,No,Asia,hybrid,94.93043222464621,Single,Employed,144661.5250044333,195,1,2
+83,Male,61,Dead,No,Australia,psychic,22.15377043467015,Divorced,Employed,126893.6643833266,18,8,12
+84,Female,88,Dead,Yes,South America,psychic,38.07001616805792,Divorced,Not Employed,123033.29759155531,14,3,9
+85,Female,55,Dead,Yes,Australia,hybrid,90.13376475777477,Divorced,Employed,122002.40703242531,8,1,7
+86,Female,109,Alive,Yes,Australia,sanguinarian,35.963000007905066,Married,Not Employed,129206.27393685773,5,2,6
+87,Female,79,Alive,Yes,Antarctica,psychic,72.09514144342393,Married,Employed,125827.54555152645,9,6,5
+88,Female,99,Alive,No,Antarctica,psychic,83.51299774367362,Single,Employed,163252.929694527,20,2,10
+89,Female,100,Alive,Yes,North America,hybrid,70.13012380339205,Single,Not Employed,150239.56419940232,51,3,12
+90,Female,126,Dead,Yes,North America,sanguinarian,75.59853892307729,Single,Employed,192507.52529216325,26,6,6
+91,Male,88,Alive,No,Antarctica,psychic,74.94957114104182,Divorced,Not Employed,131107.21023850967,65,1,10
+92,Female,67,Dead,Yes,Asia,hybrid,99.09522077068686,Divorced,Employed,151517.6517085453,3,6,7
+93,Female,39,Alive,No,South America,hybrid,48.0412159813568,Married,Employed,125584.76872561892,16,1,7
+94,Male,82,Alive,Yes,Antarctica,sanguinarian,77.75790933519602,Divorced,Not Employed,144783.6353155067,40,4,4
+95,Male,62,Alive,Yes,Australia,psychic,63.3763724938035,Single,Employed,193145.14021570538,9,3,14
+96,Male,69,Alive,Yes,Australia,psychic,13.070783438161016,Single,Not Employed,156351.46123048355,14,3,15
+97,Male,71,Dead,No,Antarctica,hybrid,16.88806531019509,Single,Not Employed,150802.82817546953,14,5,11
+98,Female,116,Dead,Yes,Australia,hybrid,76.4144200598821,Single,Not Employed,177565.09700273303,12,4,2
+99,Male,73,Alive,No,Antarctica,hybrid,11.835694988258183,Divorced,Not Employed,198107.09865665168,89,2,5
+100,Female,106,Dead,Yes,Africa,psychic,92.59755713865161,Divorced,Not Employed,145408.40231435,15,1,10

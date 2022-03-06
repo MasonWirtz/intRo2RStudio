@@ -76,7 +76,7 @@ navbar:
     - text: "Data"
       menu:
         - text: "Vampires"
-          href: https://osf.io/ub2g7/download
+          href: https://osf.io/2xpkd/download
         - text: "mtcars"
           href: https://osf.io/95te4/download
         - text: "swiss"
