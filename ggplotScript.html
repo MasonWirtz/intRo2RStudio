@@ -2131,7 +2131,7 @@ Exercise scripts
 <a href="https://osf.io/z4r7j/download">Exercise script 5</a>
 <a href="https://osf.io/mukgq/download">Exercise script 6</a>
 <a href="https://osf.io/g3fe4/download">Exercise script 7</a>
-<a href="https://osf.io/kfvu6/download">Exercise script 8</a>
+<a href="https://osf.io/gwj3u/download">Exercise script 8</a>
 <a href="https://osf.io/w36c8/download">Exercise script 9</a>
 <a href="https://osf.io/cug24/download">reverseItems_Functions.R</a>
 </div>
@@ -2181,6 +2181,8 @@ Extras
 </div>
 
 <div class="d-article">
+<h1 id="ppt-visualizations">PPT VISUALIZATIONS</h1>
+<p>This first part of the script visualizes the graphics shown in the Presentation.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'>################################## #</span>
@@ -2438,7 +2440,401 @@ Extras
 </code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="extra-visualizations">EXTRA VISUALIZATIONS</h1>
+<h2 id="gamms">GAMMs</h2>
+<p>The following script shows several different visualization techniques for (a) generalized additive mixed effects models, using the newest packages in the business; and (b) Bayesian mixed effects models, using some tips and tricks I’ve assembled during my own statistical analyses.</p>
+<p>Let’s get started!</p>
+<p>Check out Stefano’s tidymv package for the difference smooths: <a href="https://stefanocoretta.github.io/tidymv/articles/plot-smooths.html" class="uri">https://stefanocoretta.github.io/tidymv/articles/plot-smooths.html</a></p>
+<p>And see Simpson’s gratia package for plotting marginal effects plots of the GAM(M) outputs: <a href="https://gavinsimpson.github.io/gratia/" class="uri">https://gavinsimpson.github.io/gratia/</a> When loading in the gratia package, it will install some new dependency packages, so it might end up updating some older package versions that you have. Simpon’s updates for factor smooths aren’t available from CRAN yet, so if you ever need to plot factor smooths from a non-Guassian model, you will need to load in the gratia package directly from github.</p>
+<p>This can be done with the following code:</p>
+<p><code>remotes::install_github("gavinsimpson/gratia")</code></p>
+<p>In the case that you install the Github version, make sure to install updates dependency structures as well</p>
+<p>Happy plotting! :)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># PRELIMINARIES ----</span>
+<span class='co'># clean workplace</span>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># libraries</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/trinker/pacman'>"pacman"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"pacman"</span><span class='op'>)</span>
+<span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span>
+  <span class='va'>tidyverse</span>,        <span class='co'># data manipulation</span>
+  <span class='va'>mgcv</span>,             <span class='co'># compute (and simulate) GAM(M)s</span>
+  <span class='va'>gratia</span>,           <span class='co'># plot partial effect plots of GAM(M)s using ggplot2</span>
+  <span class='va'>tidymv</span>            <span class='co'># plot difference smooths of GAM(M)s using ggplot2</span>
+<span class='op'>)</span> 
+
+<span class='co'># set ggplot theme</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='fl'>12</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
+</div>
+</div>
+<h3 id="simulate-data">SIMULATE DATA</h3>
+<p>Simulate the data for a GAMM. These data include:</p>
+<ol type="1">
+<li>a <code>by =</code> factor (fac)</li>
+<li>random effects (four groups; i.e. a–d)</li>
+</ol>
+<p>The model includes</p>
+<ol type="1">
+<li>Nonlinear effect for the variable x2 with different trajectories for variable <code>fac</code></li>
+<li>factor smooths with different trajectories for variable <code>fac</code></li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Simulate GAM data with factor smooths</span>
+<span class='co'># simulate GAM data with a by factor</span>
+<span class='va'>data</span> <span class='op'>=</span> <span class='fu'>gamSim</span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>400</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>    
+  
+  <span class='co'># simulate random effects structure</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>rand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>,      
+                    each <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>, 
+         rand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>rand</span><span class='op'>)</span><span class='op'>)</span>      
+</code></pre>
+</div>
+<pre><code>Factor `by&#39; variable example</code></pre>
+</div>
+<h3 id="run-model">RUN MODEL</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># nonlinear x2 with diff trajectories for variable `fac`</span>
+<span class='va'>mod</span> <span class='op'>=</span> <span class='fu'>gam</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='fu'>s</span><span class='op'>(</span><span class='va'>x2</span>, by <span class='op'>=</span> <span class='va'>fac</span><span class='op'>)</span> <span class='op'>+</span> 
+            
+            <span class='co'># factor smooths with diff trajectories for for variable `fac`</span>
+            <span class='fu'>s</span><span class='op'>(</span><span class='va'>x2</span>, <span class='va'>rand</span>, by <span class='op'>=</span> <span class='va'>fac</span>, bs <span class='op'>=</span> <span class='st'>"fs"</span>, m <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,  
+          
+          <span class='co'># simulated data</span>
+          data <span class='op'>=</span> <span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="marginal-effects">MARGINAL EFFECTS</h3>
+<p>Using the draw() function in Simpson’s <code>gratia</code> package, we can plot the marginal effects</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># get marginal effects (also random effects)</span>
+<span class='fu'>draw</span><span class='op'>(</span><span class='va'>mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ggplotScript_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># only plot the first three marginal effects</span>
+<span class='co'># i.e. this excludes the random effects from the viz</span>
+<span class='fu'>draw</span><span class='op'>(</span><span class='va'>mod</span>, 
+     select <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>         
+</code></pre>
+</div>
+<img src="ggplotScript_files/figure-html5/unnamed-chunk-5-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># see ?draw.gam for more options</span>
+</code></pre>
+</div>
+</div>
+<h3 id="difference-smooths">DIFFERENCE SMOOTHS</h3>
+<p>Using the <code>get_smooths_difference()</code> from the <code>tidymv</code> package, we conduct a visual significance test to see whether/when the CIs of the factors 1 and 2 are different</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># get the differences between factors 1 and 2</span>
+<span class='fu'>get_smooths_difference</span><span class='op'>(</span><span class='va'>mod</span>,                             
+                       <span class='va'>x2</span>,                              
+                       <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>fac <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1"</span>, <span class='st'>"2"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   
+
+  <span class='co'># plot variable of interest (y and x axes)</span>
+  <span class='co'># and group variable specified in the get_smooths_difference()</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x2</span>,                                    
+             y <span class='op'>=</span> <span class='va'>difference</span>,                           
+             group <span class='op'>=</span> <span class='va'>group</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>      
+  
+  <span class='co'># plot the ribbon with the lower and upper CIs</span>
+  <span class='co'># and whether the difference between CIs</span>
+  <span class='co'># is significant or not</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>CI_lower</span>,                      
+                  ymax <span class='op'>=</span> <span class='va'>CI_upper</span>,                      
+                  fill <span class='op'>=</span> <span class='va'>sig_diff</span><span class='op'>)</span>,                     
+              alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>         
+  
+  <span class='co'># determine color based on whether upper/lower CIs are diff</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>sig_diff</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>    
+  
+  <span class='co'># lightgrey when sig_diff is FALSE, green when TRUE</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_colour_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> 
+                        <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"lightgrey"</span>, <span class='st'>"lightgreen"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> 
+                      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"lightgrey"</span>, <span class='st'>"lightgreen"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>   
+  
+  <span class='co'># place line at zero</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>, 
+             colour <span class='op'>=</span> <span class='st'>"#8f5f3f"</span><span class='op'>)</span> <span class='op'>+</span>                     
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='st'>"significant"</span>, fill <span class='op'>=</span> <span class='st'>"significant"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"x2"</span>, 
+       y <span class='op'>=</span> <span class='st'>"Factor 1 minus Factor 2"</span>, 
+       title <span class='op'>=</span> <span class='st'>"Difference Smooths"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"right"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ggplotScript_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<h3 id="simulate-data-plotting-on-the-response-scale">SIMULATE DATA: PLOTTING ON THE RESPONSE SCALE</h3>
+<p>If we were, to say, run a model with a non-Gaussian distribution, we oftentimes want to plot the effects on the response scale. So, let’s say, we compute a mixed-effects model and we want to use a beta distribution (because my values are bound between 0 and 1). The following code shows how we could simulate such data.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Simulate GAM data with factor smooths</span>
+<span class='co'># simulate GAM data with a by factor</span>
+<span class='va'>data_beta</span> <span class='op'>=</span> <span class='fu'>gamSim</span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>400</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>    
+  
+  <span class='co'># simulate random effects structure</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>rand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>,      
+                    each <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>, 
+         rand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>rand</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  
+  <span class='co'># a really bad way to get values</span>
+  <span class='co'># between 0 and 1 </span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Logistic.html'>plogis</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Factor `by&#39; variable example</code></pre>
+</div>
+<h3 id="run-model-1">RUN MODEL</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># nonlinear x2 with diff trajectories for variable `fac`</span>
+<span class='va'>mod_beta</span> <span class='op'>=</span> <span class='fu'>gam</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='fu'>s</span><span class='op'>(</span><span class='va'>x2</span>, by <span class='op'>=</span> <span class='va'>fac</span><span class='op'>)</span> <span class='op'>+</span> 
+            
+            <span class='co'># factor smooths with diff trajectories for for variable `fac`</span>
+            <span class='fu'>s</span><span class='op'>(</span><span class='va'>x2</span>, <span class='va'>rand</span>, by <span class='op'>=</span> <span class='va'>fac</span>, bs <span class='op'>=</span> <span class='st'>"fs"</span>, m <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,  
+            
+            <span class='co'># add beta distribution</span>
+            family <span class='op'>=</span> <span class='fu'>betar</span><span class='op'>(</span>link<span class='op'>=</span><span class='st'>'logit'</span><span class='op'>)</span>,
+            
+            <span class='co'># simulated data</span>
+            data <span class='op'>=</span> <span class='va'>data_beta</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="marginal-effects-1">MARGINAL EFFECTS</h3>
+<p>But of course, now we want to plot this data using the draw() function in Simpson’s <code>gratia</code> package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># plot on the log-odds scale</span>
+<span class='fu'>draw</span><span class='op'>(</span><span class='va'>mod_beta</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ggplotScript_files/figure-html5/unnamed-chunk-9-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># plot on the log-odds scale </span>
+<span class='co'># without random effects</span>
+<span class='fu'>draw</span><span class='op'>(</span><span class='va'>mod_beta</span>, 
+     select <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ggplotScript_files/figure-html5/unnamed-chunk-9-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>draw</span><span class='op'>(</span><span class='va'>mod_beta</span>, 
+     
+     <span class='co'># the beta distribution is mapped onto the </span>
+     <span class='co'># log odds space using the logit linking function</span>
+     <span class='co'># the logistic function plogis reverses this</span>
+     fun <span class='op'>=</span> <span class='va'>plogis</span>, 
+     
+     <span class='co'># add the intercept value to all model outputs, </span>
+     <span class='co'># before the transformation (fun) </span>
+     constant <span class='op'>=</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>mod_beta</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>, 
+     
+     <span class='co'># select only the relevant smooths</span>
+     <span class='co'># i.e. excluding random effects</span>
+     select <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ggplotScript_files/figure-html5/unnamed-chunk-9-3.png" width="624" /></p>
+</div>
+<h2 id="bayesian-mixed-effects-models">BAYESIAN MIXED-EFFECTS MODELS</h2>
+<p>Here, we see a few cool visualization techniques for displaying the results of Bayesian mixed-effects models.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># PRELIMINARIES ----</span>
+<span class='co'># clean workplace</span>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># libraries</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/trinker/pacman'>"pacman"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"pacman"</span><span class='op'>)</span>
+<span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span>
+  <span class='va'>tidyverse</span>,            <span class='co'># data manipulation </span>
+  <span class='va'>brms</span>,                 <span class='co'># Bayesian model</span>
+  <span class='va'>marginaleffects</span>,      <span class='co'># plot regression models</span>
+  <span class='va'>ggdist</span>,               <span class='co'># plotting</span>
+  <span class='va'>tidybayes</span>,            <span class='co'># plot posterior draws</span>
+  <span class='va'>modelr</span>,               <span class='co'># data_grid function</span>
+  <span class='va'>ggridges</span>,             <span class='co'># ridge plots</span>
+  <span class='va'>ggmcmc</span>                <span class='co'># posterior data frame (long format)</span>
+<span class='op'>)</span> 
+
+<span class='co'># set ggplot theme</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='fl'>12</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
+</div>
+</div>
+<h3 id="data-manipulation">DATA MANIPULATION</h3>
+<p>Load in data from my dissertation. The data used here are from my PhD, namely L2 socio-indexical interpretations of standard German and Austrian dialect.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># READ IN DATA</span>
+<span class='co'># I'm using a full path here (DON'T DO THIS IN REAL LIFE)</span>
+<span class='co'># because I'm drawing data from another working directory </span>
+<span class='co'># the good ol' fashioned "do as I say, not as I do"</span>
+<span class='co'># how I am reading the data here is really nasty</span>
+<span class='va'>df_rating</span> <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>full_join</a></span><span class='op'>(</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"~/Documents/R/R Projects/DYNSC/Data/Data sets/rating.csv"</span><span class='op'>)</span>, <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"~/Documents/R/R Projects/DYNSC/Data/Data sets/exposure.csv"</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='st'>"id"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    
+    <span class='co'># z-score: EXPOSURE</span>
+    englishExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>englishExposure</span><span class='op'>)</span>,
+    standardExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>standardExposure</span><span class='op'>)</span>, 
+    dialectExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>dialectExposure</span><span class='op'>)</span><span class='op'>)</span>
+
+
+
+<span class='co'># DATA MANIPULATION</span>
+
+<span class='co'># FRIENDLY DF function ----</span>
+<span class='va'>friendlyModFun</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>df_rating</span><span class='op'>)</span><span class='op'>{</span>
+  
+  <span class='co'># get friendly rating data ready for model</span>
+  <span class='va'>friendlyRating</span> <span class='op'>=</span> <span class='va'>df_rating</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    
+    <span class='co'># choose only friendly ratings</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"Friendly"</span>, <span class='va'>indexChar</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    
+    <span class='co'># transform data to between 0-1</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>rating <span class='op'>=</span> <span class='va'>rating</span> <span class='op'>/</span> <span class='fl'>100</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    
+    <span class='co'># make any 1s .999 and any 0s .0001</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>rating <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>rating</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='fl'>.999</span>, <span class='va'>rating</span><span class='op'>)</span>, 
+           rating <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>rating</span> <span class='op'>==</span> <span class='fl'>0</span>, <span class='fl'>.0001</span>, <span class='va'>rating</span><span class='op'>)</span><span class='op'>)</span>
+  
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>friendlyRating</span><span class='op'>)</span>
+  
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<h3 id="run-model-2">RUN MODEL</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># rating formula</span>
+<span class='va'>formula</span> <span class='op'>=</span> <span class='va'>rating</span> <span class='op'>~</span> <span class='va'>englishExposure</span><span class='op'>*</span><span class='va'>variety</span> <span class='op'>+</span> 
+  <span class='va'>standardExposure</span><span class='op'>*</span><span class='va'>dialectExposure</span><span class='op'>*</span><span class='va'>variety</span> <span class='op'>+</span> 
+  <span class='op'>(</span><span class='va'>standardExposure</span> <span class='op'>+</span> <span class='va'>dialectExposure</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>0</span> <span class='op'>+</span> <span class='va'>occupation</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>
+
+<span class='co'># create friendly data frame</span>
+<span class='va'>friendlyRating</span> <span class='op'>=</span> <span class='fu'>friendlyModFun</span><span class='op'>(</span><span class='va'>df_rating</span><span class='op'>)</span>
+  
+<span class='co'># run friendly model</span>
+<span class='co'># I'm also just using flat priors;</span>
+<span class='co'># wouldn't do that in real life either</span>
+<span class='va'>modFriendly</span> <span class='op'>=</span> <span class='fu'>brm</span><span class='op'>(</span><span class='va'>formula</span>, 
+                  data <span class='op'>=</span> <span class='va'>friendlyRating</span>, 
+                  family <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Beta.html'>Beta</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="plot-the-effects">PLOT THE EFFECTS</h3>
+<p>Quantile dotplot</p>
+<p>“The posterior distribution is visualized here in the form of quantile dotplots. A major advantage in Bayesian inference is to quantify our uncertainty revolving around any given effect, and quantile dotplots allow for frequency-based visualizations from which probabilities can easily be extract (Fernandes et al., 2018; Kay et al., 2016). The idea is to represent the posterior distribution not as one canonical point or interval, but as 100 equally likely points. As such, each point of a given distribution represents 1%, so if there are 7 points stacked on top of each other, then the likelihood of this value is 7%. Similarly, if we are interested in the likelihood of a interval between two values, we can count the dots in the respective interval to receive the probability. Note that the estimates are reported an the log odds scale, since the primary goal of this model visualization and the following model summary is to show the directionality of the respective effects […].” (Wirtz, under review)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggs</span><span class='op'>(</span><span class='va'>modFriendly</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"b_"</span>, <span class='va'>Parameter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>value</span>, 
+             y <span class='op'>=</span> <span class='va'>Parameter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>stat_dotsinterval</span><span class='op'>(</span>quantiles <span class='op'>=</span> <span class='fl'>100</span>, 
+                    slab_colour <span class='op'>=</span> <span class='st'>"firebrick"</span>, 
+                    slab_fill <span class='op'>=</span> <span class='st'>"firebrick"</span>, 
+                    .width <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.70</span>, <span class='fl'>.95</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"firebrick"</span>, <span class='st'>"skyblue"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Parameter estimate"</span>, 
+       y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="ggplotScript_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+</div>
+<p>Another possibility would be to use slab intervals, like in the following plot:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggs</span><span class='op'>(</span><span class='va'>modFriendly</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"b_"</span>, <span class='va'>Parameter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>value</span>, 
+             y <span class='op'>=</span> <span class='va'>Parameter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>stat_interval</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>stat_pointinterval</span><span class='op'>(</span>.width <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.66</span>, <span class='fl'>.95</span><span class='op'>)</span>, 
+                     position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_nudge.html'>position_nudge</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.3</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_color_brewer</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Parameter estimate"</span>, 
+       y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="ggplotScript_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<p>I’m also quite the fan of ridge plots, which can be plotted using the <code>ggridges</code> package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggs</span><span class='op'>(</span><span class='va'>modFriendly</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"b_"</span>, <span class='va'>Parameter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>value</span>, 
+             y <span class='op'>=</span> <span class='va'>Parameter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_density_ridges</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"grey"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Logged TCU count values across conditions"</span>,
+       y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_y_discrete</a></span><span class='op'>(</span>limits <span class='op'>=</span> <span class='va'>rev</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_ridges</span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="ggplotScript_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<p>If, for example, we would like to plot the differences between standard vs. dialect ratings, we could do this using the <code>marginaleffects</code> package and drawing on the posterior distribution.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># friendly model: Standard vs. dialect ratings </span>
+<span class='fu'>marginaleffects</span><span class='fu'>::</span><span class='fu'><a href='https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html'>predictions</a></span><span class='op'>(</span><span class='va'>modFriendly</span>, 
+                             newdata <span class='op'>=</span> <span class='fu'>datagrid</span><span class='op'>(</span>variety <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Dialect"</span>, <span class='st'>"Standard"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>posteriordraws</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>draw</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>        <span class='co'># to change colors of plots use fill = variety</span>
+  <span class='fu'>stat_halfeye</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>.6</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>variety</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Varietal rating"</span>, 
+       y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ggplotScript_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</div>
+<p>The <code>brms</code> package also offers the <code>conditional_effects()</code> function, which allows us to plot conditional effects quick and dirty. To modify the plot, you can get the drawn upon posterior distribution in the <code>conditional_effects()</code> function and revamp the plot a bit.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>conditional_effects</span><span class='op'>(</span><span class='va'>modFriendly</span>, 
+                    effects <span class='op'>=</span> <span class='st'>"standardExposure:variety"</span>,
+                    ndraws <span class='op'>=</span> <span class='fl'>2000</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>effect1__</span>, 
+             y <span class='op'>=</span> <span class='va'>estimate__</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>lower__</span>, 
+                  ymax <span class='op'>=</span> <span class='va'>upper__</span><span class='op'>)</span>, 
+              alpha <span class='op'>=</span> <span class='fl'>.3</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>.8</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>effect2__</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Standard German Exposure"</span>, 
+       y <span class='op'>=</span> <span class='st'>"Friendliness rating"</span>, 
+       title <span class='op'>=</span> <span class='st'>"Friendliness ratings:"</span>, 
+       subtitle <span class='op'>=</span> <span class='st'>"Model predictions"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ggplotScript_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

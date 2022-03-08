@@ -2131,7 +2131,7 @@ Exercise scripts
 <a href="https://osf.io/z4r7j/download">Exercise script 5</a>
 <a href="https://osf.io/mukgq/download">Exercise script 6</a>
 <a href="https://osf.io/g3fe4/download">Exercise script 7</a>
-<a href="https://osf.io/kfvu6/download">Exercise script 8</a>
+<a href="https://osf.io/gwj3u/download">Exercise script 8</a>
 <a href="https://osf.io/w36c8/download">Exercise script 9</a>
 <a href="https://osf.io/cug24/download">reverseItems_Functions.R</a>
 </div>
@@ -2302,19 +2302,19 @@ Call:
 lm(formula = numberChangedToVamp ~ ageOfVampire, data = Vampires)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--5.766 -3.227 -1.227  2.231 12.844 
+    Min      1Q  Median      3Q     Max 
+-6.5447 -3.3155 -0.6979  1.7053 14.8689 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   9.16905    1.39077   6.593 2.19e-09 ***
-ageOfVampire -0.01299    0.01705  -0.762    0.448    
+(Intercept)   9.49448    1.29026   7.359 5.77e-11 ***
+ageOfVampire -0.01532    0.01424  -1.075    0.285    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 4.256 on 98 degrees of freedom
-Multiple R-squared:  0.005891,  Adjusted R-squared:  -0.004253 
-F-statistic: 0.5808 on 1 and 98 DF,  p-value: 0.4478</code></pre>
+Residual standard error: 4.648 on 98 degrees of freedom
+Multiple R-squared:  0.01166,   Adjusted R-squared:  0.00158 
+F-statistic: 1.157 on 1 and 98 DF,  p-value: 0.2848</code></pre>
 </div>
 </details>
 <h2 id="exercise-3.4">Exercise 3.4</h2>
@@ -2365,19 +2365,19 @@ Call:
 lm(formula = numberChangedToVamp ~ ageOfVampire, data = vampDat)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--5.766 -3.227 -1.227  2.231 12.844 
+    Min      1Q  Median      3Q     Max 
+-6.5447 -3.3155 -0.6979  1.7053 14.8689 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   8.16000    0.42558  19.174   &lt;2e-16 ***
-ageOfVampire -0.01299    0.01705  -0.762    0.448    
+(Intercept)   8.20000    0.46478  17.643   &lt;2e-16 ***
+ageOfVampire -0.01532    0.01424  -1.075    0.285    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 4.256 on 98 degrees of freedom
-Multiple R-squared:  0.005891,  Adjusted R-squared:  -0.004253 
-F-statistic: 0.5808 on 1 and 98 DF,  p-value: 0.4478</code></pre>
+Residual standard error: 4.648 on 98 degrees of freedom
+Multiple R-squared:  0.01166,   Adjusted R-squared:  0.00158 
+F-statistic: 1.157 on 1 and 98 DF,  p-value: 0.2848</code></pre>
 </div>
 <p>The INTERCEPT is the predicted <strong>mean of people changed to vampires when we consider the average age of the vampires in the data set</strong>. In other words, vampires in an average age (of our sample)—which is 81.49—are predicted to have changed 8.4 people into vampires. We can check this in a broad way by running the following code as well, which filters the data frame to vampires around the approximate mean age of the sample, and then checking the mean amount of people they have changed to vampires. We should get a value relatively close to the intercept of the new model.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2391,7 +2391,7 @@ F-statistic: 0.5808 on 1 and 98 DF,  p-value: 0.4478</code></pre>
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1  8.16  4.25</code></pre>
+1   8.2  4.65</code></pre>
 </div>
 <p>The SLOPE now tells us that for every increase from 0 (which is NOW the mean of the group) by 1 unit (i.e. by 1 year in this case), the number of vampires changed increases (from the intercept) by this amount (i.e. .008).</p>
 </details>
