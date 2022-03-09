@@ -31,6 +31,10 @@ navbar:
           href: "PPTs/Unit 6- Code chunks in R Markdown.pdf"
         - text: "7. Let's get plotting"
           href: "PPTs/Unit 7- Let's get plotting.pdf"
+        - text: "8. Reporting and reproducibility"
+          href: "PPTs/Unit 8- Reporting and reproducibility.pdf"
+        - text: "9. You don’t just knit with needles: Knitting in R Markdown"
+          href: "PPTs/Unit 9- You don’t just knit with needles- Knitting in R Markdown.pdf"
     - text: "Exercises"
       menu:
         - text: "Day 1: Getting wet in the coding waters"

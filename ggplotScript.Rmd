@@ -467,13 +467,16 @@ Load in data from my dissertation. The data used here are from my PhD, namely L2
 # because I'm drawing data from another working directory 
 # the good ol' fashioned "do as I say, not as I do"
 # how I am reading the data here is really nasty
-df_rating = full_join(read_csv("~/Documents/R/R Projects/DYNSC/Data/Data sets/rating.csv"), read_csv("~/Documents/R/R Projects/DYNSC/Data/Data sets/exposure.csv"), by = "id") %>% 
+df_rating = full_join(read_csv("~/Documents/R/R Projects/DYNSC/Data/Data sets/rating.csv"),
+                      read_csv("~/Documents/R/R Projects/DYNSC/Data/Data sets/exposure.csv"), 
+                      by = "id") %>% 
+  
+  # z-score: EXPOSURE
   mutate(
-    
-    # z-score: EXPOSURE
     englishExposure = scale(englishExposure),
     standardExposure = scale(standardExposure), 
-    dialectExposure = scale(dialectExposure))
+    dialectExposure = scale(dialectExposure)
+    )
 
 
 
@@ -575,7 +578,7 @@ ggs(modFriendly) %>%
              y = Parameter)) + 
   geom_density_ridges(fill = "grey") + 
   geom_vline(xintercept = 0, linetype = "dashed") +
-  labs(x = "Logged TCU count values across conditions",
+  labs(x = "Parameter estimate",
        y = "") +
   scale_y_discrete(limits = rev) +
   theme_ridges() 

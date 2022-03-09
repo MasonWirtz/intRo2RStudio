@@ -2096,6 +2096,8 @@ Slides
 <a href="PPTs/Unit 5- Setting up a project.pdf">5. Setting up a project</a>
 <a href="PPTs/Unit 6- Code chunks in R Markdown.pdf">6. Code chunks in R Markdown</a>
 <a href="PPTs/Unit 7- Let&#39;s get plotting.pdf">7. Let's get plotting</a>
+<a href="PPTs/Unit 8- Reporting and reproducibility.pdf">8. Reporting and reproducibility</a>
+<a href="PPTs/Unit 9- You don’t just knit with needles- Knitting in R Markdown.pdf">9. You don’t just knit with needles: Knitting in R Markdown</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2683,13 +2685,16 @@ Extras
 <span class='co'># because I'm drawing data from another working directory </span>
 <span class='co'># the good ol' fashioned "do as I say, not as I do"</span>
 <span class='co'># how I am reading the data here is really nasty</span>
-<span class='va'>df_rating</span> <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>full_join</a></span><span class='op'>(</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"~/Documents/R/R Projects/DYNSC/Data/Data sets/rating.csv"</span><span class='op'>)</span>, <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"~/Documents/R/R Projects/DYNSC/Data/Data sets/exposure.csv"</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='st'>"id"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+<span class='va'>df_rating</span> <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>full_join</a></span><span class='op'>(</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"~/Documents/R/R Projects/DYNSC/Data/Data sets/rating.csv"</span><span class='op'>)</span>,
+                      <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"~/Documents/R/R Projects/DYNSC/Data/Data sets/exposure.csv"</span><span class='op'>)</span>, 
+                      by <span class='op'>=</span> <span class='st'>"id"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  
+  <span class='co'># z-score: EXPOSURE</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
-    
-    <span class='co'># z-score: EXPOSURE</span>
     englishExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>englishExposure</span><span class='op'>)</span>,
     standardExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>standardExposure</span><span class='op'>)</span>, 
-    dialectExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>dialectExposure</span><span class='op'>)</span><span class='op'>)</span>
+    dialectExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>dialectExposure</span><span class='op'>)</span>
+    <span class='op'>)</span>
 
 
 
@@ -2787,7 +2792,7 @@ Extras
              y <span class='op'>=</span> <span class='va'>Parameter</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>geom_density_ridges</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"grey"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Logged TCU count values across conditions"</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Parameter estimate"</span>,
        y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_y_discrete</a></span><span class='op'>(</span>limits <span class='op'>=</span> <span class='va'>rev</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_ridges</span><span class='op'>(</span><span class='op'>)</span> 
