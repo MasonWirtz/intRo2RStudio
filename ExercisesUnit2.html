@@ -2035,7 +2035,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2128,8 +2128,8 @@ Exercise scripts
 </button>
 <div class="nav-dropdown-content">
 <a href="https://osf.io/a295p/download">Exercise script 2</a>
-<a href="https://osf.io/cjp3g/download">Exercise script 3</a>
-<a href="https://osf.io/w7eas/download">Exercise script 4</a>
+<a href="https://osf.io/92wkx/download">Exercise script 3</a>
+<a href="https://osf.io/9kc3j/download">Exercise script 4</a>
 <a href="https://osf.io/z4r7j/download">Exercise script 5</a>
 <a href="https://osf.io/mukgq/download">Exercise script 6</a>
 <a href="https://osf.io/g3fe4/download">Exercise script 7</a>
@@ -2177,7 +2177,8 @@ Extras
 </div>
 
 <div class="d-byline">
-  Mason A. Wirtz <a href="https://masonwirtz.github.io" class="uri">https://masonwirtz.github.io</a> 
+  Mason A. Wirtz <a href="https://masonwirtz.github.io"
+class="uri">https://masonwirtz.github.io</a> 
   
 
 </div>
@@ -2187,76 +2188,112 @@ Extras
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#exercise-1">Exercise 1</a></li>
-<li><a href="#exercise-2">Exercise 2</a></li>
-<li><a href="#exercise-3">Exercise 3</a></li>
-<li><a href="#exercise-4">Exercise 4</a></li>
-<li><a href="#exercise-5">Exercise 5</a></li>
-<li><a href="#exercise-6">Exercise 6</a></li>
-<li><a href="#exercise-7">Exercise 7</a></li>
+<li><a href="#exercise-1" id="toc-exercise-1">Exercise 1</a></li>
+<li><a href="#exercise-2" id="toc-exercise-2">Exercise 2</a></li>
+<li><a href="#exercise-3" id="toc-exercise-3">Exercise 3</a></li>
+<li><a href="#exercise-4" id="toc-exercise-4">Exercise 4</a></li>
+<li><a href="#exercise-5" id="toc-exercise-5">Exercise 5</a></li>
+<li><a href="#exercise-6" id="toc-exercise-6">Exercise 6</a></li>
+<li><a href="#exercise-7" id="toc-exercise-7">Exercise 7</a></li>
 </ul>
 </nav>
 </div>
 <h1 id="exercise-1">Exercise 1</h1>
-<p>Create an object (i.e. variable, container) called <code>testObject</code> and store five numbers in it.</p>
+<p>Create an object (i.e. variable, container) called
+<code>testObject</code> and store five numbers in it.</p>
 <details>
 <summary>
 Click for Answer
 </summary>
-<p>Creating and storing different types of vectors is one of the most essential skills you will need for using R. These first few exercises may seem really trivial, but I promise, you will use these trivial skills so often that you will quickly realize how not trivial they are.</p>
+<p>Creating and storing different types of vectors is one of the most
+essential skills you will need for using R. These first few exercises
+may seem really trivial, but I promise, you will use these trivial
+skills so often that you will quickly realize how not trivial they
+are.</p>
 <p><strong>SOLUTION</strong></p>
-<p>Okay, so we need an object called <code>testObject</code>. This part is easy enough. All I have to do is type <code>testObject</code>. The tricky part is storing something in the object. In this example, we just need to store five numbers in this object. Let’s go ahead and make our lives easy by just using the numbers 1 through 5. We can store the numbers 1 through 5 in an object in a few different ways. Let’s have a look at those few different ways.</p>
-<p>The way a beginner thinks would probably be to save the numbers in the object like so:</p>
+<p>Okay, so we need an object called <code>testObject</code>. This part
+is easy enough. All I have to do is type <code>testObject</code>. The
+tricky part is storing something in the object. In this example, we just
+need to store five numbers in this object. Let’s go ahead and make our
+lives easy by just using the numbers 1 through 5. We can store the
+numbers 1 through 5 in an object in a few different ways. Let’s have a
+look at those few different ways.</p>
+<p>The way a beginner thinks would probably be to save the numbers in
+the object like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>testObject</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>This most certainly isn’t wrong, and we achieved our goal. Good, right? Yes, it is! If you did something similar above, that’s great. It means you’ve gotten a grasp on the basics.</p>
-<p>But, let’s say we want to be lazy. If I have even ten numbers, typing the number and comma is a lot of work. I don’t like work. So let’s make a our lives a little easier by using the fabulous <code>:</code> that R provides us with to make a sequence of numbers, like so:</p>
+<p>This most certainly isn’t wrong, and we achieved our goal. Good,
+right? Yes, it is! If you did something similar above, that’s great. It
+means you’ve gotten a grasp on the basics.</p>
+<p>But, let’s say we want to be lazy. If I have even ten numbers, typing
+the number and comma is a lot of work. I don’t like work. So let’s make
+a our lives a little easier by using the fabulous <code>:</code> that R
+provides us with to make a sequence of numbers, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>testObject</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>
 </code></pre>
 </div>
 </div>
-<p>Since we are also not stringing numbers together, but using the sequence operator <code>:</code>, we do not need to concatenate function <code>c()</code>–you can use it if you want, but you don’t need it.</p>
-<p>Everything clear? Hervorragend, then let’s move on to the next exercise.</p>
+<p>Since we are also not stringing numbers together, but using the
+sequence operator <code>:</code>, we do not need to concatenate function
+<code>c()</code>–you can use it if you want, but you don’t need it.</p>
+<p>Everything clear? Hervorragend, then let’s move on to the next
+exercise.</p>
 </details>
 <h1 id="exercise-2">Exercise 2</h1>
-<p>Create a <strong>character</strong> vector of your name and save it as the object <code>Name</code></p>
-<p><strong>HINT</strong>: The individual elements of a character vector must be under quotation marks</p>
+<p>Create a <strong>character</strong> vector of your name and save it
+as the object <code>Name</code></p>
+<p><strong>HINT</strong>: The individual elements of a character vector
+must be under quotation marks</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>I tend to use character vectors quite often (we will hear later in this workshop why), so I find it important to take a little bit of time to get to know them.</p>
-<p>If we want a character vector consisting of different individual elements, then you know what that means: IT’S CONCATINATE TIME! We need the <code>c()</code> in order to string together different character elements, like so:</p>
+<p>I tend to use character vectors quite often (we will hear later in
+this workshop why), so I find it important to take a little bit of time
+to get to know them.</p>
+<p>If we want a character vector consisting of different individual
+elements, then you know what that means: IT’S CONCATINATE TIME! We need
+the <code>c()</code> in order to string together different character
+elements, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Name</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Mason"</span>, <span class='st'>"Allen"</span>, <span class='st'>"Wirtz"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>Of course, if you don’t need individual character elements (but I prefer them and oftentimes you also need the individual elements), you can also solve this without concatenating things.</p>
+<p>Of course, if you don’t need individual character elements (but I
+prefer them and oftentimes you also need the individual elements), you
+can also solve this without concatenating things.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Name</span> <span class='op'>=</span> <span class='st'>"Mason Allen Wirtz"</span>
 </code></pre>
 </div>
 </div>
-<p>But, using the <code>c()</code> and creating individual character elements gives us more freedom to play around with the vector. More on this later.</p>
+<p>But, using the <code>c()</code> and creating individual character
+elements gives us more freedom to play around with the vector. More on
+this later.</p>
 </details>
 <h1 id="exercise-3">Exercise 3</h1>
-<p>Create a vector named <code>numbers</code> and save the sequence 1–100 in it.</p>
+<p>Create a vector named <code>numbers</code> and save the sequence
+1–100 in it.</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>I hinted about this above: If we want to have a larger data frame, it would take us sooooo long to do c(1, 2, 3, 4, 5, 6, …), I personally would die of boredom. Luckily, we can use the <code>:</code> operator and let R work its magic and create us a sequence of numbers between 1 and 100, namely like so:</p>
+<p>I hinted about this above: If we want to have a larger data frame, it
+would take us sooooo long to do c(1, 2, 3, 4, 5, 6, …), I personally
+would die of boredom. Luckily, we can use the <code>:</code> operator
+and let R work its magic and create us a sequence of numbers between 1
+and 100, namely like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>numbers</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>
@@ -2265,7 +2302,9 @@ Click for Answer
 </div>
 </details>
 <h1 id="exercise-4">Exercise 4</h1>
-<p>In R, we have arithmetic operators (we will go into logical operators later) with which we can do simple math. Below, you can find a list of these, which are all very self-explanatory.</p>
+<p>In R, we have arithmetic operators (we will go into logical operators
+later) with which we can do simple math. Below, you can find a list of
+these, which are all very self-explanatory.</p>
 <table>
 <thead>
 <tr class="header">
@@ -2312,7 +2351,8 @@ Click for Answer
 </div>
 </details>
 <h1 id="exercise-5">Exercise 5</h1>
-<p>We can also add vectors together, provided they are numeric. Add the two vectors below together–why does R throw an error?</p>
+<p>We can also add vectors together, provided they are numeric. Add the
+two vectors below together–why does R throw an error?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>a</span> <span class='op'>=</span> <span class='fl'>4</span><span class='op'>:</span><span class='fl'>9</span>
@@ -2326,16 +2366,28 @@ Click for Answer
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>Only vectors of the same length can meaningfully be added/subtracted etc. Since vector <code>a</code> contains six values, and vector <code>b</code> eight values, R added the fist six values together of the two vectors. Since vector <code>b</code> is longer than vector <code>a</code> though, the last two numbers in vector <code>b</code> were added to the first <em>two</em> numbers in vector <code>a</code>. Basically, vector <code>b</code> realized, “oh no, there are no more numbers in vector <code>a</code>, what do I do?! Oh, I know, I’ll take the first two numbers of vector <code>a</code> and add them to my own last two values!”. R threw us an error to make us aware of this.</p>
+<p>Only vectors of the same length can meaningfully be added/subtracted
+etc. Since vector <code>a</code> contains six values, and vector
+<code>b</code> eight values, R added the fist six values together of the
+two vectors. Since vector <code>b</code> is longer than vector
+<code>a</code> though, the last two numbers in vector <code>b</code>
+were added to the first <em>two</em> numbers in vector <code>a</code>.
+Basically, vector <code>b</code> realized, “oh no, there are no more
+numbers in vector <code>a</code>, what do I do?! Oh, I know, I’ll take
+the first two numbers of vector <code>a</code> and add them to my own
+last two values!”. R threw us an error to make us aware of this.</p>
 </details>
 <h1 id="exercise-6">Exercise 6</h1>
-<p>Create two vectors (using whatever numerical values you’d like) under the names <code>a</code> and <code>b</code> (the two variables above will be overwritten) and divide the two vectors.</p>
+<p>Create two vectors (using whatever numerical values you’d like) under
+the names <code>a</code> and <code>b</code> (the two variables above
+will be overwritten) and divide the two vectors.</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>Nothing we haven’t already seen here. We’ll start with generating two vectors, like so:</p>
+<p>Nothing we haven’t already seen here. We’ll start with generating two
+vectors, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>a</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>
@@ -2343,7 +2395,10 @@ Click for Answer
 </code></pre>
 </div>
 </div>
-<p>And then let’s go ahead and just divide them by each other. The lovely thing about vectors and being able to save them as objects is that it makes doing simple arithmetic operations like this so easy and readable!</p>
+<p>And then let’s go ahead and just divide them by each other. The
+lovely thing about vectors and being able to save them as objects is
+that it makes doing simple arithmetic operations like this so easy and
+readable!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>a</span><span class='op'>/</span><span class='va'>b</span>
@@ -2370,11 +2425,18 @@ Click for Answer
  [91] 0.47643979 0.47916667 0.48186528 0.48453608 0.48717949
  [96] 0.48979592 0.49238579 0.49494949 0.49748744 0.50000000</code></pre>
 </div>
-<p>What R did here was divide each number in the vector <code>a</code> by the number in the same position in vector <code>b</code> (i.e. 1/101, 2/102, 3/103 etc.), so we should wind up with a vector of 100 values in total.</p>
+<p>What R did here was divide each number in the vector <code>a</code>
+by the number in the same position in vector <code>b</code> (i.e. 1/101,
+2/102, 3/103 etc.), so we should wind up with a vector of 100 values in
+total.</p>
 </details>
 <h1 id="exercise-7">Exercise 7</h1>
-<p>Alright, let’s say we ran an experiment and tested the reaction times of a language learner once a day for seven days. We have the reaction times (these are provided for you, see below), but we want to make a vector with the days of the week.</p>
-<p>Create a character vector with the days of the week and save it as <code>daysOfTheWeek</code></p>
+<p>Alright, let’s say we ran an experiment and tested the reaction times
+of a language learner once a day for seven days. We have the reaction
+times (these are provided for you, see below), but we want to make a
+vector with the days of the week.</p>
+<p>Create a character vector with the days of the week and save it as
+<code>daysOfTheWeek</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>reactionTimes <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">7</span>, <span class="at">mean =</span> .<span class="dv">25</span>, <span class="at">sd =</span> .<span class="dv">1</span>) <span class="co"># you don&#39;t need to do anything here</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2385,7 +2447,9 @@ Click for Answer
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>All we have to do here is string together the days of the week and save it under the object <code>daysOfTheWeek</code>, only this time we have a character vector (similar to what we had with our name).</p>
+<p>All we have to do here is string together the days of the week and
+save it under the object <code>daysOfTheWeek</code>, only this time we
+have a character vector (similar to what we had with our name).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>reactionTimes</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>7</span>, mean <span class='op'>=</span> <span class='fl'>.25</span>, sd <span class='op'>=</span> <span class='fl'>.1</span><span class='op'>)</span> <span class='co'># you don't need to do anything here</span>
@@ -2394,8 +2458,17 @@ Click for Answer
 </code></pre>
 </div>
 </div>
-<p>There is also a nice little base R function (we will learn more about functions later) called <code>weekdays()</code>, which takes a date as an argument. I put together a few variations of how to generate weekdays using this function, in case anyone ever really needs to add this to a data set. Just run the code lines and have a quick look at the output.</p>
-<p>It’s probably important to mention here: There is always an elegant solution to any question, and probably an easier way to do it. While typing the whole vector our like in my solution above is easy, these solutions are also quite elegant and easily readable. Just food for thought.</p>
+<p>There is also a nice little base R function (we will learn more about
+functions later) called <code>weekdays()</code>, which takes a date as
+an argument. I put together a few variations of how to generate weekdays
+using this function, in case anyone ever really needs to add this to a
+data set. Just run the code lines and have a quick look at the
+output.</p>
+<p>It’s probably important to mention here: There is always an elegant
+solution to any question, and probably an easier way to do it. While
+typing the whole vector our like in my solution above is easy, these
+solutions are also quite elegant and easily readable. Just food for
+thought.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/weekday.POSIXt.html'>weekdays</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ISOdatetime.html'>ISOdate</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
@@ -2416,23 +2489,26 @@ Click for Answer
 <pre><code>[1] &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot; &quot;Thursday&quot;  &quot;Friday&quot;   
 [6] &quot;Saturday&quot;  &quot;Sunday&quot;   </code></pre>
 </div>
-<p>We could then combine these two vectors to create a data frame using the function <code>data.frame()</code> from base R (we will learn more about functions in the next section), like so:</p>
+<p>We could then combine these two vectors to create a data frame using
+the function <code>data.frame()</code> from base R (we will learn more
+about functions in the next section), like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>daysOfTheWeek</span>, <span class='va'>reactionTimes</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>  daysOfTheWeek reactionTimes
-1        Monday    0.04230566
-2       Tuesday    0.29246998
-3     Wednesday    0.39431620
-4      Thursday    0.40515975
-5        Friday    0.22022756
-6      Saturday    0.29690981
-7        Sunday    0.21749456</code></pre>
+1        Monday     0.2888160
+2       Tuesday     0.1972332
+3     Wednesday     0.2532501
+4      Thursday     0.3731675
+5        Friday     0.2436066
+6      Saturday     0.3075222
+7        Sunday     0.2995326</code></pre>
 </div>
 </details>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
