@@ -87,41 +87,70 @@
 # Exercise 5          #
 #######################
 
-# Remember how we started generating data in the previous set of exercises?
-# Let’s go back to that. To remind you, we generated the ID variable using
-# the gl() function (generate levels) and Time variable (data collection
-# points, ranging from point 1 to point 20), using the rep() function.
+# Alright, we are going to go through some REALLY useful functions
+# that I tend to use relatively often. They are super practical when
+# you need to sort your data.
+
+# We are going to focus on the following:
+
+# (a) `starts_with()`
+
+# (b) `ends_with()`
+
+# (c) `where()`
+
+# (d) `across()`
+
+# (e) `contains()`
+
+# (f) `grepl()`
+
+# Some of these are fairly self-explanatory (e.g., the first two),
+# and a lot of them are used really often in combination with the select
+# function.
+
+# Run the following code chunk: What happens? When do you think these
+# functions might be useful?
 
 ###############################################################################################
-# In case you didn’t get to that exercise, run the following code to catch up:
-ID = gl(n = 15, k = 20)               # Create ID variables for 20 data collection times
-Time = rep(x = as.factor(1:20),       # Repeat 1 through 20 as factors 15 times
-           times = 15)
+Vampires %>%
+  select(starts_with("g"))
+
+Vampires %>%
+  select(ends_with("Vampire"))
 ###############################################################################################
 
-# We will continue building a data frame. I have generated a new variable
-# for you, namely weeklyExposure, which should be understood as the total
-# number of hours per week participants spend engaging with native speakers.
-# Run the following code to generate this variable.
+
+# I tend to use this function quite a bit when I work with z-scored variables,
+# because I name all of them *variable*_z, so I can easily run the function
+# `select(ends_with("_z"))`, which is of course really handy if I just want a
+# data frame with my z-scored predictor variables.
+
+# The `where()` function is really handy when you want to sort based on
+# the class of a vector in a data frame. For exaample, is we want to select
+# all columns that are numeric in class, we can run the following function:
 
 ###############################################################################################
-# RUN THE FOLLOWING CODE CHUNK
-# YOU DON'T NEED TO DO ANYTHING
-# OTHER THAN RUN THE CHUNK
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(
-  reshape2                                        # load reshape2 library; reshape data
-)
+Vampires %>%
+  select(where(is.numeric))
+###############################################################################################
 
-weeklyExposure = replicate(20,                    # create expo. increasing values
-                           rexp(n = 15,
-                                rate = .05))
-weeklyExposure = weeklyExposure %>%               # bound at 0 and 80
-  melt() %>%
-  mutate(weeklyExposure = ifelse(weeklyExposure %in% "value" > 80, 80, weeklyExposure),
-         weeklyExposure = ifelse(weeklyExposure %in% "value" < 0, 0, weeklyExposure),
-         weeklyExposure = round(weeklyExposure, digits = 2)) %>%
-  select(weeklyExposure)
+
+# The `across()` function basically tells R to do something *across*
+# a certain amount of columns So, if I want R to summarize all of my
+# numeric variables reaally quickly, I could run something like this:
+
+###############################################################################################
+Vampires %>%
+  summarise(across(where(is.numeric), mean))
+###############################################################################################
+
+
+# And, if I want multiple statistics, I can do this easily, too:
+
+###############################################################################################
+Vampires %>%
+  summarise(across(where(is.numeric), c(mean = mean, sd = sd, min = min, max = max)))
 ###############################################################################################
 
 
@@ -129,8 +158,12 @@ weeklyExposure = weeklyExposure %>%               # bound at 0 and 80
 # Exercise 5.1        #
 #######################
 
-# Now, let’s combine these three variables into a single data frame.
-# Use the function tibble(). Please save this tibble under the object name df.
+# The `contains()` function does the same as (a) and (b), really,
+# but it selects any COLUMNS that contain a certain string. Use this
+# function to to select any COLUMNS that contain the word *Vampire*
+
+
+
 
 
 
@@ -142,21 +175,34 @@ weeklyExposure = weeklyExposure %>%               # bound at 0 and 80
 # Exercise 5.2        #
 #######################
 
-# We would like to have a new variable in this data frame that we make
-# using the contents of the other variables.
+# The `grepl()` function is similar, but it filters anything with a certain
+# string. HOWEVER, we also have to specify in WHICH COLUMN it is.
 
-# Our new variable should be the weeklyExposure variable log transformed.
-# This variable should be added to the data frame df.
-# Call this new variable logWeeklyExposure.
+# Which function do we use to subset ROWS (instead of columns)?
 
-# **HINT**
-# To add a new variable to a data frame within the tidyverse framework,
-# we need the mutate() function. To log transform a variable,
-# we need the log() function.
+# How would we subset our data set depending on which vampires were
+# born in any of the Americas?
 
+# **HINT**: You will have to use `grepl("America", bornIn)`,
+# but this has to be wrapped in another function (but which one? Hmmm...)
 
 
 
+
+
+
+
+
+
+#######################
+# Exercise 5.2        #
+#######################
+
+# Let's say that we know we do not want any character vectors
+# in our data frame, but we rather want these to be factor vectors.
+# Using the `mutate()`, `across()` and `where()` functions, change
+# ALL character vectors to factor vectors. This one is a bit tricky,
+# but, once you know this trick, you will use it SO OFTEN!!!
 
 
 

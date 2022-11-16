@@ -2035,7 +2035,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2177,7 +2177,8 @@ Extras
 </div>
 
 <div class="d-byline">
-  Mason A. Wirtz <a href="https://masonwirtz.github.io" class="uri">https://masonwirtz.github.io</a> 
+  Mason A. Wirtz <a href="https://masonwirtz.github.io"
+class="uri">https://masonwirtz.github.io</a> 
   
 
 </div>
@@ -2187,23 +2188,24 @@ Extras
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#exercise-1">Exercise 1</a></li>
-<li><a href="#exercise-2">Exercise 2</a></li>
-<li><a href="#exercise-3">Exercise 3</a></li>
-<li><a href="#exercise-4">Exercise 4</a></li>
-<li><a href="#exercise-5">Exercise 5</a>
+<li><a href="#excercise-1" id="toc-excercise-1">Excercise 1</a></li>
+<li><a href="#exercise-2" id="toc-exercise-2">Exercise 2</a></li>
+<li><a href="#exercise-3" id="toc-exercise-3">Exercise 3</a>
 <ul>
-<li><a href="#exercise-5.1">Exercise 5.1</a></li>
-<li><a href="#exercise-5.2">Exercise 5.2</a></li>
+<li><a href="#exercise-3.1" id="toc-exercise-3.1">Exercise 3.1</a></li>
+<li><a href="#exercise-3.2" id="toc-exercise-3.2">Exercise 3.2</a></li>
+<li><a href="#exercise-3.3" id="toc-exercise-3.3">Exercise 3.3</a></li>
 </ul></li>
-<li><a href="#exercise-6">Exercise 6</a></li>
+<li><a href="#exercise-4" id="toc-exercise-4">Exercise 4</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="exercise-1">Exercise 1</h1>
-<p>So we’ve gotten to know a few different functions. But what do we do if we don’t know the particular arguments a function takes?</p>
-<p>Let’s image we want to generate some random data coming from a Poisson distribution. The function provided to us is <code>rpois()</code>, which basically means “random numbers from a Poisson distribution”.</p>
-<p>In the help pane, type in rpois (or type ?rpois in the console). What arguments does the function <code>rpois()</code> take?</p>
+<h1 id="excercise-1">Excercise 1</h1>
+<p>Alright, so we’ve gotten to know a few functions. Let’s go ahead and
+review some of the important ones, specifically the ones that we use
+really often, like the summary statistics.</p>
+<p>Compute the mean, sd, min and max of the <code>ageOfVampire</code>
+variable in the <code>Vampires</code> data frame.</p>
 <details>
 <summary>
 Click for Answer
@@ -2211,243 +2213,333 @@ Click for Answer
 <p><strong>SOLUTION</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='op'>?</span><span class='va'>rpois</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>ageOfVampire</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code>[1] 84.5</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>ageOfVampire</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>The <code>rpois()</code> function takes the arguments n (i.e. number of values that should be generated) and the argument lambda (i.e. the mean and the variance, in other words the expected number of events in a given (time) interval).</p>
+<pre><code>[1] 32.79366</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>ageOfVampire</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 14</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>ageOfVampire</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 198</code></pre>
+</div>
+<p>Remember, when we want to reach into a data frame, we need to use the
+<code>$</code> operator. This tells R to reach into a specific data
+frame and carry out the function on the variable that comes after the
+<code>$</code> operator.</p>
 </details>
 <h1 id="exercise-2">Exercise 2</h1>
-<p>Let’s get to using the actual functions. You looked up the arguments the <code>rpois()</code> function takes.</p>
-<p><strong>HINT</strong> lambda specifies the mean and variance of a count process—basically, it’s the expected number of events/successes in a given interval.</p>
-<p>Generate 10000 random values from the Poisson distribution with a lambda of 3 and save it under the object <code>Poisson</code>.</p>
+<p>Nice job, you’re doing fantastic! So, since you were able to complete
+the last activity, let’s kick it up a notch and get to some fun
+stuff.</p>
+<p>You’ve had a hard day, because, let’s be honest, that’s academia. You
+need some encouragement, but no one is home to tell you how amazing you
+are. Let’s fix this!</p>
+<p>Load in the package called <code>praise</code> and then call the
+<code>praise()</code> function. Run this as many times as you need until
+you feel like the awesomest person on Earth, because you are!!</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>Alright, so in the previous exercise, we had a look at the arguments that the function <code>rpois</code> takes. We know that it takes the argument n (i.e. the number of values that should be generated). The exercise asks us to generate 10000 random values, so this must be our n value. The function also takes the argument lambda, which the exercise tells us should be 3. We then want to save this as an object named <code>Poisson</code>.</p>
-<p>Let’s see how we can do this:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Poisson</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10000</span>, lambda <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("praise")</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/gaborcsardi/praise'>praise</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/praise/man/praise.html'>praise</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code>[1] &quot;You are stupendous!&quot;</code></pre>
 </div>
+<p>Remember, if we haven’t installed a package yet, we ALWAYS need to
+run the <code>install.packages()</code> function, with the package name
+in parentheses. After that, we need to LOAD the package, cause otherwise
+we have ‘downloaded’ it, but we haven’t actually ‘opened’ it yet.</p>
 </details>
 <h1 id="exercise-3">Exercise 3</h1>
-<p>So, you’ve generated (maybe your first?) Poisson distribution, yay!</p>
-<p>Let’s say we now want to plot the random data we just generated. Go to the help pane and look up the arguments for the function <code>hist()</code>. BUT, instead of plotting the FREQUENCY of each value, we want the PROBABILITY. How would we do this? What argument do we need to adjust?</p>
-<p><strong>HINT</strong> The plot that you generate should look similar to this one (but don’t fret if the values are a bit different, we are all generating RANDOM values, after all, so they will differ a bit):</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># YOU DON'T NEED TO DO ANYTHING HERE</span>
-<span class='co'># THIS CODE BIT GENERATES A SIMILAR PLOT</span>
-<span class='co'># TO THE ONE YOURS SHOULD GENERATE</span>
-
-<span class='va'>Poisson</span> <span class='op'>=</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Poisson <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10000</span>, lambda <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>Poisson</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                           <span class='co'># data </span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Poisson</span>,                             <span class='co'># aesthetics </span>
-             y <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes_eval.html'>stat</a></span><span class='op'>(</span><span class='va'>count</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>count</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>         <span class='co'># get probability</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>1</span>,                        <span class='co'># define binwidth  </span>
-                 color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>3</span>,                          <span class='co'># add line at lamba value</span>
-             color <span class='op'>=</span> <span class='st'>"red"</span>, 
-             alpha <span class='op'>=</span> <span class='fl'>.5</span>,
-             linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Count/Number of successes"</span>,               <span class='co'># add plot labels</span>
-       y <span class='op'>=</span> <span class='st'>"Probability"</span>,
-       title <span class='op'>=</span> <span class='st'>"10000 samples of Pois(lambda = 3)"</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
-</div>
-<p><img src="ExercisesUnit3_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
-</div>
+<p>Alright, so now that we know how to load in packages and call some
+useful functions, what happens if we forget functions, or if we have
+something we want to do, but don’t remember or know a helpful function
+for this? Well, GOOGLE is our friend!</p>
+<p>In our <code>Vampires</code> data frame, we want to know how many
+male and female vampires there are. There are a few important steps we
+need to take to do this.</p>
+<h2 id="exercise-3.1">Exercise 3.1</h2>
+<p>FIRST, we NEED to make sure that all of our variables that should be
+treated as factor vectors are, indeed, factors. If you have read in the
+Vampires data set, chances are the <code>gender</code> variable was
+saved as a character vector, which we don’t want.</p>
+<p>Go on Google and try to find out which function we can use to change
+a CHARACTER vector in a data frame to a FACTOR vector (googling
+something like “change character to factor in r” should do the trick).
+Your GOAL is to change the <code>gender</code> variable in the
+<code>Vampires</code> data frame from a CHARACTER vector to a FACTOR
+vector (you can see if it worked using the
+<code>class(Vampires$gender)</code> function.)</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>So, we want to plot our generated data, not as frequencies, but as probabilities, using the function <code>hist()</code>. Our first step here should be to go ahead and look at the arguments that the function takes. Theoretically, we can change the arguments freq and probability in order to get the probability density of the values. If we change the probability argument, we can change it to true (we can write this as TRUE or T, for short). We can also change the freq argument to FALSE, which throws back the probability density as well, so we should end up with the same plot either way.</p>
+<p>So, there are actually a lot of ways to do this, depending on whether
+you are using tidyverse (we will learn about this in the next section)
+or base R. I’ll show you a Base R example.</p>
+<p>So, in base R, we work with our <code>$</code> operator. Since we
+want to change a vector in a data frame, we will first have to tell R to
+change a vector in the data frame, which we do by defining a new
+variable <code>Vampires$gender</code>. Since we already have
+<code>gender</code> in the <code>Vampires</code> data frame, by defining
+our variable in this way, it will overwrite the character vector as a
+factor vector.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Poisson</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10000</span>, lambda <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>           <span class='co'># generate the data again</span>
-
-<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Poisson</span>, probability <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>                   <span class='co'># set probability to true</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Poisson</span>, freq <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>gender</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>gender</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="ExercisesUnit3_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
-<p><em>(Fun side note: The Poisson distribution is being used more and more in linguistics, since it is the canonical distribution for characterizing count data. If you want to e.g. compute a model where your DV is the number of errors produced, number of dialect realizations in an interaction, number of case markers etc., the Poisson distribution should become your new best friend. Bodo Winter’s book Statistics for Linguists has an entire chapter dedicated to the Poisson distribution, I would definitely recommend a read.)</em></p>
+</details>
+<h2 id="exercise-3.2">Exercise 3.2</h2>
+<p>Awesome, you’re doing so well! So, since we have now changed our
+<code>gender</code> variable to a factor, we can now count the
+<em>factor levels</em>, i.e. how many different levels does the factor
+have (in our case, I only entered female/male for the sake of
+simplicity). Use the <code>table()</code> function to count the factor
+levels of the factor <code>gender</code> (what do we need to feed into
+the <code>table()</code> function to make it count the factor
+levels?)</p>
+<details>
+<summary>
+Click for Answer
+</summary>
+<p><strong>SOLUTION</strong></p>
+<p>You guessed it! All we need to do is enter the classic
+<code>Vampires$gender</code> into the table function to have it count
+the number of factor levels each.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>gender</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Female   Male 
+    56     44 </code></pre>
+</div>
+</details>
+<h2 id="exercise-3.3">Exercise 3.3</h2>
+<p>Let’s use what we just learned to answer the following questions:</p>
+<ol type="a">
+<li><p>How many vampires in the data frame are dead, and how many
+alive?</p></li>
+<li><p>How many vampires were born on each continent?</p></li>
+<li><p>How many vampires are married and how many divorced?</p></li>
+</ol>
+<details>
+<summary>
+Click for Answer
+</summary>
+<p><strong>SOLUTION</strong></p>
+<ol type="a">
+<li>How many vampires in the data frame are dead, and how many
+alive?</li>
+</ol>
+<p>Well, we first have to factor our variable, then use the
+<code>table()</code> function.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>deadOrAlive</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>deadOrAlive</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>deadOrAlive</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Alive  Dead 
+   59    41 </code></pre>
+</div>
+<ol start="2" type="a">
+<li>How many vampires were born on each continent?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>bornIn</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>bornIn</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>bornIn</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+       Africa    Antarctica          Asia     Australia        Europa 
+            2            30             2            15             5 
+North America South America 
+           19            27 </code></pre>
+</div>
+<ol start="3" type="a">
+<li>How many vampires are married and how many divorced?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>maritalStatus</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>maritalStatus</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>maritalStatus</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Divorced  Married   Single 
+      47       20       33 </code></pre>
+</div>
+<p>Oh my God, why are so many divorced?!</p>
 </details>
 <h1 id="exercise-4">Exercise 4</h1>
-<p>Calculate the mean and standard deviation of the number of people the vampires have changed into vampires. Take a look at the data frame and the names of the data frame—which variable do we need?</p>
-<p><strong>HINT</strong> You will need the $ operator.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
+<p>Alright, we’re going to do some really fun statistics, cause why
+not?</p>
+<p>Try to do the following (feel free to group up for these!)</p>
+<ol type="a">
+<li><p>Which variables in the <code>Vampires</code> data frame are
+NUMERIC?</p></li>
+<li><p>Choose two NUMERIC variables and run a correlation using the
+<code>cor.test()</code> function. This is a fantastic chance to use the
+help environment to find out what you should enter into the
+<code>cor.test()</code> function! <em>smiley emoji</em></p></li>
+<li><p>Install and load the package <code>report</code>. Go back and
+save your correlation test as the variable <code>cor</code>. Then run
+<code>report(cor)</code> and thank me later.</p></li>
+<li><p>INTERMEDIATE: Change the type of the correlation to a Spearman’s
+correlation.</p></li>
+</ol>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>Since I didn’t specify which variable we are interested in, we would need to search the data frame to find out which variable we need. If we just need to remind ourselves which variable we are interested in, we can do this using the <code>colnames()</code> function, which returns the names of the columns, but no information on what is actually in the columns. If we want to see what is actually in the columns without having to print the entire data frame, we can go ahead and use the <code>head()</code> function.</p>
+<ol type="a">
+<li>Which variables in the <code>Vampires</code> data frame are
+NUMERIC?</li>
+</ol>
+<p>So, this one is pretty easy, but we need to know the right function
+to do this! We can easily use the <code>str()</code> function, cause
+this gives us the classes of all variables in a data frame.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>                 <span class='co'># get column names for Vampires data frame</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code> [1] &quot;idVampire&quot;           &quot;gender&quot;              &quot;ageOfVampire&quot;       
- [4] &quot;deadOrAlive&quot;         &quot;hasFangs&quot;            &quot;bornIn&quot;             
- [7] &quot;vampType&quot;            &quot;wellbeing&quot;           &quot;maritalStatus&quot;      
-[10] &quot;employment&quot;          &quot;income&quot;              &quot;visitedCities&quot;      
-[13] &quot;numberOfChildren&quot;    &quot;numberChangedToVamp&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>)</span>                     <span class='co'># see first few rows of Vampires data frame</span>
-</code></pre>
+<pre><code>spec_tbl_df [100 × 14] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ idVampire          : num [1:100] 1 2 3 4 5 6 7 8 9 10 ...
+ $ gender             : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 1 1 2 2 ...
+ $ ageOfVampire       : num [1:100] 89 192 67 23 40 105 58 67 88 122 ...
+ $ deadOrAlive        : Factor w/ 2 levels &quot;Alive&quot;,&quot;Dead&quot;: 2 2 2 2 1 1 1 1 1 2 ...
+ $ hasFangs           : chr [1:100] &quot;No&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; ...
+ $ bornIn             : Factor w/ 7 levels &quot;Africa&quot;,&quot;Antarctica&quot;,..: 6 6 7 5 4 2 4 6 2 2 ...
+ $ vampType           : chr [1:100] &quot;hybrid&quot; &quot;hybrid&quot; &quot;sanguinarian&quot; &quot;psychic&quot; ...
+ $ wellbeing          : num [1:100] 61.6 71.4 64.2 24.7 47.2 ...
+ $ maritalStatus      : Factor w/ 3 levels &quot;Divorced&quot;,&quot;Married&quot;,..: 3 1 1 2 1 2 3 1 3 3 ...
+ $ employment         : chr [1:100] &quot;Employed&quot; &quot;Employed&quot; &quot;Not Employed&quot; &quot;Employed&quot; ...
+ $ income             : num [1:100] 131670 153860 154087 113842 144047 ...
+ $ visitedCities      : num [1:100] 10 4 3 97 33 41 43 119 16 11 ...
+ $ numberOfChildren   : num [1:100] 3 1 1 2 3 1 5 1 4 1 ...
+ $ numberChangedToVamp: num [1:100] 23 7 9 11 3 5 13 21 4 8 ...
+ - attr(*, &quot;spec&quot;)=
+  .. cols(
+  ..   idVampire = col_double(),
+  ..   gender = col_character(),
+  ..   ageOfVampire = col_double(),
+  ..   deadOrAlive = col_character(),
+  ..   hasFangs = col_character(),
+  ..   bornIn = col_character(),
+  ..   vampType = col_character(),
+  ..   wellbeing = col_double(),
+  ..   maritalStatus = col_character(),
+  ..   employment = col_character(),
+  ..   income = col_double(),
+  ..   visitedCities = col_double(),
+  ..   numberOfChildren = col_double(),
+  ..   numberChangedToVamp = col_double()
+  .. )
+ - attr(*, &quot;problems&quot;)=&lt;externalptr&gt; </code></pre>
 </div>
-<pre><code># A tibble: 6 × 14
-  idVampire gender ageOfVampire deadOrAlive hasFangs bornIn   vampType
-      &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   
-1         1 Female           89 Dead        No       North A… hybrid  
-2         2 Male            192 Dead        Yes      North A… hybrid  
-3         3 Male             67 Dead        Yes      South A… sanguin…
-4         4 Male             23 Dead        No       Europa   psychic 
-5         5 Female           40 Alive       Yes      Austral… hybrid  
-6         6 Male            105 Alive       No       Antarct… psychic 
-# … with 7 more variables: wellbeing &lt;dbl&gt;, maritalStatus &lt;chr&gt;,
-#   employment &lt;chr&gt;, income &lt;dbl&gt;, visitedCities &lt;dbl&gt;,
-#   numberOfChildren &lt;dbl&gt;, numberChangedToVamp &lt;dbl&gt;</code></pre>
-</div>
-<p>After exploring the data frame, we should find that the variable <code>numberChangedToVamp</code> is the one we are looking for.</p>
-<p>Now that we know which variable we need, the exercise asks us to calculate the mean and standard deviation. We need the $ operator in order to go into the data frame and select exactly this variable. We will then wrap this in the two functions <code>mean()</code> and <code>sd()</code>, like so:</p>
+<ol start="2" type="a">
+<li>Choose two NUMERIC variables and run a correlation using the
+<code>cor.test()</code> function. This is a fantastic chance to use the
+help environment to find out what you should enter into the
+<code>cor.test()</code> function! <em>smiley emoji</em></li>
+</ol>
+<p>So, if you know a little about statistics, you know that a
+correlation is just the strength of the association between two
+variables. This logically means that we need to enter two variables into
+the correlation analysis. Let’s say we want to know whether income
+correlates with wellbeing in vampires. REMEMBER, we need to define in
+which data frames our variables are coming from using the <code>$</code>
+operator!!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>        <span class='co'># get mean of numberChangedToVamp</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.test.html'>cor.test</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>wellbeing</span>, <span class='va'>Vampires</span><span class='op'>$</span><span class='va'>income</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 8.2</code></pre>
+<pre><code>
+    Pearson&#39;s product-moment correlation
+
+data:  Vampires$wellbeing and Vampires$income
+t = 2.5368, df = 98, p-value = 0.01276
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.05447568 0.42398305
+sample estimates:
+      cor 
+0.2482377 </code></pre>
+</div>
+<p>Nice, looks like there is something going on there! (Remember, since
+the data generated here are generated newly every time I remake the
+website, the results you get could be entirely different, so don’t let
+this scare you!! If you got a result, then you did it just fine, go
+you!)</p>
+<ol start="3" type="a">
+<li>Install and load the package <code>report</code>. Go back and save
+your correlation test as the variable <code>cor</code>. Then run
+<code>report(cor)</code> and thank me later.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>numberChangedToVamp</span><span class='op'>)</span>          <span class='co'># get SD of numberChangedToVamp</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("report")</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://easystats.github.io/report/'>report</a></span><span class='op'>)</span>
+
+<span class='va'>cor</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.test.html'>cor.test</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>income</span>, <span class='va'>Vampires</span><span class='op'>$</span><span class='va'>wellbeing</span><span class='op'>)</span>
+<span class='fu'><a href='https://easystats.github.io/report/reference/report.html'>report</a></span><span class='op'>(</span><span class='va'>cor</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 4.65149</code></pre>
+<pre><code>Effect sizes were labelled following Funder&#39;s (2019) recommendations.
+
+The Pearson&#39;s product-moment correlation between Vampires$income and
+Vampires$wellbeing is positive, statistically significant, and medium
+(r = 0.25, 95% CI [0.05, 0.42], t(98) = 2.54, p = 0.013)</code></pre>
+</div>
+<ol start="4" type="a">
+<li>INTERMEDIATE: Change the type of the correlation to a Spearman’s
+correlation.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.test.html'>cor.test</a></span><span class='op'>(</span><span class='va'>Vampires</span><span class='op'>$</span><span class='va'>income</span>, <span class='va'>Vampires</span><span class='op'>$</span><span class='va'>wellbeing</span>, method <span class='op'>=</span> <span class='st'>"spearman"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Spearman&#39;s rank correlation rho
+
+data:  Vampires$income and Vampires$wellbeing
+S = 119390, p-value = 0.004373
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.2835884 </code></pre>
 </div>
 </details>
-<h1 id="exercise-5">Exercise 5</h1>
-<p>This exercise is best done in small groups.</p>
-<p>In the help pane, look up the functions <code>rep()</code>, <code>as.factor()</code> and <code>gl()</code>. Which arguments do these functions take?</p>
-<p>In the next few steps, we will go through how to create a data frame (this exercise begins here, and we will continue it in the next set of exercises—here, we are just focusing on generating two variables, namely <code>ID</code> and <code>Time</code>, see below for more details).</p>
-<p>Why, you might ask, are we focusing so much on generating data? For one, it get’s you in the rhythm of looking up the arguments in functions—that’s something you will always have to do. Second, it’s great to know and understand how to generate data. Let’s say, for example, we want to run an a priori power analysis for a mixed effects model to find out how likely we are to find an effect OR to judge how large of a sample we might need. Since a priori power analyses for mixed effects models basically can only be done via computer simulations, we need to be able to generate data and data frames. The following steps are a good exercise in developing this ability. Another plus in being able to generate data is you will be able to write your R scripts before you are finished collecting data in an experiment, i.e. you can just generate similar data to which you are collecting, write your analyses code in advance and once you have your data, you have a whole lot less work. Before you are able to generate data, you won’t really see what you’re missing out on—once you can do it, you won’t know how you ever lived without being able to do this.</p>
-<p>So, let’s start:</p>
-<p>Research context: We are interested in whether weekly exposure to the L2 during intensive L2 learning in mid-age (between 25–45) has an effect on reaction times in a Stroop task (i.e. how long it takes a participant to click when the color of the word and the word itself are the same). The participants partake in an intensive language learning course over a 20-week period in the target language community, and we test them once a week. There are 15 participants.</p>
-<p>Let’s generate some data for this!</p>
-<h2 id="exercise-5.1">Exercise 5.1</h2>
-<p>To start, we need to generate an ID variable for the participants (remember, these ID numbers need to be some sort of factors!). That means: We want to generate IDs as factors for <strong>15 participants</strong>, where each participant is tested 20 times (i.e. each participant ID has to show up 20 times).</p>
-<p>Which function can we use to do this (<strong>HINT</strong> you looked it up in the first part of this task!)?</p>
-<p>Save this as an object under the name <code>ID</code>.</p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>Alright, we want to generate the ID variable for all participants. Since we have 15 participants, we know we will need the numbers (as factors) 1–15. That part is easy enough. The tricky part is repeating the 1–15 20 times (for each data collection point).</p>
-<p>If you looked at the required functions in the first part of this exercise, a bell hopefully went off in your mind saying that you can use the <code>gl()</code> function, which stands for “generate levels”. This function generates factor levels, and we need the arguments n (number of levels, so this needs to be 15, since we have 15 participants), and k (which is the number of replications, which needs to be 20, since we have 20 data collection points and need to generate each participant’s ID 20 times). So, we need the following code:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>      <span class='co'># Create ID variables for 20 data collection times</span>
-</code></pre>
-</div>
-</div>
-</details>
-<h2 id="exercise-5.2">Exercise 5.2</h2>
-<p>Alright, so we have our participant ID variable. Now we need a variable called <code>Time</code>, i.e. 20 data collection points per participant. You will need the function <code>rep(x = ..., times = ...)</code> for this.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Time <span class="ot">=</span> <span class="fu">rep</span>(<span class="at">x =</span> ???, <span class="at">times =</span> ???)</span></code></pre></div>
-</div>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>So, now things get a bit tricky. We need to generate the sequence 1–20 a total of 15 times (the sequence once for each participant). We were given in the exercise the function <code>rep()</code>, which can take the arguments x (the sequence, so 1–20), and times (i.e. how many times should she sequence be repeated?). Thus, we need to enter the following code:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Time</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>, times <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p><strong>BUT</strong>, this generates a numeric vector. Time points are not numeric, so we need a factor. We can do this a few different ways. For one, we can use the <code>as.factor()</code> function to transform the entire vector into factors, like so:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Time</span><span class='op'>)</span>                 <span class='co'># change Time to a factor</span>
-</code></pre>
-</div>
-<pre><code>  [1] 1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1 
- [22] 2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2 
- [43] 3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3 
- [64] 4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4 
- [85] 5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5 
-[106] 6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6 
-[127] 7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7 
-[148] 8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8 
-[169] 9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9 
-[190] 10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10
-[211] 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11
-[232] 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11 12
-[253] 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11 12 13
-[274] 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11 12 13 14
-[295] 15 16 17 18 19 20
-Levels: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
-</div>
-<p>If we want to do everything in one step, we can just wrap one function within another, transforming the numeric vector 1:20 into a factor in the first step, like so:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Time</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>, times <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span>       <span class='co'># repeat 1 through 20 as factors 15 times</span>
-<span class='va'>Time</span>                                              <span class='co'># print Time</span>
-</code></pre>
-</div>
-<pre><code>  [1] 1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1 
- [22] 2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2 
- [43] 3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3 
- [64] 4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4 
- [85] 5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5 
-[106] 6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6 
-[127] 7  8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7 
-[148] 8  9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8 
-[169] 9  10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9 
-[190] 10 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10
-[211] 11 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11
-[232] 12 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11 12
-[253] 13 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11 12 13
-[274] 14 15 16 17 18 19 20 1  2  3  4  5  6  7  8  9  10 11 12 13 14
-[295] 15 16 17 18 19 20
-Levels: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
-</div>
-</details>
-<h1 id="exercise-6">Exercise 6</h1>
-<p>Install and load the package <code>reshape2</code>.</p>
-<details>
-<summary>
-Click for Answer
-</summary>
-<p><strong>SOLUTION</strong></p>
-<p>If you haven’t installed this package before, we need to first install the package before we can actually load it, using the <code>install.packages()</code> function. After that, we need to load in the package using the <code>library()</code> function, like so:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"reshape2"</span><span class='op'>)</span>                <span class='co'># install package reshape2</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/hadley/reshape'>reshape2</a></span><span class='op'>)</span>                           <span class='co'># load in library reshape2</span>
-</code></pre>
-</div>
-</div>
-</details>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

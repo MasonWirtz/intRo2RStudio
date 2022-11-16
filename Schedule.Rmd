@@ -36,9 +36,11 @@ output:
 * Factors
 * Data frames
 
+**PAUSE**
+
 ### **3. Baby steps: Basics of coding in RStudio, part 2**
 
-(15:00---16:00)
+(15:15---16:00)
 
 * Objects 
 * Functions
@@ -73,10 +75,12 @@ output:
 
 ### **7. Let’s get plotting**
 
-(12:30---14:30)
+(12:30---14:15)
 
 * Plotting with ggplot2
 * Saving ggplots
+
+**PAUSE**
 
 ### **8. Reporting and reproducibility**
 

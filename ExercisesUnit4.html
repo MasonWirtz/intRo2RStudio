@@ -2035,7 +2035,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2128,8 +2128,8 @@ Exercise scripts
 </button>
 <div class="nav-dropdown-content">
 <a href="https://osf.io/a295p/download">Exercise script 2</a>
-<a href="https://osf.io/cjp3g/download">Exercise script 3</a>
-<a href="https://osf.io/w7eas/download">Exercise script 4</a>
+<a href="https://osf.io/92wkx/download">Exercise script 3</a>
+<a href="https://osf.io/9kc3j/download">Exercise script 4</a>
 <a href="https://osf.io/z4r7j/download">Exercise script 5</a>
 <a href="https://osf.io/mukgq/download">Exercise script 6</a>
 <a href="https://osf.io/g3fe4/download">Exercise script 7</a>
@@ -2177,7 +2177,8 @@ Extras
 </div>
 
 <div class="d-byline">
-  Mason A. Wirtz <a href="https://masonwirtz.github.io" class="uri">https://masonwirtz.github.io</a> 
+  Mason A. Wirtz <a href="https://masonwirtz.github.io"
+class="uri">https://masonwirtz.github.io</a> 
   
 
 </div>
@@ -2187,28 +2188,41 @@ Extras
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#exercise-1">Exercise 1</a></li>
-<li><a href="#exercise-2">Exercise 2</a></li>
-<li><a href="#exercise-3">Exercise 3</a></li>
-<li><a href="#exercise-4">Exercise 4</a></li>
-<li><a href="#exercise-5">Exercise 5</a>
+<li><a href="#exercise-1" id="toc-exercise-1">Exercise 1</a></li>
+<li><a href="#exercise-2" id="toc-exercise-2">Exercise 2</a></li>
+<li><a href="#exercise-3" id="toc-exercise-3">Exercise 3</a></li>
+<li><a href="#exercise-4" id="toc-exercise-4">Exercise 4</a></li>
+<li><a href="#exercise-5-intermediate"
+id="toc-exercise-5-intermediate">Exercise 5 (intermediate)</a>
 <ul>
-<li><a href="#exercise-5.1">Exercise 5.1</a></li>
-<li><a href="#exercise-5.2">Exercise 5.2</a></li>
+<li><a href="#exercise-5.1" id="toc-exercise-5.1">Exercise 5.1</a></li>
+<li><a href="#exercise-5.2" id="toc-exercise-5.2">Exercise 5.2</a></li>
+<li><a href="#exercise-5.3" id="toc-exercise-5.3">Exercise 5.3</a></li>
 </ul></li>
-<li><a href="#exercise-6-for-experts">Exercise 6 (for experts)</a></li>
+<li><a href="#exercise-6-for-experts"
+id="toc-exercise-6-for-experts">Exercise 6 (for experts)</a></li>
 </ul>
 </nav>
 </div>
 <h1 id="exercise-1">Exercise 1</h1>
-<p>Load in the data <code>Vampires</code> (preferably as a tibble using the <code>read_csv()</code> function).</p>
-<p>We are only interested in the columns <code>idVampire</code>, <code>gender</code>, <code>ageOfVampire</code> and <code>numberOfChildren</code>. Create a new data frame called <code>Vamps</code> including only these columns.</p>
+<p>Load in the data <code>Vampires</code> (preferably as a tibble using
+the <code>read_csv()</code> function).</p>
+<p>We are only interested in the columns <code>idVampire</code>,
+<code>gender</code>, <code>ageOfVampire</code> and
+<code>numberOfChildren</code>. Create a new data frame called
+<code>Vamps</code> including only these columns.</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>Since our goal here is to simply subset the data frame and select on certain columns, we can use the function <code>select()</code> from the <code>dplyr</code> package included in the <code>tidyverse</code>. This will allow us to pick and choose which columns we want to subset. We can then assign these subsetted variables to a new object, which the directions ask us to call <code>Vamps</code>. Let’s go ahead and do this:</p>
+<p>Since our goal here is to simply subset the data frame and select on
+certain columns, we can use the function <code>select()</code> from the
+<code>dplyr</code> package included in the <code>tidyverse</code>. This
+will allow us to pick and choose which columns we want to subset. We can
+then assign these subsetted variables to a new object, which the
+directions ask us to call <code>Vamps</code>. Let’s go ahead and do
+this:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vamps</span> <span class='op'>=</span>                                       <span class='co'># define object</span>
@@ -2218,7 +2232,10 @@ Click for Answer
 </code></pre>
 </div>
 </div>
-<p>Since the first three columns we want to subset are in a row (i.e. the first three columns), we can also easily specify 1:3 (i.e. columns 1 through 3), plus the variable <code>numberOfChildren</code>, like so:</p>
+<p>Since the first three columns we want to subset are in a row
+(i.e. the first three columns), we can also easily specify 1:3
+(i.e. columns 1 through 3), plus the variable
+<code>numberOfChildren</code>, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vamps</span> <span class='op'>=</span>                                 <span class='co'># define object</span>
@@ -2229,13 +2246,17 @@ Click for Answer
 </div>
 </details>
 <h1 id="exercise-2">Exercise 2</h1>
-<p>Calculate the mean amount of cities the vampires have visited (variable: <code>visitedCities</code>), as well as the standard deviation thereof, using the <code>summarize()</code> function.</p>
+<p>Calculate the mean amount of cities the vampires have visited
+(variable: <code>visitedCities</code>), as well as the standard
+deviation thereof, using the <code>summarize()</code> function.</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>As always, our first step is to reach into the data frame we are interested in, namely <code>Vampires</code>, and then simply use the summarize function, like so:</p>
+<p>As always, our first step is to reach into the data frame we are
+interested in, namely <code>Vampires</code>, and then simply use the
+summarize function, like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                       <span class='co'># dataa</span>
@@ -2251,13 +2272,20 @@ Click for Answer
 </details>
 <h1 id="exercise-3">Exercise 3</h1>
 <p>Calculate the mean age of male and female vampires.</p>
-<p><strong>HINT</strong> You will need the pipe ( %&gt;% ) to group/stack functions, the <code>group_by</code> function and the <code>summarize</code> function (in that order).</p>
+<p><strong>HINT</strong> You will need the pipe ( %&gt;% ) to
+group/stack functions, the <code>group_by</code> function and the
+<code>summarize</code> function (in that order).</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>Alright, so our first step, as always, is to specify which data frame we are interested in. Then we want to group our data frame into two groups, namely male and female, which can be done by using the <code>group_by()</code> function on the variable <code>gender</code>. After that, we need the <code>summarize()</code> function to calculate the mean age (variable: <code>ageOfVampire</code>), like so:</p>
+<p>Alright, so our first step, as always, is to specify which data frame
+we are interested in. Then we want to group our data frame into two
+groups, namely male and female, which can be done by using the
+<code>group_by()</code> function on the variable <code>gender</code>.
+After that, we need the <code>summarize()</code> function to calculate
+the mean age (variable: <code>ageOfVampire</code>), like so:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
@@ -2279,22 +2307,52 @@ Click for Answer
 </details>
 <h1 id="exercise-4">Exercise 4</h1>
 <p>Alright, now we can get to the fun stuff: Manipulating data.</p>
-<p>To start off, let’s clean up our environment a bit. We won’t really be needing the Vamps data frame we made earlier, so remove it from your environment using the <code>rm(Vamps)</code> function.</p>
-<p>Let’s say we are interested in whether <strong>alive vampires</strong> have changed more people into vampires depending on whether they have fangs or not. The variables here that will interest us are <code>deadOrAlive</code>, <code>hasFangs</code> and <code>numberChangedToVamp</code>. There is no need to subset the respective variables, but if you want to for the sake of practice, go ahead.</p>
-<p>What is the mean number of people the <strong>alive</strong> vampires <strong>WITH</strong> and <strong>WITHOUT</strong> fangs have turned into vampires?</p>
-<p><strong>HINT</strong> You will need the pipe ( %&gt;% ) to group/stack functions, the <code>filter</code> function, the <code>group_by</code> function and the <code>summarize</code> function (in that order).</p>
+<p>To start off, let’s clean up our environment a bit. We won’t really
+be needing the Vamps data frame we made earlier, so remove it from your
+environment using the <code>rm(Vamps)</code> function.</p>
+<p>Let’s say we are interested in whether <strong>alive
+vampires</strong> have changed more people into vampires depending on
+whether they have fangs or not. The variables here that will interest us
+are <code>deadOrAlive</code>, <code>hasFangs</code> and
+<code>numberChangedToVamp</code>. There is no need to subset the
+respective variables, but if you want to for the sake of practice, go
+ahead.</p>
+<p>What is the mean number of people the <strong>alive</strong> vampires
+<strong>WITH</strong> and <strong>WITHOUT</strong> fangs have turned
+into vampires?</p>
+<p><strong>HINT</strong> You will need the pipe ( %&gt;% ) to
+group/stack functions, the <code>filter</code> function, the
+<code>group_by</code> function and the <code>summarize</code> function
+(in that order).</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>This is pretty tricky, there are three steps we need to go through to get to the answer. Let’s go through this together.</p>
+<p>This is pretty tricky, there are three steps we need to go through to
+get to the answer. Let’s go through this together.</p>
 <ul>
-<li><p>To start with, we know that we are only interested in <strong>ALIVE</strong> vampires, so this means that we need to subset the data frame to home in on only the vampires that are alive. Our variable <code>deadOrAlive</code> tells us whether the vampires are dead or alive, so this is the variable we first need to subset. We do this by using the <code>filter()</code> function (remember, filter is for ROWS and select is for COLUMNS). And we specify we only want ALIVE vampires by using the == operator (<strong>REMEMBER</strong>, the operator = is for assigning values to an object, == means “is equal to”).</p></li>
-<li><p>Now, since we are interested in whether vampires with and without fangs have changed more people to vampires, we need to group our data frame into two groups: vampires WITH fangs and vampires WITHOUT fangs. We can do this by using the <code>group_by()</code> function.</p></li>
-<li><p>Lastly, we then need the <code>summarize</code> function and specify it to give us the mean of the people the vampires WITH and WITHOUT fangs have changed into vampires.</p></li>
+<li><p>To start with, we know that we are only interested in
+<strong>ALIVE</strong> vampires, so this means that we need to subset
+the data frame to home in on only the vampires that are alive. Our
+variable <code>deadOrAlive</code> tells us whether the vampires are dead
+or alive, so this is the variable we first need to subset. We do this by
+using the <code>filter()</code> function (remember, filter is for ROWS
+and select is for COLUMNS). And we specify we only want ALIVE vampires
+by using the == operator (<strong>REMEMBER</strong>, the operator = is
+for assigning values to an object, == means “is equal to”).</p></li>
+<li><p>Now, since we are interested in whether vampires with and without
+fangs have changed more people to vampires, we need to group our data
+frame into two groups: vampires WITH fangs and vampires WITHOUT fangs.
+We can do this by using the <code>group_by()</code> function.</p></li>
+<li><p>Lastly, we then need the <code>summarize</code> function and
+specify it to give us the mean of the people the vampires WITH and
+WITHOUT fangs have changed into vampires.</p></li>
 </ul>
-<p>We have an interesting outcome, vampires without fangs have changed more people into vampires on average than vampires with fangs…interesting. Maybe vampires without fangs have a Minderwertigkeitskomplex…?</p>
+<p>We have an interesting outcome, vampires without fangs have changed
+more people into vampires on average than vampires with
+fangs…interesting. Maybe vampires without fangs have a
+Minderwertigkeitskomplex…?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
@@ -2319,95 +2377,275 @@ Click for Answer
 2 Yes       8.73</code></pre>
 </div>
 </details>
-<h1 id="exercise-5">Exercise 5</h1>
-<p>Remember how we started generating data in the previous set of exercises? Let’s go back to that. To remind you, we generated the ID variable using the <code>gl()</code> function (generate levels) and <code>Time</code> variable (data collection points, ranging from point 1 to point 20), using the <code>rep()</code> function.</p>
-<p>In case you didn’t get to that exercise, run the following code to catch up:</p>
+<h1 id="exercise-5-intermediate">Exercise 5 (intermediate)</h1>
+<p>Alright, we are going to go through some REALLY useful functions that
+I tend to use relatively often. They are super practical when you need
+to sort your data.</p>
+<p>We are going to focus on the following:</p>
+<ol type="a">
+<li><p><code>starts_with()</code></p></li>
+<li><p><code>ends_with()</code></p></li>
+<li><p><code>where()</code></p></li>
+<li><p><code>across()</code></p></li>
+<li><p><code>contains()</code></p></li>
+<li><p><code>grepl()</code></p></li>
+</ol>
+<p>Some of these are fairly self-explanatory (e.g., the first two), and
+a lot of them are used really often in combination with the select
+function.</p>
+<p>Run the following code chunk: What happens? When do you think these
+functions might be useful?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, k <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>               <span class='co'># Create ID variables for 20 data collection times</span>
-<span class='va'>Time</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span>,       <span class='co'># Repeat 1 through 20 as factors 15 times</span>
-           times <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>"g"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code># A tibble: 100 × 1
+   gender
+   &lt;chr&gt; 
+ 1 Female
+ 2 Male  
+ 3 Male  
+ 4 Male  
+ 5 Female
+ 6 Male  
+ 7 Female
+ 8 Female
+ 9 Male  
+10 Male  
+# … with 90 more rows</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Vampire"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>We will continue building a data frame—I have generated a new variable for you, namely <code>weeklyExposure</code>, which should be understood as the total number of hours per week participants spend engaging with native speakers. Run the following code to generate this variable.</p>
+<pre><code># A tibble: 100 × 2
+   idVampire ageOfVampire
+       &lt;dbl&gt;        &lt;dbl&gt;
+ 1         1           89
+ 2         2          192
+ 3         3           67
+ 4         4           23
+ 5         5           40
+ 6         6          105
+ 7         7           58
+ 8         8           67
+ 9         9           88
+10        10          122
+# … with 90 more rows</code></pre>
+</div>
+<p>I tend to use this function quite a bit when I work with z-scored
+variables, because I name all of them <em>variable</em>_z, so I can
+easily run the function <code>select(ends_with("_z"))</code>, which is
+of course really handy if I just want a data frame with my z-scored
+predictor variables.</p>
+<p>The <code>where()</code> function is really handy when you want to
+sort based on the class of a vector in a data frame. For exaample, is we
+want to select all columns that are numeric in class, we can run the
+following function:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># RUN THE FOLLOWING CODE CHUNK</span>
-<span class='co'># YOU DON'T NEED TO DO ANYTHING </span>
-<span class='co'># OTHER THAN RUN THE CHUNK</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/trinker/pacman'>"pacman"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"pacman"</span><span class='op'>)</span>
-<span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span>
-  <span class='va'>reshape2</span>                                        <span class='co'># load reshape2 library; reshape data</span>
-<span class='op'>)</span>
-
-<span class='va'>weeklyExposure</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>20</span>,                    <span class='co'># create expo. increasing values</span>
-                           <span class='fu'><a href='https://rdrr.io/r/stats/Exponential.html'>rexp</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>15</span>, 
-                                rate <span class='op'>=</span> <span class='fl'>.05</span><span class='op'>)</span><span class='op'>)</span> 
-<span class='va'>weeklyExposure</span> <span class='op'>=</span> <span class='va'>weeklyExposure</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>               <span class='co'># bound at 0 and 80</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/reshape2/man/melt.html'>melt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>weeklyExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='st'>"value"</span> <span class='op'>&gt;</span> <span class='fl'>80</span>, <span class='fl'>80</span>, <span class='va'>weeklyExposure</span><span class='op'>)</span>,
-         weeklyExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='st'>"value"</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='va'>weeklyExposure</span><span class='op'>)</span>,
-         weeklyExposure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span>, digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'>where</span><span class='op'>(</span><span class='va'>is.numeric</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code># A tibble: 100 × 7
+   idVampire ageOfVampire wellbeing  income visitedC…¹ numbe…² numbe…³
+       &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1         1           89      61.6 131670.         10       3      23
+ 2         2          192      71.4 153860.          4       1       7
+ 3         3           67      64.2 154087.          3       1       9
+ 4         4           23      24.7 113842.         97       2      11
+ 5         5           40      47.2 144047.         33       3       3
+ 6         6          105      23.9 138654.         41       1       5
+ 7         7           58      38.8 183873.         43       5      13
+ 8         8           67      73.1 136873.        119       1      21
+ 9         9           88      51.4 109140.         16       4       4
+10        10          122      70.6 149289.         11       1       8
+# … with 90 more rows, and abbreviated variable names ¹​visitedCities,
+#   ²​numberOfChildren, ³​numberChangedToVamp</code></pre>
+</div>
+<p>The <code>across()</code> function basically tells R to do something
+<em>across</em> a certain amount of columns So, if I want R to summarize
+all of my numeric variables reaally quickly, I could run something like
+this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'>where</span><span class='op'>(</span><span class='va'>is.numeric</span><span class='op'>)</span>, <span class='va'>mean</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 × 7
+  idVampire ageOfVampire wellbeing  income visitedCi…¹ numbe…² numbe…³
+      &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1      50.5         84.5      51.0 142011.        32.5    3.07     8.2
+# … with abbreviated variable names ¹​visitedCities,
+#   ²​numberOfChildren, ³​numberChangedToVamp</code></pre>
+</div>
+<p>And, if I want multiple statistics, I can do this easily, too:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'>where</span><span class='op'>(</span><span class='va'>is.numeric</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='va'>mean</span>, sd <span class='op'>=</span> <span class='va'>sd</span>, min <span class='op'>=</span> <span class='va'>min</span>, max <span class='op'>=</span> <span class='va'>max</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 × 28
+  idVampire_…¹ idVam…² idVam…³ idVam…⁴ ageOf…⁵ ageOf…⁶ ageOf…⁷ ageOf…⁸
+         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1         50.5    29.0       1     100    84.5    32.8      14     198
+# … with 20 more variables: wellbeing_mean &lt;dbl&gt;, wellbeing_sd &lt;dbl&gt;,
+#   wellbeing_min &lt;dbl&gt;, wellbeing_max &lt;dbl&gt;, income_mean &lt;dbl&gt;,
+#   income_sd &lt;dbl&gt;, income_min &lt;dbl&gt;, income_max &lt;dbl&gt;,
+#   visitedCities_mean &lt;dbl&gt;, visitedCities_sd &lt;dbl&gt;,
+#   visitedCities_min &lt;dbl&gt;, visitedCities_max &lt;dbl&gt;,
+#   numberOfChildren_mean &lt;dbl&gt;, numberOfChildren_sd &lt;dbl&gt;,
+#   numberOfChildren_min &lt;dbl&gt;, numberOfChildren_max &lt;dbl&gt;, …</code></pre>
 </div>
 <h2 id="exercise-5.1">Exercise 5.1</h2>
-<p>Now, let’s combine these three variables into a single data frame. Use the function <code>tibble()</code>. Please save this tibble under the object name <code>df</code>.</p>
+<p>The <code>contains()</code> function does the same as (a) and (b),
+really, but it selects any COLUMNS that contain a certain string. Use
+this function to to select any COLUMNS that contain the word
+<em>Vampire</em></p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
+<p>This works the same was as the <code>starts_with()</code> etc.
+functions, so we just define “Vampire” in our <code>contains()</code>
+function.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>=</span>                                    <span class='co'># data</span>
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span><span class='va'>ID</span>, <span class='va'>Time</span>, <span class='va'>weeklyExposure</span><span class='op'>)</span>      <span class='co'># create tibble of variables</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"Vampire"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code># A tibble: 100 × 2
+   idVampire ageOfVampire
+       &lt;dbl&gt;        &lt;dbl&gt;
+ 1         1           89
+ 2         2          192
+ 3         3           67
+ 4         4           23
+ 5         5           40
+ 6         6          105
+ 7         7           58
+ 8         8           67
+ 9         9           88
+10        10          122
+# … with 90 more rows</code></pre>
 </div>
 </details>
 <h2 id="exercise-5.2">Exercise 5.2</h2>
-<p>We would like to have a new variable in this data frame that we make using the contents of the other variables.</p>
-<p>Our new variable should be the <code>weeklyExposure</code> variable log transformed. This variable should be added to the data frame <code>df</code>. Call this new variable <code>logWeeklyExposure</code>.</p>
-<p><strong>HINT</strong> To add a new variable to a data frame within the tidyverse framework, we need the <code>mutate()</code> function. To log transform a variable, we need the <code>log()</code> function.</p>
+<p>The <code>grepl()</code> function is similar, but it filters anything
+with a certain string. HOWEVER, we also have to specify in WHICH COLUMN
+it is.</p>
+<p>Which function do we use to subset ROWS (instead of columns)?</p>
+<p>How would we subset our data set depending on which vampires were
+born in any of the Americas?</p>
+<p><strong>HINT</strong>: You will have to use
+<code>grepl("America", bornIn)</code>, but this has to be wrapped in
+another function (but which one? Hmmm…)</p>
 <details>
 <summary>
 Click for Answer
 </summary>
 <p><strong>SOLUTION</strong></p>
-<p>To create a new variable, we need the <code>mutate()</code> function. We can then specify how we would like to mutate the contents of a variable in the data frame. Since we simply want to log transform the <code>weeklyExposure</code> variable, we just need to apply the <code>log()</code> function to the <code>weeklyExposure</code> variable.</p>
+<p>This one is pretty tricky! We first need to use the
+<code>filter()</code> function since we are filtering ROWS. Then, we use
+the <code>grepl()</code> function to define a certain string of what we
+want the code to search for, and then finally define in which COLUMN the
+code should search.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>=</span>                                       <span class='co'># define object</span>
-  <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>                                   <span class='co'># data</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>logWeeklyExposure <span class='op'>=</span>               <span class='co'># create NEW variable </span>
-           <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>weeklyExposure</span><span class='op'>)</span><span class='op'>)</span>            <span class='co'># define TERMS for new variable</span>
-
-<span class='co'># Check df to make sure we got this new variable </span>
-<span class='va'>df</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"America"</span>, <span class='va'>bornIn</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 300 × 4
-   ID    Time  weeklyExposure logWeeklyExposure
-   &lt;fct&gt; &lt;fct&gt;          &lt;dbl&gt;             &lt;dbl&gt;
- 1 1     1              20.9              3.04 
- 2 1     2               0.62            -0.478
- 3 1     3              49.9              3.91 
- 4 1     4              65.9              4.19 
- 5 1     5              47.2              3.85 
- 6 1     6              13.3              2.59 
- 7 1     7               8.69             2.16 
- 8 1     8               7.37             2.00 
- 9 1     9              33.0              3.50 
-10 1     10             47.0              3.85 
-# … with 290 more rows</code></pre>
+<pre><code># A tibble: 46 × 14
+   idVampire gender ageOfVamp…¹ deadO…² hasFa…³ bornIn vampT…⁴ wellb…⁵
+       &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;
+ 1         1 Female          89 Dead    No      North… hybrid     61.6
+ 2         2 Male           192 Dead    Yes     North… hybrid     71.4
+ 3         3 Male            67 Dead    Yes     South… sangui…    64.2
+ 4         8 Female          67 Alive   Yes     North… hybrid     73.1
+ 5        11 Male            61 Alive   Yes     South… psychic    51.5
+ 6        13 Female          87 Alive   No      North… hybrid     19.5
+ 7        17 Female          89 Alive   Yes     South… psychic    97.0
+ 8        20 Male            99 Dead    Yes     South… sangui…    53.8
+ 9        23 Male            99 Dead    No      North… hybrid     23.6
+10        24 Male            61 Alive   No      North… psychic    68.0
+# … with 36 more rows, 6 more variables: maritalStatus &lt;chr&gt;,
+#   employment &lt;chr&gt;, income &lt;dbl&gt;, visitedCities &lt;dbl&gt;,
+#   numberOfChildren &lt;dbl&gt;, numberChangedToVamp &lt;dbl&gt;, and
+#   abbreviated variable names ¹​ageOfVampire, ²​deadOrAlive,
+#   ³​hasFangs, ⁴​vampType, ⁵​wellbeing</code></pre>
+</div>
+</details>
+<h2 id="exercise-5.3">Exercise 5.3</h2>
+<p>Let’s say that we know we do not want any character vectors in our
+data frame, but we rather want these to be factor vectors. Using the
+<code>mutate()</code>, <code>across()</code> and <code>where()</code>
+functions, change ALL character vectors to factor vectors. This one is a
+bit tricky, but, once you know this trick, you will use it SO
+OFTEN!!!</p>
+<details>
+<summary>
+Click for Answer
+</summary>
+<p><strong>SOLUTION</strong></p>
+<p>This one is pretty tricky! We first need the <code>mutate()</code>
+function because we want to change the variables. Then, we need
+<code>across()</code> because we are mutating across several variables,
+and we need to tell the function across <em>which</em> variables we are
+mutating, so we use the <code>where()</code> function. Since we want to
+mutate all CHARACTER vectors, we need to search for where these vectors
+are, which we can do with the <code>is.character</code> function. Then,
+we tell the function what to do once it has located the character
+vectors, which is then to change them to factors, which we do by using
+the <code>as.factor()</code> function.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Vampires</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'>where</span><span class='op'>(</span><span class='va'>is.character</span><span class='op'>)</span>, <span class='va'>as.factor</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 100 × 14
+   idVampire gender ageOfVamp…¹ deadO…² hasFa…³ bornIn vampT…⁴ wellb…⁵
+       &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;  &lt;fct&gt;     &lt;dbl&gt;
+ 1         1 Female          89 Dead    No      North… hybrid     61.6
+ 2         2 Male           192 Dead    Yes     North… hybrid     71.4
+ 3         3 Male            67 Dead    Yes     South… sangui…    64.2
+ 4         4 Male            23 Dead    No      Europa psychic    24.7
+ 5         5 Female          40 Alive   Yes     Austr… hybrid     47.2
+ 6         6 Male           105 Alive   No      Antar… psychic    23.9
+ 7         7 Female          58 Alive   Yes     Austr… hybrid     38.8
+ 8         8 Female          67 Alive   Yes     North… hybrid     73.1
+ 9         9 Male            88 Alive   No      Antar… hybrid     51.4
+10        10 Male           122 Dead    Yes     Antar… psychic    70.6
+# … with 90 more rows, 6 more variables: maritalStatus &lt;fct&gt;,
+#   employment &lt;fct&gt;, income &lt;dbl&gt;, visitedCities &lt;dbl&gt;,
+#   numberOfChildren &lt;dbl&gt;, numberChangedToVamp &lt;dbl&gt;, and
+#   abbreviated variable names ¹​ageOfVampire, ²​deadOrAlive,
+#   ³​hasFangs, ⁴​vampType, ⁵​wellbeing</code></pre>
 </div>
 </details>
 <h1 id="exercise-6-for-experts">Exercise 6 (for experts)</h1>
-<p>Alright, you’ve done well until now? Great! Let’s take on a harder task. Before you start, look up the arguments for the function <code>ungroup()</code>.</p>
-<p>Let’s say we had participants complete several versions of a C Test (a language assessment test in which participants have to complete words—this has been shown to strongly correlate with participants’ general language proficiency, cf. Raatz &amp; Klein–Braley [2002]). Since no two tests are typically exactly the same, even after pilot testing (that is, without conducting large-scale psycho-metric validity screenings), we tend to correct for the possible differences in the tasks statistically. We can correct for differences (to help ensure better comparability) between the versions of the C Test by subtracting or adding the deviation of each version’s mean count from the overall mean count for each individual score.</p>
+<p>Alright, you’ve done well until now? Great! Let’s take on a harder
+task. Before you start, look up the arguments for the function
+<code>ungroup()</code>.</p>
+<p>Let’s say we had participants complete several versions of a C Test
+(a language assessment test in which participants have to complete
+words—this has been shown to strongly correlate with participants’
+general language proficiency, cf. Raatz &amp; Klein–Braley [2002]).
+Since no two tests are typically exactly the same, even after pilot
+testing (that is, without conducting large-scale psycho-metric validity
+screenings), we tend to correct for the possible differences in the
+tasks statistically. We can correct for differences (to help ensure
+better comparability) between the versions of the C Test by subtracting
+or adding the deviation of each version’s mean count from the overall
+mean count for each individual score.</p>
 <p>Let me generate some data for you that replicates this situation:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2429,16 +2667,16 @@ Click for Answer
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1          11
- 2 1          21
- 3 1          16
- 4 1          23
- 5 1          16
- 6 1          14
- 7 1          17
- 8 1          11
- 9 1          21
-10 1          28
+ 1 1          20
+ 2 1          20
+ 3 1          13
+ 4 1          17
+ 5 1          22
+ 6 1          19
+ 7 1          19
+ 8 1          15
+ 9 1          14
+10 1          20
 # … with 50 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>CTest_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
@@ -2450,13 +2688,20 @@ Click for Answer
 <pre><code># A tibble: 3 × 5
   Version   max   min  mean    sd
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 1          28    11  18.1  4.05
-2 2          25    14  18.9  3.48
-3 3          27    14  20.4  3.22</code></pre>
+1 1          22     9  16.8  3.50
+2 2          26    10  17.6  4.15
+3 3          26    12  19.2  3.70</code></pre>
 </div>
-<p>So, now we have a data frame with the version of the C Test (<code>Version</code>) and each participant’s score on the C Tests (<code>CTest</code>).</p>
-<p>Adjust the variable <code>CTest</code> by subtracting or adding the difference of each C Test version’s mean score from the overall mean score of the C Tests from or to each individual score.</p>
-<p><strong>HINT</strong> You will need to (or can, there are other ways to solve this) use the following functions in the given order: <code>group_by()</code>, <code>mutate()</code>, <code>ungroup()</code> and <code>mutate()</code></p>
+<p>So, now we have a data frame with the version of the C Test
+(<code>Version</code>) and each participant’s score on the C Tests
+(<code>CTest</code>).</p>
+<p>Adjust the variable <code>CTest</code> by subtracting or adding the
+difference of each C Test version’s mean score from the overall mean
+score of the C Tests from or to each individual score.</p>
+<p><strong>HINT</strong> You will need to (or can, there are other ways
+to solve this) use the following functions in the given order:
+<code>group_by()</code>, <code>mutate()</code>, <code>ungroup()</code>
+and <code>mutate()</code></p>
 <details>
 <summary>
 Click for Answer
@@ -2506,20 +2751,21 @@ Click for Answer
 <pre><code># A tibble: 60 × 2
    Version CTest
    &lt;fct&gt;   &lt;dbl&gt;
- 1 1        12.0
- 2 1        22.0
- 3 1        17.0
- 4 1        24.0
- 5 1        17.0
- 6 1        15.0
- 7 1        18.0
- 8 1        12.0
- 9 1        22.0
-10 1        29.0
+ 1 1        21.1
+ 2 1        21.1
+ 3 1        14.1
+ 4 1        18.1
+ 5 1        23.1
+ 6 1        20.1
+ 7 1        20.1
+ 8 1        16.1
+ 9 1        15.1
+10 1        21.1
 # … with 50 more rows</code></pre>
 </div>
 </details>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
